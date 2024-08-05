@@ -7,7 +7,6 @@
     android:background="@color/bgforegn"
     tools:context=".home.HomeFragment">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,8 +18,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/giao_den"
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
+        <!-- Phần Địa chỉ -->
         <TextView
             android:id="@+id/txtmyAddress"
             android:layout_width="match_parent"
@@ -32,9 +33,11 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@string/my_address"
+            android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
 
+        <!-- Thanh tìm kiếm -->
         <EditText
             android:id="@+id/edtSearchProduct"
             android:layout_width="match_parent"
@@ -48,33 +51,68 @@
             android:inputType="text"
             android:paddingStart="20dp" />
 
-
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                >
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="10dp">
+                <!-- Slider bar (carousel) -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+                    <com.denzcoskun.imageslider.ImageSlider
+                        android:id="@+id/slider"
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"
+                        app:iss_auto_cycle="true"
+                        app:iss_corner_radius="10"
+                        app:iss_delay="1000"
+                        app:iss_error_image="@color/purple_700"
+                        app:iss_period="3000"
+                        app:iss_placeholder="@color/black"
+                        app:iss_text_align="CENTER" />
+                </RelativeLayout>
 
-                <com.denzcoskun.imageslider.ImageSlider
-                    android:id="@+id/slider"
+                <!-- Categories -->
+                <TextView
+                    android:id="@+id/lbCategories"
                     android:layout_width="wrap_content"
-                    android:layout_height="150dp"
-                    app:iss_auto_cycle="true"
-                    app:iss_delay="1000"
-                    app:iss_period="3000"
-                    app:iss_text_align="CENTER"
-                    app:iss_placeholder="@color/black"
-                    app:iss_error_image="@color/purple_700"
-                    app:iss_corner_radius="10"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbcategories"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
                     />
-            </RelativeLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recCategories"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="15dp"/>
 
+                <!-- Popular -->
+                <TextView
+                    android:id="@+id/lbPopular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbpopular"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recPopular"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="15dp"/>
+            </LinearLayout>
         </ScrollView>
     </LinearLayout>
-
 
 </RelativeLayout>

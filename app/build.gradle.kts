@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.food_application"
-        minSdk = 33
+        minSdk = 30
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -45,5 +45,6 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
     implementation ("com.github.denzcoskun:ImageSlideshow:0.1.2")
 }

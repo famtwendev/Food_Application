@@ -16,4 +16,6 @@
     <string name="find_your_food">Tìm kiểm sản phẩm</string>
     <string name="my_address">123 Đường 456, Tăng Nhơn Phú A, TP. Thủ Đức, Hồ Chí Minh</string>
     <string name="giao_den">Giao đến:</string>
+    <string name="lbcategories">Categories</string>
+    <string name="lbpopular">Popular</string>
 </resources>
