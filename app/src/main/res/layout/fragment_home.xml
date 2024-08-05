@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgforegn"
+    tools:context=".home.HomeFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bgforegn"
+        android:orientation="vertical"
+        android:padding="10dp">
+        <!-- Phần giao đến -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/giao_den"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txtmyAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:drawableStart="@drawable/baseline_location_on"
+            android:drawableEnd="@drawable/baseline_keyboard_arrow_right"
+            android:drawablePadding="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/my_address"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edtSearchProduct"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/search_background"
+            android:drawableStart="@drawable/baseline_search_24"
+            android:drawableTint="@color/gray_300"
+            android:ems="10"
+            android:hint="@string/find_your_food"
+            android:inputType="text"
+            android:paddingStart="20dp" />
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                >
+
+                <com.denzcoskun.imageslider.ImageSlider
+                    android:id="@+id/slider"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    app:iss_auto_cycle="true"
+                    app:iss_delay="1000"
+                    app:iss_period="3000"
+                    app:iss_text_align="CENTER"
+                    app:iss_placeholder="@color/black"
+                    app:iss_error_image="@color/purple_700"
+                    app:iss_corner_radius="10"
+                    />
+            </RelativeLayout>
+
+        </ScrollView>
+    </LinearLayout>
+
+
+</RelativeLayout>

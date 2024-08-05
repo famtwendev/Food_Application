@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Food_Application</string>
+    <string name="the_food_app">The Food App</string>
+    <string name="slogan_food">Hello Explore Your Dream Food</string>
+    <string name="sign_in">Get Started</string>
+    <string name="home_title">Trang chủ</string>
+    <string name="bill_title">Đơn hàng</string>
+    <string name="like_title">Thích</string>
+    <string name="notify_title">Thông báo</string>
+    <string name="person_title">Tôi</string>
+    <string name="home_fragment">Home fragment</string>
+    <string name="bill_fragment">BillFragment</string>
+    <string name="favorite_fragment">Favorite Fragment</string>
+    <string name="notify_fragment">Notify fragment</string>
+    <string name="customer_fragment">Customer fragment</string>
+    <string name="find_your_food">Tìm kiểm sản phẩm</string>
+    <string name="my_address">123 Đường 456, Tăng Nhơn Phú A, TP. Thủ Đức, Hồ Chí Minh</string>
+    <string name="giao_den">Giao đến:</string>
+</resources>
