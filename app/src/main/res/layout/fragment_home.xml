@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgforegn"
-    tools:context=".home.HomeFragment">
+    tools:context=".HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,11 +49,13 @@
             android:ems="10"
             android:hint="@string/find_your_food"
             android:inputType="text"
-            android:paddingStart="20dp" />
+            android:paddingStart="20dp"
+            android:textColor="@color/black" />
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -65,6 +67,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp">
+
                     <com.denzcoskun.imageslider.ImageSlider
                         android:id="@+id/slider"
                         android:layout_width="wrap_content"
@@ -83,34 +86,53 @@
                     android:id="@+id/lbCategories"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:text="@string/lbcategories"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    />
+                    android:textStyle="bold" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recCategories"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="15dp"/>
+                    android:layout_marginTop="5dp" />
 
                 <!-- Popular -->
                 <TextView
                     android:id="@+id/lbPopular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:text="@string/lbpopular"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    />
+                    android:textStyle="bold" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recPopular"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
-                    android:layout_marginBottom="15dp"/>
+                    android:layout_marginBottom="15dp" />
+
+                <!-- Popular -->
+                <TextView
+                    android:id="@+id/lb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/lbsupplier"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recSupplier"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="15dp" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.adapter.ViewPageMainFragmentAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.example.food_application.databinding.ActivityMainBinding;
 
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        ViewPagerAdapter adapter = new ViewPagerAdapter(this);
+        ViewPageMainFragmentAdapter adapter = new ViewPageMainFragmentAdapter(this);
         binding.viewPager.setAdapter(adapter);
         binding.viewPager.setOffscreenPageLimit(2);
 
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 if (item.getItemId() == R.id.menu_home) {
                     binding.viewPager.setCurrentItem(0);
                     updateIcons(0);
-                } else if (item.getItemId() == R.id.menu_bill) {
+                } else if (item.getItemId() == R.id.menu_cart) {
                     binding.viewPager.setCurrentItem(1);
                     updateIcons(1);
                 } else if (item.getItemId() == R.id.menu_favorite) {
@@ -70,13 +71,13 @@ public class MainActivity extends AppCompatActivity {
     }
     private void updateIcons(int selectedPosition) {
         MenuItem homeItem = binding.bottomNavigation.getMenu().findItem(R.id.menu_home);
-        MenuItem billItem = binding.bottomNavigation.getMenu().findItem(R.id.menu_bill);
+        MenuItem billItem = binding.bottomNavigation.getMenu().findItem(R.id.menu_cart);
         MenuItem favoriteItem = binding.bottomNavigation.getMenu().findItem(R.id.menu_favorite);
         MenuItem notifyItem = binding.bottomNavigation.getMenu().findItem(R.id.menu_notify);
         MenuItem customerItem = binding.bottomNavigation.getMenu().findItem(R.id.menu_customer);
 
         homeItem.setIcon(selectedPosition == 0 ? R.drawable.ic_house_filled : R.drawable.ic_house);
-        billItem.setIcon(selectedPosition == 1 ? R.drawable.ic_bill_filled : R.drawable.ic_bill);
+        billItem.setIcon(selectedPosition == 1 ? R.drawable.ic_cart_filled : R.drawable.ic_cart);
         favoriteItem.setIcon(selectedPosition == 2 ? R.drawable.ic_heart_filled : R.drawable.ic_heart);
         notifyItem.setIcon(selectedPosition == 3 ? R.drawable.ic_notify_filled : R.drawable.ic_notify);
         customerItem.setIcon(selectedPosition == 4 ? R.drawable.ic_user_filled : R.drawable.ic_user);
