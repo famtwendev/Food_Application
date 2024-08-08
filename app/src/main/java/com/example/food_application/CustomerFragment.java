@@ -123,10 +123,12 @@ public class CustomerFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 dialog.findViewById(R.id.logindefault).setVisibility(View.GONE);
-                dialog.findViewById(R.id.loginbangmatkhau).setVisibility(View.INVISIBLE);
-                dialog.findViewById(R.id.logindefault).requestLayout();
-                dialog.findViewById(R.id.logindefault).requestLayout();
+                dialog.findViewById(R.id.loginbangmatkhau).setVisibility(View.VISIBLE);
+                dialog.findViewById(R.id.btnLoginMatKhau).setVisibility(View.GONE);
 
+
+                dialog.findViewById(R.id.row2login).requestLayout();
+                dialog.show();
            }
         });
     }
