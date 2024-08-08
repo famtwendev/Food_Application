@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/bgforegn"
+    android:orientation="vertical"
     android:padding="16dp">
 
     <LinearLayout
@@ -11,32 +12,34 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:background="@drawable/background_default"
+        android:elevation="3dp">
 
         <ImageView
-            android:id="@+id/iv_back"
+            android:id="@+id/btnbacklogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/baseline_arrow_back_24"
+            android:layout_marginEnd="16dp"
             android:padding="8dp"
-            android:layout_marginEnd="16dp"/>
+            android:src="@drawable/baseline_arrow_back_24" />
 
         <TextView
-            android:id="@+id/txtTieude"
+            android:id="@+id/lbTieude"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="Đăng nhập / Đăng ký"
             android:textColor="@color/black"
-            android:textSize="18sp"
-            android:gravity="center"/>
+            android:textSize="18sp" />
 
         <ImageView
-            android:id="@+id/iv_help"
+            android:id="@+id/btnhelp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/baseline_question_mark_24"
-            android:padding="8dp" />
+            android:padding="8dp"
+            android:src="@drawable/baseline_question_mark_24" />
 
     </LinearLayout>
 
@@ -53,39 +56,96 @@
             android:layout_marginBottom="32dp"
             android:src="@drawable/baseline_fastfood_24" />
 
-        <TextView
-            android:id="@+id/txtPhoneNumber"
+        <LinearLayout
+            android:id="@+id/loginbangmatkhau"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/bg_rounded_corner_gray"
-            android:drawableStart="@drawable/baseline_phone_24"
-            android:drawablePadding="16dp"
-            android:hint="Số điện thoại"
-            android:inputType="phone"
-            android:padding="12dp"
-            android:textSize="16sp" />
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:visibility="gone">
 
-        <TextView
-            android:id="@+id/txtTiepTuc"
+            <EditText
+                android:id="@+id/edtUsername_email"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/background_rounded_corner_gray"
+                android:drawableStart="@drawable/baseline_phone_24"
+                android:drawablePadding="16dp"
+                android:hint="@string/lbnumberphone"
+                android:inputType="phone"
+                android:padding="12dp"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/edtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/background_rounded_corner_gray"
+                android:drawableStart="@drawable/baseline_key_24"
+                android:drawablePadding="16dp"
+                android:hint="Nhập mật khẩu"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/btnDangNhap"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/background_rounded_corner_gray"
+                android:backgroundTint="@color/primary"
+                android:gravity="center"
+                android:text="Đăng nhập"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/logindefault"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/bg_rounded_corner_gray"
-            android:gravity="center"
-            android:text="Tiếp tục"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/edtphonenumber"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/background_rounded_corner_gray"
+                android:drawableStart="@drawable/baseline_phone_24"
+                android:drawablePadding="16dp"
+                android:hint="@string/lbnumberphone"
+                android:inputType="phone"
+                android:padding="12dp"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/btnTieptuc"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/background_rounded_corner_gray"
+                android:gravity="center"
+                android:text="Tiếp tục"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:gravity="end"
-            android:orientation="horizontal"
-            android:layout_gravity="center_horizontal">
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/txtLoginMatKhau"
+                android:id="@+id/btnLoginMatKhau"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -115,8 +175,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:text="HOẶC"
-                android:background="#FFFFFF" />
+                android:background="#FFFFFF"
+                android:text="HOẶC" />
+
             <View
                 android:layout_width="0dp"
                 android:layout_height="1dp"
@@ -125,38 +186,38 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/txtLoginShopee"
-            style="@style/SocialLoginButton"
-            android:backgroundTint="@color/white"
-            android:textSize="14sp"
-            android:drawableStart="@drawable/baseline_shopping_cart_24"
-            android:text="Tiếp tục với Shopee"
-            android:textColor="@color/black" />
+        <!--        <TextView-->
+        <!--            android:id="@+id/btnLoginShopee"-->
+        <!--            style="@style/SocialLoginButton"-->
+        <!--            android:backgroundTint="@color/white"-->
+        <!--            android:drawableStart="@drawable/baseline_shopping_cart_24"-->
+        <!--            android:text="Tiếp tục với Shopee"-->
+        <!--            android:textColor="@color/black"-->
+        <!--            android:textSize="14sp" />-->
 
         <TextView
-            android:id="@+id/txtLoginGoogle"
+            android:id="@+id/btnLoginGoogle"
             style="@style/SocialLoginButton"
-            android:textSize="14sp"
-            android:drawableStart="@drawable/google"
+            android:drawableStart="@drawable/ic_google"
             android:text="Tiếp tục với Google"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/txtLoginFacebook"
+            android:id="@+id/btnLoginFacebook"
             style="@style/SocialLoginButton"
-            android:drawableStart="@drawable/facebook"
+            android:drawableStart="@drawable/ic_facebook"
             android:text="Tiếp tục với Facebook"
-            android:textSize="14sp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/txtLoginApple"
+            android:id="@+id/btnLoginApple"
             style="@style/SocialLoginButton"
-            android:textSize="14sp"
-            android:drawableStart="@drawable/apple"
+            android:drawableStart="@drawable/ic_apple"
             android:text="Tiếp tục với Apple"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
@@ -167,22 +228,22 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tv_policy_agreement"
+            android:id="@+id/lb_policyagreement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_margin="0dp"
-            android:text="Bằng cách đăng nhập hoặc đăng ký, bạn đồng ý với "
+            android:text="@string/notelogin4"
             android:textAlignment="center"
             android:textColor="#A29696"
             android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/tvNhapEmail"
+            android:id="@+id/btnChinhsach"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Chính sách quy định của Foody"
+            android:text="@string/titlechinhsach"
             android:textColor="#03A9F4"
             android:textSize="15sp" />
 

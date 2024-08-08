@@ -40,7 +40,7 @@ public class PopularAdaptor extends RecyclerView.Adapter<PopularAdaptor.ViewHold
         //String.format("%.0f đ", foodlist.get(position).getPriceFood())
         holder.txtNameFood.setText(foodlist.get(position).getNameFood());
         holder.txtPriceFood.setText(formattedPrice);
-        holder.itemProductLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.cart_background));
+        holder.itemProductLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.background_cart));
 
         holder.imvPicFood.setImageResource(foodlist.get(position).getPictureFood());
     }

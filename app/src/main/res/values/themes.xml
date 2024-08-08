@@ -6,4 +6,9 @@
     </style>
 
     <style name="Theme.Food_Application" parent="Base.Theme.Food_Application" />
+
+    <style name="BottomSheetAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in</item>
+        <item name="android:windowExitAnimation">@anim/slide_out</item>
+    </style>
 </resources>

@@ -1,9 +1,13 @@
 package com.example.food_application;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,9 +80,10 @@ public class CustomerFragment extends Fragment {
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binding.btnLogin.setVisibility(View.GONE);
-                binding.txtusername.setVisibility(View.VISIBLE);
-                binding.btnLogout.setVisibility(View.VISIBLE);
+                showBottomSheet();
+//                binding.btnLogin.setVisibility(View.GONE);
+//                binding.txtusername.setVisibility(View.VISIBLE);
+//                binding.btnLogout.setVisibility(View.VISIBLE);
             }
         });
 
@@ -89,6 +94,40 @@ public class CustomerFragment extends Fragment {
                 binding.txtusername.setVisibility(View.GONE);
                 binding.btnLogout.setVisibility(View.GONE);
             }
+        });
+    }
+    private void showBottomSheet() {
+        Dialog dialog = new Dialog(requireContext());
+        dialog.setContentView(R.layout.activity_login);
+
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable((Color.TRANSPARENT)));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.BottomSheetAnimation;
+
+        //Set button click
+        addEventsForDialog(dialog);
+
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
+    }
+
+    private void addEventsForDialog(Dialog dialog) {
+        dialog.findViewById(R.id.btnbacklogin).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        dialog.findViewById(R.id.btnLoginMatKhau).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.findViewById(R.id.logindefault).setVisibility(View.GONE);
+                dialog.findViewById(R.id.loginbangmatkhau).setVisibility(View.INVISIBLE);
+                dialog.findViewById(R.id.logindefault).requestLayout();
+                dialog.findViewById(R.id.logindefault).requestLayout();
+
+           }
         });
     }
 }

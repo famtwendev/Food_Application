@@ -36,7 +36,7 @@ public class CategoryAdaptor extends RecyclerView.Adapter<CategoryAdaptor.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.categoryName.setText(categoryDomains.get(position).getTitleCategory());
 
-        holder.itemCategoryLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.cat_background));
+        holder.itemCategoryLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.background_cat));
 
         holder.categoryPic.setImageResource(categoryDomains.get(position).getPicCategory());
     }

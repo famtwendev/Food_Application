@@ -137,16 +137,16 @@ public class HomeFragment extends Fragment {
         binding.recPopular.setLayoutManager(linearLayoutManager);
 
         ArrayList<FoodModels> fooditem = new ArrayList<>();
-        fooditem.add(new FoodModels(1,"Bún Bò", R.drawable.bunbo,"L","Buổi sáng no nê",35000,6,""));
-        fooditem.add(new FoodModels(2,"Phở Bò",  R.drawable.phobo,"L","Buổi sáng no nê",35000,6,""));
-        fooditem.add(new FoodModels(3,"Cơm tấm",  R.drawable.comtam,"L","Buổi trưa vui vẻ",32000,8,""));
-        fooditem.add(new FoodModels(4,"Bánh canh",  R.drawable.banhcanh,"L","Buổi tối ấm cúng",35000,6,""));
-        fooditem.add(new FoodModels(5,"Trà sữa",  R.drawable.trasua,"L","Tráng miệng",25000,7,""));
-        fooditem.add(new FoodModels(6,"Pizza",  R.drawable.pizza,"L","Tráng miệng",55000,1,""));
-        fooditem.add(new FoodModels(7,"Bún đậu",  R.drawable.bundau,"L","Buổi tối ấm cúng",75000,10,""));
-        fooditem.add(new FoodModels(8,"Bánh ngọt",  R.drawable.banhngot,"L","Tráng miệng",35000,5,""));
-        fooditem.add(new FoodModels(9,"Pepsi",  R.drawable.pepsi,"L","Giải khát",10000,4,""));
-        fooditem.add(new FoodModels(10,"Bánh mì thịt",  R.drawable.banhmi,"L","Bữa sáng no nê",25000,3,""));
+        fooditem.add(new FoodModels(1,"Bún Bò", R.drawable.ic_bunbo,"L","Buổi sáng no nê",35000,6,""));
+        fooditem.add(new FoodModels(2,"Phở Bò",  R.drawable.ic_phobo,"L","Buổi sáng no nê",35000,6,""));
+        fooditem.add(new FoodModels(3,"Cơm tấm",  R.drawable.ic_comtam,"L","Buổi trưa vui vẻ",32000,8,""));
+        fooditem.add(new FoodModels(4,"Bánh canh",  R.drawable.ic_banhcanh,"L","Buổi tối ấm cúng",35000,6,""));
+        fooditem.add(new FoodModels(5,"Trà sữa",  R.drawable.ic_trasua,"L","Tráng miệng",25000,7,""));
+        fooditem.add(new FoodModels(6,"Pizza",  R.drawable.ic_pizza,"L","Tráng miệng",55000,1,""));
+        fooditem.add(new FoodModels(7,"Bún đậu",  R.drawable.ic_bundau,"L","Buổi tối ấm cúng",75000,10,""));
+        fooditem.add(new FoodModels(8,"Bánh ngọt",  R.drawable.ic_banhngot,"L","Tráng miệng",35000,5,""));
+        fooditem.add(new FoodModels(9,"Pepsi",  R.drawable.ic_pepsi,"L","Giải khát",10000,4,""));
+        fooditem.add(new FoodModels(10,"Bánh mì thịt",  R.drawable.ic_banhmi,"L","Bữa sáng no nê",25000,3,""));
 
 
         adapterRycycleview= new PopularAdaptor(fooditem);
@@ -159,15 +159,15 @@ public class HomeFragment extends Fragment {
         binding.recSupplier.setLayoutManager(linearLayoutManager);
 
         ArrayList<SupplierModels> supplierList =  new ArrayList<>();;
-        supplierList.add(new SupplierModels("1", "Kichi-Kichi Buffet Lẩu Băng Chuyền", R.drawable.kichikichi, 4, 1.2, 1));
-        supplierList.add(new SupplierModels("2", "Dooki LẨU HÀN QUỐC TOKBOKKI BUFFET DOKKI", R.drawable.dokkie,5, 1.0, 1));
-        supplierList.add(new SupplierModels("3", "Hồng trà ngô gia", R.drawable.hongtrangogia,4, 0.8, 1));
-        supplierList.add(new SupplierModels("4", "Lotteria", R.drawable.lotteria,3,5.5, 10));
-        supplierList.add(new SupplierModels("5", "Hadilao", R.drawable.hadilao,4,2.1,11));
-        supplierList.add(new SupplierModels("6", "KFC", R.drawable.kfc,4,1.8,2));
-        supplierList.add(new SupplierModels("7", "Hủ tiếu Cô Liêu", R.drawable.hutieu, 3,3.7, 15));
-        supplierList.add(new SupplierModels("8", "MC Donal", R.drawable.mcdonal, 4,3.9, 20));
-        supplierList.add(new SupplierModels("9", "Xôi Mặn Hoàng Tử", R.drawable.xoiman, 3,2.6, 8));
+        supplierList.add(new SupplierModels("1", "Kichi-Kichi Buffet Lẩu Băng Chuyền", R.drawable.shop_kichikichi, 4, 1.2, 1));
+        supplierList.add(new SupplierModels("2", "Dooki LẨU HÀN QUỐC TOKBOKKI BUFFET DOKKI", R.drawable.shop_dokkie,5, 1.0, 1));
+        supplierList.add(new SupplierModels("3", "Hồng trà ngô gia", R.drawable.shop_hongtrangogia,4, 0.8, 1));
+        supplierList.add(new SupplierModels("4", "Lotteria", R.drawable.shop_lotteria,3,5.5, 10));
+        supplierList.add(new SupplierModels("5", "Hadilao", R.drawable.shop_hadilao,4,2.1,11));
+        supplierList.add(new SupplierModels("6", "KFC", R.drawable.food_kfc,4,1.8,2));
+        supplierList.add(new SupplierModels("7", "Hủ tiếu Cô Liêu", R.drawable.shop_hutieu, 3,3.7, 15));
+        supplierList.add(new SupplierModels("8", "MC Donal", R.drawable.shop_mcdonal, 4,3.9, 20));
+        supplierList.add(new SupplierModels("9", "Xôi Mặn Hoàng Tử", R.drawable.ic_xoiman, 3,2.6, 8));
 
         adapterRycycleview= new SupplierAdapter(supplierList);
         binding.recSupplier.setAdapter(adapterRycycleview);

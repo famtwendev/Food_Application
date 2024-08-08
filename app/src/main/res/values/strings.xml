@@ -39,4 +39,7 @@
     <string name="notecoming">Quên chưa đặt món rồi nè bạn ơi?</string>
     <string name="notecoming2">Bạn sẽ nhìn thấy các món đang được\nchuẩn bị hoặc giao đi tại đây để kiểm tra\nđơn hàng nhanh hơn!</string>
     <string name="notecomingcotheban">Có thể bạn sẽ thích</string>
+    <string name="lbnumberphone">Số điện thoại</string>
+    <string name="titlechinhsach">Chính sách quy định của Foody</string>
+    <string name="notelogin4">Bằng cách đăng nhập hoặc đăng ký, bạn đồng ý với</string>
 </resources>

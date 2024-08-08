@@ -1,6 +1,7 @@
 package com.example.food_application;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -68,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
                 return true; // Return true if item was handled
             }
         });
+
+
+        Log.i("MainActivity", "onCreate");
     }
     private void updateIcons(int selectedPosition) {
         MenuItem homeItem = binding.bottomNavigation.getMenu().findItem(R.id.menu_home);
@@ -81,5 +85,41 @@ public class MainActivity extends AppCompatActivity {
         favoriteItem.setIcon(selectedPosition == 2 ? R.drawable.ic_heart_filled : R.drawable.ic_heart);
         notifyItem.setIcon(selectedPosition == 3 ? R.drawable.ic_notify_filled : R.drawable.ic_notify);
         customerItem.setIcon(selectedPosition == 4 ? R.drawable.ic_user_filled : R.drawable.ic_user);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i("MainActivity", "onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("MainActivity", "onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i("MainActivity", "onPause");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i("MainActivity", "onRestart");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i("MainActivity", "onDestroy");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i("MainActivity", "onStop");
     }
 }
