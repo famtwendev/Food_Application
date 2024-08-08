@@ -8,12 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.food_application.databinding.FragmentCustomerBinding;
+import com.example.food_application.databinding.FragmentFavoriteBinding;
+import com.example.food_application.databinding.FragmentHomeBinding;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link CustomerFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class CustomerFragment extends Fragment {
+
+    private FragmentCustomerBinding binding;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,7 +64,31 @@ public class CustomerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_customer, container, false);
+        binding = FragmentCustomerBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+
+        addEvents();
+
+        return view;
+    }
+
+    private void addEvents() {
+        binding.btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.btnLogin.setVisibility(View.GONE);
+                binding.txtusername.setVisibility(View.VISIBLE);
+                binding.btnLogout.setVisibility(View.VISIBLE);
+            }
+        });
+
+        binding.btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.btnLogin.setVisibility(View.VISIBLE);
+                binding.txtusername.setVisibility(View.GONE);
+                binding.btnLogout.setVisibility(View.GONE);
+            }
+        });
     }
 }

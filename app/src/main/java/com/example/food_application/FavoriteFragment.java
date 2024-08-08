@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.adapter.FavoritePagerTab;
+import com.example.adapter.ViewPageFavoriteFragmentAdapter;
 import com.example.food_application.databinding.FragmentFavoriteBinding;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -23,8 +23,7 @@ public class FavoriteFragment extends Fragment {
     private FragmentFavoriteBinding binding;
 
     private ViewPager2 viewPager;
-    private FavoritePagerTab adapter;
-
+    private ViewPageFavoriteFragmentAdapter adapter;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -74,7 +73,9 @@ public class FavoriteFragment extends Fragment {
         View view = binding.getRoot();
 
         viewPager = view.findViewById(R.id.viewPagerFavorite);
-        adapter = new FavoritePagerTab(requireActivity());
+        // Disable swipe
+        viewPager.setUserInputEnabled(false);
+        adapter = new ViewPageFavoriteFragmentAdapter(requireActivity());
 
         viewPager.setAdapter(adapter);
 
@@ -91,9 +92,6 @@ public class FavoriteFragment extends Fragment {
                     break;
                 case 3:
                     tab.setText("Đánh giá");
-                    break;
-                case 4:
-                    tab.setText("Đơn nháp");
                     break;
             }
         }).attach();

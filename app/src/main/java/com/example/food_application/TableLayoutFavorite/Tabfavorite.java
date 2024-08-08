@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.adapter.ViewPageFavoriteFragmentAdapter;
+import com.example.adapter.FavoriteFragmentAdapter;
 import com.example.food_application.R;
 import com.example.food_application.databinding.TabFavoriteBinding;
 import com.example.models.SupplierModels;
@@ -42,7 +42,7 @@ public class Tabfavorite extends Fragment {
         supplierList.add(new SupplierModels("3", "Hồng trà ngô gia", R.drawable.hongtrangogia,4, 0.8, 1));
         supplierList.add(new SupplierModels("4", "Lotteria", R.drawable.lotteria,3,5.5, 10));
 
-        adapterRycycleview= new ViewPageFavoriteFragmentAdapter(supplierList);
+        adapterRycycleview= new FavoriteFragmentAdapter(supplierList);
         binding.recSupplier.setAdapter(adapterRycycleview);
 
 

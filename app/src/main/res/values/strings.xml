@@ -19,4 +19,24 @@
     <string name="lbcategories">Danh mục</string>
     <string name="lbpopular">Phổ biến</string>
     <string name="lbsupplier">Nhà sản xuất</string>
+    <string name="user_name">User Name</string>
+    <string name="xacthucemail">Xác thực email để nhận thông tin ưu đãi.</string>
+    <string name="inputemail">Nhập Email</string>
+    <string name="voucher">Ví Voucher</string>
+    <string name="shopee_xu">Shopee Xu</string>
+    <string name="payment">Thanh toán</string>
+    <string name="myaddress">Địa chỉ</string>
+    <string name="invite">Mời bạn bè</string>
+    <string name="support">Trung tâm Trợ giúp</string>
+    <string name="apphost">Ứng dụng cho Chủ quán</string>
+    <string name="policy">Chính sách quy định</string>
+    <string name="setting">Cài đặt</string>
+    <string name="aboutme">Về ShopeeFood</string>
+    <string name="titlelogout">Đăng xuất</string>
+    <string name="lbCapNhat">Cập nhật quan trọng</string>
+    <string name="chuacokhuyenmai">Chưa có khuyến mãi nào</string>
+    <string name="chuacotintucnao">Chưa có tin tức nào</string>
+    <string name="notecoming">Quên chưa đặt món rồi nè bạn ơi?</string>
+    <string name="notecoming2">Bạn sẽ nhìn thấy các món đang được\nchuẩn bị hoặc giao đi tại đây để kiểm tra\nđơn hàng nhanh hơn!</string>
+    <string name="notecomingcotheban">Có thể bạn sẽ thích</string>
 </resources>

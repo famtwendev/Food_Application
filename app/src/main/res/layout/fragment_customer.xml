@@ -1,14 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CustomerFragment">
+    android:background="@color/bgforegn"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/customer_fragment" />
+        android:layout_marginTop="5dp">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:background="@color/primary"
+                android:gravity="end|bottom"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/imvUser"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_customer" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txtusername"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/user_name"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/btnLogin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text="Đăng nhập / Đăng ký"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Uncomment this section if needed -->
+            <!--
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/xacthucemail"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvNhapEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/inputemail"
+                    android:textColor="#03A9F4"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/iv_close"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:src="@drawable/baseline_close_24" />
+            </LinearLayout>
+            -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bgforegn"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/cat_background"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtvoucher"
+                        style="@style/ProfileMenuItem"
+                        android:drawableStart="@drawable/baseline_wallet_24"
+                        android:drawableEnd="@drawable/baseline_keyboard_arrow_right"
+                        android:text="@string/voucher" />
+
+                    <TextView
+                        android:id="@+id/txtshopeecoins"
+                        style="@style/ProfileMenuItem"
+                        android:drawableStart="@drawable/baseline_currency_exchange_24"
+                        android:drawableEnd="@drawable/baseline_keyboard_arrow_right"
+                        android:text="@string/shopee_xu" />
+
+                    <TextView
+                        android:id="@+id/txtpayment"
+                        style="@style/ProfileMenuItem"
+                        android:drawableStart="@drawable/baseline_account_balance_wallet_24"
+                        android:drawableEnd="@drawable/baseline_keyboard_arrow_right"
+                        android:text="@string/payment" />
+
+                    <TextView
+                        android:id="@+id/txtmyaddress"
+                        style="@style/ProfileMenuItem"
+                        android:drawableStart="@drawable/baseline_location_pin_24"
+                        android:drawableEnd="@drawable/baseline_keyboard_arrow_right"
+                        android:text="@string/myaddress" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/cat_background"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtinvite"
+                        style="@style/ProfileMenuItem"
+                        android:drawableStart="@drawable/baseline_people_24"
+                        android:drawableEnd="@drawable/baseline_keyboard_arrow_right"
+                        android:text="@string/invite" />
+
+                    <TextView
+                        android:id="@+id/txtsupport"
+                        style="@style/ProfileMenuItem"
+                        android:drawableStart="@drawable/baseline_question_mark_24"
+                        android:drawableEnd="@drawable/baseline_keyboard_arrow_right"
+                        android:text="@string/support" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/cat_background"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtapphost"
+                        style="@style/ProfileMenuItem"
+                        android:drawableStart="@drawable/baseline_store_24"
+                        android:drawableEnd="@drawable/baseline_keyboard_arrow_right"
+                        android:text="@string/apphost" />
+
+                    <TextView
+                        android:id="@+id/txtpolicy"
+                        style="@style/ProfileMenuItem"
+                        android:drawableStart="@drawable/baseline_local_police_24"
+                        android:drawableEnd="@drawable/baseline_keyboard_arrow_right"
+                        android:text="@string/policy" />
+
+                    <TextView
+                        android:id="@+id/txtsetting"
+                        style="@style/ProfileMenuItem"
+                        android:drawableStart="@drawable/baseline_settings_24"
+                        android:drawableEnd="@drawable/baseline_keyboard_arrow_right"
+                        android:text="@string/setting" />
+
+                    <TextView
+                        android:id="@+id/txtaboutme"
+                        style="@style/ProfileMenuItem"
+                        android:drawableStart="@drawable/baseline_food_bank_24"
+                        android:drawableEnd="@drawable/baseline_keyboard_arrow_right"
+                        android:text="@string/aboutme" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btnLogout"
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/primary"
+                    android:gravity="center"
+                    android:text="@string/titlelogout"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
