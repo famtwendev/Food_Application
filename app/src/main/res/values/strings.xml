@@ -31,7 +31,7 @@
     <string name="apphost">Ứng dụng cho Chủ quán</string>
     <string name="policy">Chính sách quy định</string>
     <string name="setting">Cài đặt</string>
-    <string name="aboutme">Về ShopeeFood</string>
+    <string name="aboutme">Về chúng tôi</string>
     <string name="titlelogout">Đăng xuất</string>
     <string name="lbCapNhat">Cập nhật quan trọng</string>
     <string name="chuacokhuyenmai">Chưa có khuyến mãi nào</string>
@@ -42,4 +42,15 @@
     <string name="lbnumberphone">Số điện thoại</string>
     <string name="titlechinhsach">Chính sách quy định của Foody</string>
     <string name="notelogin4">Bằng cách đăng nhập hoặc đăng ký, bạn đồng ý với</string>
+    <string name="lbuser_name_and_email">Nhập tên đăng nhập hoặc email</string>
+    <string name="lb_input_password">Nhập mật khẩu</string>
+    <string name="lbdangnhap">Đăng nhập</string>
+    <string name="lb_tieptuc">Tiếp tục</string>
+    <string name="lb_dangnhap_matkhau">Đăng nhập bằng Mật khẩu</string>
+    <string name="lb_tieptuc_voi_gg">Tiếp tục với Google</string>
+    <string name="lb_tieptuc_fb">Tiếp tục với Facebook</string>
+    <string name="lb_tieptuc_apple">Tiếp tục với Apple</string>
+    <string name="forgotpass">Quên ?</string>
+    <string name="titlehelper">Trung tâm trợ giúp</string>
+    <string name="titletb">Vui lòng liên hệ tổng đài\n19001234</string>
 </resources>

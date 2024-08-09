@@ -18,9 +18,9 @@ public class FoodModels {
 
     private String idSupplier; // Mã Nhà cung cấp
 
-    private int idVoucher;
+    private String idVoucher;
 
-    public FoodModels(int idFood, String nameFood, int pictureFood, String sizeFood, String descriptionFood, double priceFood, int idCategory, String idSupplier, int idVoucher) {
+    public FoodModels(int idFood, String nameFood, int pictureFood, String sizeFood, String descriptionFood, double priceFood, int idCategory, String idSupplier, String idVoucher) {
         this.idFood = idFood;
         this.nameFood = nameFood;
         this.pictureFood = pictureFood;
@@ -41,7 +41,7 @@ public class FoodModels {
         this.priceFood = priceFood;
         this.idCategory = idCategory;
         this.idSupplier = idSupplier;
-        this.idVoucher = 0;
+        this.idVoucher = "";
     }
 
     public int getIdFood() {
@@ -108,11 +108,11 @@ public class FoodModels {
         this.idSupplier = idSupplier;
     }
 
-    public int getIdVoucher() {
+    public String getIdVoucher() {
         return idVoucher;
     }
 
-    public void setIdVoucher(int idVoucher) {
+    public void setIdVoucher(String idVoucher) {
         this.idVoucher = idVoucher;
     }
 }

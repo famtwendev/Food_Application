@@ -9,8 +9,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="5dp">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,10 +20,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:background="@color/primary"
+                android:elevation="3dp"
                 android:gravity="end|bottom"
                 android:orientation="horizontal"
-                android:padding="16dp"
-                android:elevation="3dp">
+                android:padding="16dp">
 
                 <ImageView
                     android:id="@+id/imvUser"
@@ -111,32 +110,32 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/background_cat"
-                    android:orientation="vertical"
-                    android:elevation="3dp">
+                    android:elevation="3dp"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/txtvoucher"
+                        android:id="@+id/btnvoucher"
                         style="@style/ProfileMenuItem"
                         android:drawableStart="@drawable/baseline_wallet_24"
                         android:drawableEnd="@drawable/baseline_keyboard_arrow_right"
                         android:text="@string/voucher" />
 
                     <TextView
-                        android:id="@+id/txtshopeecoins"
+                        android:id="@+id/btnshopeecoins"
                         style="@style/ProfileMenuItem"
                         android:drawableStart="@drawable/baseline_currency_exchange_24"
                         android:drawableEnd="@drawable/baseline_keyboard_arrow_right"
                         android:text="@string/shopee_xu" />
 
                     <TextView
-                        android:id="@+id/txtpayment"
+                        android:id="@+id/btnpayment"
                         style="@style/ProfileMenuItem"
                         android:drawableStart="@drawable/baseline_account_balance_wallet_24"
                         android:drawableEnd="@drawable/baseline_keyboard_arrow_right"
                         android:text="@string/payment" />
 
                     <TextView
-                        android:id="@+id/txtmyaddress"
+                        android:id="@+id/btnmyaddress"
                         style="@style/ProfileMenuItem"
                         android:drawableStart="@drawable/baseline_location_pin_24"
                         android:drawableEnd="@drawable/baseline_keyboard_arrow_right"
@@ -148,55 +147,39 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/background_cat"
-                    android:orientation="vertical"
-                    android:elevation="3dp">
+                    android:elevation="3dp"
+                    android:orientation="vertical">
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/btninvite"-->
+<!--                        style="@style/ProfileMenuItem"-->
+<!--                        android:drawableStart="@drawable/baseline_people_24"-->
+<!--                        android:drawableEnd="@drawable/baseline_keyboard_arrow_right"-->
+<!--                        android:text="@string/invite" />-->
 
                     <TextView
-                        android:id="@+id/txtinvite"
-                        style="@style/ProfileMenuItem"
-                        android:drawableStart="@drawable/baseline_people_24"
-                        android:drawableEnd="@drawable/baseline_keyboard_arrow_right"
-                        android:text="@string/invite" />
-
-                    <TextView
-                        android:id="@+id/txtsupport"
+                        android:id="@+id/btnsupport"
                         style="@style/ProfileMenuItem"
                         android:drawableStart="@drawable/baseline_question_mark_24"
                         android:drawableEnd="@drawable/baseline_keyboard_arrow_right"
                         android:text="@string/support" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/background_cat"
-                    android:orientation="vertical"
-                    android:elevation="3dp">
 
                     <TextView
-                        android:id="@+id/txtapphost"
-                        style="@style/ProfileMenuItem"
-                        android:drawableStart="@drawable/baseline_store_24"
-                        android:drawableEnd="@drawable/baseline_keyboard_arrow_right"
-                        android:text="@string/apphost" />
-
-                    <TextView
-                        android:id="@+id/txtpolicy"
+                        android:id="@+id/btnpolicy"
                         style="@style/ProfileMenuItem"
                         android:drawableStart="@drawable/baseline_local_police_24"
                         android:drawableEnd="@drawable/baseline_keyboard_arrow_right"
                         android:text="@string/policy" />
 
                     <TextView
-                        android:id="@+id/txtsetting"
+                        android:id="@+id/btnsetting"
                         style="@style/ProfileMenuItem"
                         android:drawableStart="@drawable/baseline_settings_24"
                         android:drawableEnd="@drawable/baseline_keyboard_arrow_right"
                         android:text="@string/setting" />
 
                     <TextView
-                        android:id="@+id/txtaboutme"
+                        android:id="@+id/btnaboutme"
                         style="@style/ProfileMenuItem"
                         android:drawableStart="@drawable/baseline_food_bank_24"
                         android:drawableEnd="@drawable/baseline_keyboard_arrow_right"

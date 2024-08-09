@@ -21,7 +21,6 @@ public class FavoriteFragment extends Fragment {
 
 
     private FragmentFavoriteBinding binding;
-
     private ViewPager2 viewPager;
     private ViewPageFavoriteFragmentAdapter adapter;
 
@@ -38,7 +37,6 @@ public class FavoriteFragment extends Fragment {
     public FavoriteFragment() {
         // Required empty public constructor
     }
-
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -73,6 +71,7 @@ public class FavoriteFragment extends Fragment {
         View view = binding.getRoot();
 
         viewPager = view.findViewById(R.id.viewPagerFavorite);
+        viewPager.setOffscreenPageLimit(2);
         // Disable swipe
         viewPager.setUserInputEnabled(false);
         adapter = new ViewPageFavoriteFragmentAdapter(requireActivity());

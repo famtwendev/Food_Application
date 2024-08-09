@@ -1,20 +1,23 @@
 package com.example.food_application;
 
+import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.controller.UserPreferences;
 import com.example.food_application.databinding.FragmentCustomerBinding;
-import com.example.food_application.databinding.FragmentFavoriteBinding;
-import com.example.food_application.databinding.FragmentHomeBinding;
+import com.example.models.CustomerModels;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,11 +27,14 @@ import com.example.food_application.databinding.FragmentHomeBinding;
 public class CustomerFragment extends Fragment {
 
     private FragmentCustomerBinding binding;
+    private static final int LOGIN_REQUEST_CODE = 1;
+    UserPreferences userPreferences;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -48,6 +54,7 @@ public class CustomerFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static CustomerFragment newInstance(String param1, String param2) {
+        Log.e("CustomerFragment", "CustomerFragment called");
         CustomerFragment fragment = new CustomerFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -59,6 +66,7 @@ public class CustomerFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e("CustomerFragment", "onCreate called");
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -68,6 +76,7 @@ public class CustomerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.e("CustomerFragment", "onCreateView called");
         binding = FragmentCustomerBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
@@ -80,56 +89,116 @@ public class CustomerFragment extends Fragment {
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showBottomSheet();
-//                binding.btnLogin.setVisibility(View.GONE);
-//                binding.txtusername.setVisibility(View.VISIBLE);
-//                binding.btnLogout.setVisibility(View.VISIBLE);
+//                Intent intent = new Intent(requireContext(), LoginActivity.class);
+//                startActivity(intent);
+                Intent intent = new Intent(requireContext(), LoginActivity.class);
+                startActivityForResult(intent, LOGIN_REQUEST_CODE);
             }
         });
 
         binding.btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Xóa thông tin người dùng
+                userPreferences.clearUserInfo();
+                // Cập nhật giao diện
                 binding.btnLogin.setVisibility(View.VISIBLE);
                 binding.txtusername.setVisibility(View.GONE);
                 binding.btnLogout.setVisibility(View.GONE);
             }
         });
-    }
-    private void showBottomSheet() {
-        Dialog dialog = new Dialog(requireContext());
-        dialog.setContentView(R.layout.activity_login);
 
-        dialog.getWindow().setGravity(Gravity.BOTTOM);
-        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable((Color.TRANSPARENT)));
-        dialog.getWindow().getAttributes().windowAnimations = R.style.BottomSheetAnimation;
-
-        //Set button click
-        addEventsForDialog(dialog);
-
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.show();
-    }
-
-    private void addEventsForDialog(Dialog dialog) {
-        dialog.findViewById(R.id.btnbacklogin).setOnClickListener(new View.OnClickListener() {
+        binding.btnvoucher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.dismiss();
+                if (userPreferences == null) {
+                    Intent intent = new Intent(requireContext(), LoginActivity.class);
+                    startActivityForResult(intent, LOGIN_REQUEST_CODE);
+                }
             }
         });
-        dialog.findViewById(R.id.btnLoginMatKhau).setOnClickListener(new View.OnClickListener() {
+        binding.btnshopeecoins.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.findViewById(R.id.logindefault).setVisibility(View.GONE);
-                dialog.findViewById(R.id.loginbangmatkhau).setVisibility(View.VISIBLE);
-                dialog.findViewById(R.id.btnLoginMatKhau).setVisibility(View.GONE);
-
-
-                dialog.findViewById(R.id.row2login).requestLayout();
-                dialog.show();
-           }
+                if (userPreferences == null) {
+                    Intent intent = new Intent(requireContext(), LoginActivity.class);
+                    startActivityForResult(intent, LOGIN_REQUEST_CODE);
+                }
+            }
         });
+
+        binding.btnmyaddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (userPreferences == null) {
+                    Intent intent = new Intent(requireContext(), LoginActivity.class);
+                    startActivityForResult(intent, LOGIN_REQUEST_CODE);
+                }
+            }
+        });
+        binding.btnpayment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (userPreferences == null) {
+                    Intent intent = new Intent(requireContext(), LoginActivity.class);
+                    startActivityForResult(intent, LOGIN_REQUEST_CODE);
+                }
+            }
+        });
+
+        binding.btnsetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (userPreferences == null) {
+                    Intent intent = new Intent(requireContext(), LoginActivity.class);
+                    startActivityForResult(intent, LOGIN_REQUEST_CODE);
+                }
+            }
+        });
+
+        binding.btnsupport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog dialog = new Dialog(requireContext());
+                dialog.setContentView(R.layout.activity_helper);
+
+                dialog.getWindow().setGravity(Gravity.CENTER_VERTICAL);
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable((Color.TRANSPARENT)));
+//                dialog.getWindow().getAttributes().windowAnimations = R.style.BottomSheetAnimation;
+
+                dialog.findViewById(R.id.btnbacklogin).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.setCanceledOnTouchOutside(false);
+                dialog.show();
+            }
+        });
+    }
+
+
+    private void loadData() {
+        userPreferences = new UserPreferences(requireActivity());
+        if (userPreferences != null) {
+            binding.btnLogin.setVisibility(View.GONE);
+            binding.btnLogout.setVisibility(View.VISIBLE);
+            binding.txtusername.setVisibility(View.VISIBLE);
+            binding.txtusername.setText(userPreferences.getFullname());
+        } else {
+            Log.e("CustomerFragment", "NULL");
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == LOGIN_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            // Cập nhật dữ liệu khi quay lại từ LoginActivity
+            loadData();
+        }
     }
 }
