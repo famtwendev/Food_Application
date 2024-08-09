@@ -104,6 +104,7 @@ public class CustomerFragment extends Fragment {
                 // Cập nhật giao diện
                 binding.btnLogin.setVisibility(View.VISIBLE);
                 binding.txtusername.setVisibility(View.GONE);
+                binding.imvUser.setImageResource(R.drawable.ic_customer);
                 binding.btnLogout.setVisibility(View.GONE);
             }
         });
@@ -161,7 +162,6 @@ public class CustomerFragment extends Fragment {
             public void onClick(View view) {
                 Dialog dialog = new Dialog(requireContext());
                 dialog.setContentView(R.layout.activity_helper);
-
                 dialog.getWindow().setGravity(Gravity.CENTER_VERTICAL);
                 dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 //                dialog.getWindow().setBackgroundDrawable(new ColorDrawable((Color.TRANSPARENT)));
@@ -173,9 +173,17 @@ public class CustomerFragment extends Fragment {
                         dialog.dismiss();
                     }
                 });
-
                 dialog.setCanceledOnTouchOutside(false);
                 dialog.show();
+            }
+        });
+        binding.btnaboutme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (userPreferences == null) {
+                    Intent intent = new Intent(requireContext(), LoginActivity.class);
+                    startActivityForResult(intent, LOGIN_REQUEST_CODE);
+                }
             }
         });
     }
@@ -188,6 +196,7 @@ public class CustomerFragment extends Fragment {
             binding.btnLogout.setVisibility(View.VISIBLE);
             binding.txtusername.setVisibility(View.VISIBLE);
             binding.txtusername.setText(userPreferences.getFullname());
+            binding.imvUser.setImageResource(userPreferences.getPicture());
         } else {
             Log.e("CustomerFragment", "NULL");
         }
