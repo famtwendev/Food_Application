@@ -19,9 +19,11 @@ public class UserPreferences {
     private static final String KEY_IS_VALUE = "isValue";
     private static final String KEY_SCORE_RATING = "scoreRating";
     private static final String KEY_RANDOM_KEY = "randomKey";
+    private static final String KEY_HAS_DATA = "hasData";
 
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+
 
     public UserPreferences(Context context) {
         sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
@@ -46,6 +48,15 @@ public class UserPreferences {
         editor.apply();
     }
 
+    // Đặt cờ hasData thành true
+    public void setHasData() {
+        editor.putBoolean(KEY_HAS_DATA, true);
+        editor.apply();
+    }
+    // Kiểm tra xem có dữ liệu người dùng hay không
+    public boolean gethasData() {
+        return sharedPreferences.getBoolean(KEY_HAS_DATA, false);
+    }
     public String getIdCustomer() {
         return sharedPreferences.getString(KEY_ID_CUSTOMER, "");
     }
@@ -99,7 +110,7 @@ public class UserPreferences {
         return sharedPreferences.getString(KEY_RANDOM_KEY, "");
     }
 
-    public void clearUserInfo() {
+    public void destroy() {
         editor.remove(KEY_ID_CUSTOMER);
         editor.remove(KEY_PASSWORD);
         editor.remove(KEY_FULLNAME);
@@ -113,6 +124,8 @@ public class UserPreferences {
         editor.remove(KEY_IS_VALUE);
         editor.remove(KEY_SCORE_RATING);
         editor.remove(KEY_RANDOM_KEY);
-        editor.apply();
+        editor.remove(KEY_HAS_DATA);
+        editor.clear(); // Xóa tất cả các cài đặt còn lại
+        editor.apply(); // Lưu thay đổi
     }
 }

@@ -47,7 +47,7 @@ public class FavoriteFragmentAdapter extends  RecyclerView.Adapter<FavoriteFragm
 
         holder.btnFavorite.setOnClickListener(v -> {
             // Handle the favorite icon click event
-            Toast.makeText(v.getContext(), "Favorite clicked for " + supplierList.get(position).getNameSupplier(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(v.getContext(), "Unfavorite " + supplierList.get(position).getNameSupplier(), Toast.LENGTH_SHORT).show();
             supplierList.remove(position);
             notifyItemRemoved(position);
             notifyItemRangeChanged(position, supplierList.size());

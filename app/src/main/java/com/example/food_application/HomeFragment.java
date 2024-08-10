@@ -1,6 +1,7 @@
 package com.example.food_application;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +11,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.adapter.CategoryAdaptor;
 import com.example.adapter.PopularAdaptor;
 import com.example.adapter.SupplierAdapter;
+import com.example.controller.UserPreferences;
 import com.example.food_application.databinding.FragmentHomeBinding;
 import com.example.models.CategoryModels;
 import com.example.models.FoodModels;
@@ -28,6 +31,8 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView.Adapter adapterRycycleview;
 
+    private static final int LOGIN_REQUEST_CODE = 1;
+    private UserPreferences userPreferences;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -54,10 +59,12 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e("HomeFragment", "onCreate called");
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        userPreferences = new UserPreferences(getContext());
     }
 
     private void addEvents() {
@@ -72,6 +79,8 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.e("HomeFragment", "onCreateView called");
+
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
@@ -90,6 +99,7 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
+        Log.e("HomeFragment", "onDestroyView called");
         super.onDestroyView();
         binding = null;
     }
@@ -125,7 +135,6 @@ public class HomeFragment extends Fragment {
         category.add(new CategoryModels(3,"Bánh mì",R.drawable.cat_3));
         category.add(new CategoryModels(4,"Nước ngọt",R.drawable.cat_4));
         category.add(new CategoryModels(5,"Bánh ngọt",R.drawable.cat_5));
-
 
         adapterRycycleview= new CategoryAdaptor(category);
         binding.recCategories.setAdapter(adapterRycycleview);
@@ -173,4 +182,20 @@ public class HomeFragment extends Fragment {
         binding.recSupplier.setAdapter(adapterRycycleview);
     }
 
+    private void loadData() {
+        if (userPreferences.gethasData()) {
+            binding.txtmyAddress.setText(userPreferences.getAddress());
+            Log.e("HomeFragment", "!NULL");
+
+        } else {
+            binding.txtmyAddress.setText(R.string.my_address);
+            Log.e("HomeFragment", "NULL");
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadData();
+    }
 }

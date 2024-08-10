@@ -45,6 +45,5 @@ public class Tabfavorite extends Fragment {
         adapterRycycleview= new FavoriteFragmentAdapter(supplierList);
         binding.recSupplier.setAdapter(adapterRycycleview);
 
-
     }
 }

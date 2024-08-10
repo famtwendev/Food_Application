@@ -28,7 +28,7 @@ public class CustomerFragment extends Fragment {
 
     private FragmentCustomerBinding binding;
     private static final int LOGIN_REQUEST_CODE = 1;
-    UserPreferences userPreferences;
+    private UserPreferences userPreferences;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -100,7 +100,7 @@ public class CustomerFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 // Xóa thông tin người dùng
-                userPreferences.clearUserInfo();
+                userPreferences.destroy();
                 // Cập nhật giao diện
                 binding.btnLogin.setVisibility(View.VISIBLE);
                 binding.txtusername.setVisibility(View.GONE);
