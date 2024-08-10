@@ -1,4 +1,4 @@
-package com.example.food_application.TableLayoutFavorite;
+package com.example.food_application.fragment.tabfavoritefragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

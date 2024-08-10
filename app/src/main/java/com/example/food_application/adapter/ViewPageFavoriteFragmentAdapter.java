@@ -1,14 +1,14 @@
-package com.example.adapter;
+package com.example.food_application.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.food_application.TableLayoutFavorite.Tabcoming;
-import com.example.food_application.TableLayoutFavorite.Tabfavorite;
-import com.example.food_application.TableLayoutFavorite.Tabhistory;
-import com.example.food_application.TableLayoutFavorite.Tabrating;
+import com.example.food_application.fragment.tabfavoritefragment.Tabcoming;
+import com.example.food_application.fragment.tabfavoritefragment.Tabfavorite;
+import com.example.food_application.fragment.tabfavoritefragment.Tabhistory;
+import com.example.food_application.fragment.tabfavoritefragment.Tabrating;
 
 public class ViewPageFavoriteFragmentAdapter extends FragmentStateAdapter {
 

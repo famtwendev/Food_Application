@@ -1,19 +1,24 @@
 package com.example.models;
 
+import java.util.Date;
+
 public class VourcherModels {
-    private String idVoucher;
+    private String idVoucher; // mã giảm giá
 
-    private String nameVourcher;
+    private String nameVourcher; //  tên giảm giá
 
-    private double discount;
+    private double discount; // tiền giảm giá
 
-    private double percent;
+    private double percent; // phần trăm
 
-    public VourcherModels(String idVoucher, String nameVourcher, double discount, double percent) {
+    private Date soldout; // thời hạn hết
+
+    public VourcherModels(String idVoucher, String nameVourcher, double discount, double percent, Date soldout) {
         this.idVoucher = idVoucher;
         this.nameVourcher = nameVourcher;
         this.discount = discount;
         this.percent = percent;
+        this.soldout = soldout;
     }
 
     public String getIdVoucher() {
@@ -46,5 +51,13 @@ public class VourcherModels {
 
     public void setPercent(double percent) {
         this.percent = percent;
+    }
+
+    public Date getSoldout() {
+        return soldout;
+    }
+
+    public void setSoldout(Date soldout) {
+        this.soldout = soldout;
     }
 }

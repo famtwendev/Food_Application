@@ -1,4 +1,4 @@
-package com.example.food_application;
+package com.example.food_application.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -13,12 +13,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.controller.CustomerController;
 import com.example.controller.UserPreferences;
+import com.example.food_application.R;
 import com.example.food_application.databinding.ActivityLoginBinding;
 import com.example.models.CustomerModels;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private static final int LOGIN_REQUEST_CODE = 1;
     private UserPreferences userPreferences;
     ActivityLoginBinding binding;
 
@@ -74,43 +74,18 @@ public class LoginActivity extends AppCompatActivity {
                     );
                     userPreferences.setHasData();
                     setResult(Activity.RESULT_OK); // Trả kết quả thành công
-                    Log.e("LoginActivity", "Success");
+                    Log.e("LoginActivity", "Login Success");
                     finish();
 
                     Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                 } else {
+                    Log.e("LoginActivity", "Login Fail");
                     // Đăng nhập thất bại, thông báo cho người dùng
                     Toast.makeText(LoginActivity.this, "Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-        binding.edtUsernameEmail.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // Kiểm tra nếu phím Tab được nhấn
-                if (keyCode == KeyEvent.KEYCODE_TAB && event.getAction() == KeyEvent.ACTION_DOWN) {
-                    binding.edtPassword.requestFocus(); // Di chuyển focus đến edtPassword
-                    return true;
-                }
-                return false;
-            }
-        });
-
-        binding.edtPassword.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // Kiểm tra nếu phím Enter được nhấn
-                if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
-                    binding.btnDangNhap.performClick(); // Gọi sự kiện click của nút đăng nhập
-                    return true;
-                } else if (keyCode == KeyEvent.KEYCODE_TAB && event.getAction() == KeyEvent.ACTION_DOWN) {
-                    binding.btnDangNhap.requestFocus(); // Di chuyển focus đến btnDangNhap nếu nhấn Tab
-                    return true;
-                }
-                return false;
-            }
-        });
         binding.icHiddenpass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

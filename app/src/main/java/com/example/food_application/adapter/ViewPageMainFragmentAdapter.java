@@ -1,15 +1,15 @@
-package com.example.adapter;
+package com.example.food_application.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.food_application.CartFragment;
-import com.example.food_application.CustomerFragment;
-import com.example.food_application.FavoriteFragment;
-import com.example.food_application.HomeFragment;
-import com.example.food_application.NotifyFragment;
+import com.example.food_application.fragment.CartFragment;
+import com.example.food_application.fragment.CustomerFragment;
+import com.example.food_application.fragment.FavoriteFragment;
+import com.example.food_application.fragment.HomeFragment;
+import com.example.food_application.fragment.NotifyFragment;
 
 public class ViewPageMainFragmentAdapter extends FragmentStateAdapter {
 

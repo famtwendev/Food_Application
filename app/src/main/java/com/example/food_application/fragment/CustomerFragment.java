@@ -1,10 +1,8 @@
-package com.example.food_application;
+package com.example.food_application.fragment;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,9 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.food_application.R;
+import com.example.food_application.activity.LoginActivity;
 import com.example.controller.UserPreferences;
 import com.example.food_application.databinding.FragmentCustomerBinding;
-import com.example.models.CustomerModels;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -54,7 +53,6 @@ public class CustomerFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static CustomerFragment newInstance(String param1, String param2) {
-        Log.e("CustomerFragment", "CustomerFragment called");
         CustomerFragment fragment = new CustomerFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -66,17 +64,18 @@ public class CustomerFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.e("CustomerFragment", "onCreate called");
+        Log.e("CustomerFragment", "onCreate");
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        userPreferences = new UserPreferences(getContext());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.e("CustomerFragment", "onCreateView called");
+        Log.e("CustomerFragment", "onCreateView");
         binding = FragmentCustomerBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
@@ -89,10 +88,8 @@ public class CustomerFragment extends Fragment {
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(requireContext(), LoginActivity.class);
-//                startActivity(intent);
                 Intent intent = new Intent(requireContext(), LoginActivity.class);
-                startActivityForResult(intent, LOGIN_REQUEST_CODE);
+                startActivity(intent);
             }
         });
 
@@ -113,8 +110,7 @@ public class CustomerFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (userPreferences == null) {
-                    Intent intent = new Intent(requireContext(), LoginActivity.class);
-                    startActivityForResult(intent, LOGIN_REQUEST_CODE);
+                    binding.btnLogin.performClick();
                 }
             }
         });
@@ -122,8 +118,7 @@ public class CustomerFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (userPreferences == null) {
-                    Intent intent = new Intent(requireContext(), LoginActivity.class);
-                    startActivityForResult(intent, LOGIN_REQUEST_CODE);
+                    binding.btnLogin.performClick();
                 }
             }
         });
@@ -132,8 +127,7 @@ public class CustomerFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (userPreferences == null) {
-                    Intent intent = new Intent(requireContext(), LoginActivity.class);
-                    startActivityForResult(intent, LOGIN_REQUEST_CODE);
+                    binding.btnLogin.performClick();
                 }
             }
         });
@@ -141,8 +135,7 @@ public class CustomerFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (userPreferences == null) {
-                    Intent intent = new Intent(requireContext(), LoginActivity.class);
-                    startActivityForResult(intent, LOGIN_REQUEST_CODE);
+                    binding.btnLogin.performClick();
                 }
             }
         });
@@ -151,8 +144,7 @@ public class CustomerFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (userPreferences == null) {
-                    Intent intent = new Intent(requireContext(), LoginActivity.class);
-                    startActivityForResult(intent, LOGIN_REQUEST_CODE);
+                    binding.btnLogin.performClick();
                 }
             }
         });
@@ -164,12 +156,9 @@ public class CustomerFragment extends Fragment {
                 dialog.setContentView(R.layout.activity_helper);
                 dialog.getWindow().setGravity(Gravity.CENTER_VERTICAL);
                 dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable((Color.TRANSPARENT)));
-//                dialog.getWindow().getAttributes().windowAnimations = R.style.BottomSheetAnimation;
-
                 dialog.findViewById(R.id.btnbacklogin).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
+                @Override
+                public void onClick(View view) {
                         dialog.dismiss();
                     }
                 });
@@ -181,33 +170,29 @@ public class CustomerFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (userPreferences == null) {
-                    Intent intent = new Intent(requireContext(), LoginActivity.class);
-                    startActivityForResult(intent, LOGIN_REQUEST_CODE);
+                    binding.btnLogin.performClick();
                 }
             }
         });
     }
 
+    @Override
+    public void onResume() {
+        Log.e("CustomerFragment", "onResume");
+        super.onResume();
+        loadData();
+    }
 
     private void loadData() {
-        userPreferences = new UserPreferences(requireActivity());
-        if (userPreferences != null) {
+        if (userPreferences.gethasData()) {
             binding.btnLogin.setVisibility(View.GONE);
             binding.btnLogout.setVisibility(View.VISIBLE);
             binding.txtusername.setVisibility(View.VISIBLE);
             binding.txtusername.setText(userPreferences.getFullname());
             binding.imvUser.setImageResource(userPreferences.getPicture());
         } else {
-            Log.e("CustomerFragment", "NULL");
+            Log.e("CustomerFragment", "hasData : NULL");
         }
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == LOGIN_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            // Cập nhật dữ liệu khi quay lại từ LoginActivity
-            loadData();
-        }
+        binding.getRoot().requestLayout();
     }
 }

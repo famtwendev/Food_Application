@@ -1,4 +1,4 @@
-package com.example.food_application;
+package com.example.food_application.fragment;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -15,9 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
-import com.example.adapter.CategoryAdaptor;
-import com.example.adapter.PopularAdaptor;
-import com.example.adapter.SupplierAdapter;
+import com.example.food_application.R;
+import com.example.food_application.adapter.CategoryAdaptor;
+import com.example.food_application.adapter.PopularAdaptor;
+import com.example.food_application.adapter.SupplierAdapter;
 import com.example.controller.UserPreferences;
 import com.example.food_application.databinding.FragmentHomeBinding;
 import com.example.models.CategoryModels;
@@ -31,7 +32,6 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView.Adapter adapterRycycleview;
 
-    private static final int LOGIN_REQUEST_CODE = 1;
     private UserPreferences userPreferences;
 
     private static final String ARG_PARAM1 = "param1";

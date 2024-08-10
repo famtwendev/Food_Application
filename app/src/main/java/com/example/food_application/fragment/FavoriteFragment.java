@@ -1,4 +1,4 @@
-package com.example.food_application;
+package com.example.food_application.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,7 +8,8 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.adapter.ViewPageFavoriteFragmentAdapter;
+import com.example.food_application.R;
+import com.example.food_application.adapter.ViewPageFavoriteFragmentAdapter;
 import com.example.food_application.databinding.FragmentFavoriteBinding;
 import com.google.android.material.tabs.TabLayoutMediator;
 

@@ -1,4 +1,4 @@
-package com.example.adapter;
+package com.example.food_application.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,24 +15,24 @@ import com.example.models.SupplierModels;
 
 import java.util.ArrayList;
 
-public class FavoriteFragmentAdapter extends  RecyclerView.Adapter<FavoriteFragmentAdapter.ViewHolder> {
+public class SupplierAdapter extends  RecyclerView.Adapter<SupplierAdapter.ViewHolder> {
 
 
     ArrayList<SupplierModels> supplierList;
 
-    public FavoriteFragmentAdapter(ArrayList<SupplierModels> supplierList) {
+    public SupplierAdapter(ArrayList<SupplierModels> supplierList) {
         this.supplierList = supplierList;
     }
 
     @Override
-    public FavoriteFragmentAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.food_favorite, parent, false);
-        return new FavoriteFragmentAdapter.ViewHolder(inflate);
+    public SupplierAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_supplier, parent, false);
+        return new SupplierAdapter.ViewHolder(inflate);
     }
 
 
     @Override
-    public void onBindViewHolder(@NonNull FavoriteFragmentAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull SupplierAdapter.ViewHolder holder, int position) {
         holder.txtNameSupplier.setText(supplierList.get(position).getNameSupplier());
 
         holder.txtratingSupplier.setText(String.valueOf(supplierList.get(position).getRatingSupplier()));
@@ -44,14 +43,6 @@ public class FavoriteFragmentAdapter extends  RecyclerView.Adapter<FavoriteFragm
 //        holder.itemCategoryLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.cat_background));
 
         holder.imvPhotoSupplier.setImageResource(supplierList.get(position).getPictureSupplier());
-
-        holder.btnFavorite.setOnClickListener(v -> {
-            // Handle the favorite icon click event
-            Toast.makeText(v.getContext(), "Unfavorite " + supplierList.get(position).getNameSupplier(), Toast.LENGTH_SHORT).show();
-            supplierList.remove(position);
-            notifyItemRemoved(position);
-            notifyItemRangeChanged(position, supplierList.size());
-        });
     }
 
     @Override
@@ -60,19 +51,17 @@ public class FavoriteFragmentAdapter extends  RecyclerView.Adapter<FavoriteFragm
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imvPhotoSupplier, btnFavorite;
+        ImageView imvPhotoSupplier;
         TextView txtNameSupplier;
         TextView txtratingSupplier;
         TextView txtdistanceSupplier;
         TextView txttimeSupplier;
         LinearLayout itemSupplierLayout;
 
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtNameSupplier = itemView.findViewById(R.id.txtNameSupplier);
             imvPhotoSupplier = itemView.findViewById(R.id.imvPhotoSupplier);
-            btnFavorite = itemView.findViewById(R.id.btnFavorite);
             txtratingSupplier = itemView.findViewById(R.id.txtratingSupplier);
             txtdistanceSupplier = itemView.findViewById(R.id.txtdistanceSupplier);
             txttimeSupplier = itemView.findViewById(R.id.txttimeSupplier);

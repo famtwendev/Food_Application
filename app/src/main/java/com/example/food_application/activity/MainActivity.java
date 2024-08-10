@@ -1,4 +1,4 @@
-package com.example.food_application;
+package com.example.food_application.activity;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -8,7 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.adapter.ViewPageMainFragmentAdapter;
+import com.example.food_application.adapter.ViewPageMainFragmentAdapter;
+import com.example.food_application.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.example.food_application.databinding.ActivityMainBinding;
 
