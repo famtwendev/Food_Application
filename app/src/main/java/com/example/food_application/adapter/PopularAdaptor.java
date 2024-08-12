@@ -13,7 +13,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.food_application.R;
-import com.example.food_application.activity.CartActivity;
+import com.example.food_application.activity.DetailFoodActivity;
 import com.example.models.FoodModels;
 
 import java.text.DecimalFormat;
@@ -50,7 +50,7 @@ public class PopularAdaptor extends RecyclerView.Adapter<PopularAdaptor.ViewHold
             @Override
             public void onClick(View view) {
                 int newposition = holder.getAdapterPosition();
-                Intent intent = new Intent(holder.itemView.getContext(), CartActivity.class);
+                Intent intent = new Intent(holder.itemView.getContext(), DetailFoodActivity.class);
                 intent.putExtra("object", foodlist.get(newposition));
                 holder.itemView.getContext().startActivity(intent);
             }

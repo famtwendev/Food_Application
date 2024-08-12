@@ -4,19 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.food_application.R;
 import com.example.food_application.adapter.ViewPageFavoriteFragmentAdapter;
-import com.example.food_application.databinding.ActivityCustomerBinding;
 import com.example.food_application.databinding.ActivityFavoriteBinding;
-import com.example.food_application.databinding.TabFavoriteBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -75,7 +69,7 @@ public class FavoriteActivity extends AppCompatActivity {
                 } else if (item.getItemId() == R.id.menu_favorite) {
                     return true;
                 } else if (item.getItemId() == R.id.menu_cart) {
-                    Intent intent = new Intent(FavoriteActivity.this, CartActivity.class);
+                    Intent intent = new Intent(FavoriteActivity.this, DetailFoodActivity.class);
                     startActivity(intent);
                     updateIcons(2);
                 } else if (item.getItemId() == R.id.menu_notify) {
