@@ -67,9 +67,15 @@ public class ManagementCart {
         return price;
     }
 
-    public void clearCart(ArrayList<FoodModels> listFood, ChangeNumberItemListener changeNumberItemListener) {
-        listFood.clear();
+    public void removeItem(ArrayList<FoodModels> listFood, int position, ChangeNumberItemListener changeNumberItemListener) {
+        listFood.remove(position);
         tinyDB.putListObject("CartList", listFood);
         changeNumberItemListener.change();
+    }
+
+    public void clearAllItems(ArrayList<FoodModels> foodModels, ChangeNumberItemListener changeNumberItemListener) {
+        foodModels.clear(); // Xóa tất cả các mục trong danh sách
+        tinyDB.putListObject("CartList", foodModels);
+        changeNumberItemListener.change(); // Cập nhật giao diện
     }
 }

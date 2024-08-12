@@ -84,7 +84,6 @@ public class CartActivity extends AppCompatActivity {
             binding.btnDeleteAll.setVisibility(View.VISIBLE);
             binding.hasDataCart.setVisibility(View.VISIBLE);
             binding.hasDataCart2.setVisibility(View.VISIBLE);
-
         }
     }
 

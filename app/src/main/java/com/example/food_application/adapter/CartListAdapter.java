@@ -78,13 +78,24 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
             }
         });
 
-
+        holder.binding.btnDeleteItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                managementCart.removeItem(foodModels, position, new ChangeNumberItemListener() {
+                    @Override
+                    public void change() {
+                        notifyDataSetChanged();
+                        changeNumberItemListener.change();
+                    }
+                });
+            }
+        });
     }
-
     @Override
     public int getItemCount() {
         return foodModels.size();
     }
+
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
