@@ -53,4 +53,7 @@
     <string name="forgotpass">Quên ?</string>
     <string name="titlehelper">Trung tâm trợ giúp</string>
     <string name="titletb">Vui lòng liên hệ tổng đài\n19001234</string>
+    <string name="textprocductname">Product Name</string>
+    <string name="textaddtocart">Thêm giỏ hàng</string>
+    <string name="infoproduct">Thông tin sản phẩm</string>
 </resources>

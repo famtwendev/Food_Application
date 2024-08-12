@@ -1,4 +1,4 @@
-package com.example.food_application.fragment.tabfavoritefragment;
+package com.example.food_application.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,10 +9,10 @@ import androidx.fragment.app.Fragment;
 
 import com.example.food_application.R;
 
-public class Tabrating extends Fragment {
+public class Tabhistory extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.tab_rating, container, false);
+        return inflater.inflate(R.layout.tab_history, container, false);
     }
 }

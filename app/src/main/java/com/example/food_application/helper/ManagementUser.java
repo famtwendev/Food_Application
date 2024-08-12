@@ -1,10 +1,10 @@
-package com.example.controller;
+package com.example.food_application.helper;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import java.util.Date;
 
-public class UserPreferences {
+public class ManagementUser {
     private static final String PREFS_NAME = "MyPrefs";
     private static final String KEY_ID_CUSTOMER = "idCustomer";
     private static final String KEY_PASSWORD = "password";
@@ -25,7 +25,7 @@ public class UserPreferences {
     private SharedPreferences.Editor editor;
 
 
-    public UserPreferences(Context context) {
+    public ManagementUser(Context context) {
         sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
     }

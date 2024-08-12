@@ -1,3 +1,4 @@
+
 package com.example.food_application.adapter;
 
 import android.view.LayoutInflater;

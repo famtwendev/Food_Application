@@ -5,21 +5,20 @@ import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.controller.CustomerController;
-import com.example.controller.UserPreferences;
+import com.example.food_application.helper.ManagementUser;
 import com.example.food_application.R;
 import com.example.food_application.databinding.ActivityLoginBinding;
 import com.example.models.CustomerModels;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private UserPreferences userPreferences;
+    private ManagementUser managementUser;
     ActivityLoginBinding binding;
 
     private boolean isHidden = true; // Dang an
@@ -27,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        userPreferences = new UserPreferences(LoginActivity.this);
+        managementUser = new ManagementUser(LoginActivity.this);
 
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -57,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                 CustomerModels account = CustomerController.authenticate(username, password);
 
                 if (account != null) {
-                    userPreferences.saveUserInfo(
+                    managementUser.saveUserInfo(
                             account.getIdCustomer(), // idCustomer
                             account.getPassword(), // password
                             account.getFullname(), // fullname
@@ -72,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                             account.getScoreRating(), // scoreRating
                             account.getRandomKey() // randomKey
                     );
-                    userPreferences.setHasData();
+                    managementUser.setHasData();
                     setResult(Activity.RESULT_OK); // Trả kết quả thành công
                     Log.e("LoginActivity", "Login Success");
                     finish();

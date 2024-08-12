@@ -2,12 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgforegn"
-    tools:context=".fragment.HomeFragment">
+    tools:context=".activity.HomeActivity">
 
     <LinearLayout
+        android:id="@+id/lin_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/bgforegn"
@@ -134,16 +136,18 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="15dp" />
 
-<!--                <Button-->
-<!--                    android:id="@+id/click"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Click"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:gravity="center"-->
-<!--                    />-->
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/foregn"
+        app:itemTextColor="@color/color_navigation"
+        app:itemIconTint="@color/color_navigation"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/menu_navigation"/>
 
 </RelativeLayout>

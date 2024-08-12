@@ -1,5 +1,6 @@
 package com.example.food_application.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.food_application.R;
+import com.example.food_application.activity.CartActivity;
 import com.example.models.FoodModels;
 
 import java.text.DecimalFormat;
@@ -43,6 +45,16 @@ public class PopularAdaptor extends RecyclerView.Adapter<PopularAdaptor.ViewHold
         holder.itemProductLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.background_cart));
 
         holder.imvPicFood.setImageResource(foodlist.get(position).getPictureFood());
+
+        holder.addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int newposition = holder.getAdapterPosition();
+                Intent intent = new Intent(holder.itemView.getContext(), CartActivity.class);
+                intent.putExtra("object", foodlist.get(newposition));
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

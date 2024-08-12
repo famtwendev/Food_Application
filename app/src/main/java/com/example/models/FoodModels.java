@@ -1,6 +1,8 @@
 package com.example.models;
 
-public class FoodModels {
+import java.io.Serializable;
+
+public class FoodModels implements Serializable {
 
     private int idFood;
 
@@ -9,6 +11,8 @@ public class FoodModels {
     private int pictureFood;
 
     private String sizeFood;
+
+    private int numberInCart;
 
     private String descriptionFood;
 
@@ -20,28 +24,17 @@ public class FoodModels {
 
     private String idVoucher;
 
-    public FoodModels(int idFood, String nameFood, int pictureFood, String sizeFood, String descriptionFood, double priceFood, int idCategory, String idSupplier, String idVoucher) {
+    public FoodModels(int idFood, String nameFood, int pictureFood, String sizeFood, String descriptionFood, double priceFood, int idCategory, String idSupplier, String idVoucher, int numberInCart) {
         this.idFood = idFood;
         this.nameFood = nameFood;
         this.pictureFood = pictureFood;
         this.sizeFood = sizeFood;
+        this.numberInCart = numberInCart;
         this.descriptionFood = descriptionFood;
         this.priceFood = priceFood;
         this.idCategory = idCategory;
         this.idSupplier = idSupplier;
         this.idVoucher = idVoucher;
-    }
-
-    public FoodModels(int idFood, String nameFood, int pictureFood, String sizeFood, String descriptionFood, double priceFood, int idCategory, String idSupplier) {
-        this.idFood = idFood;
-        this.nameFood = nameFood;
-        this.pictureFood = pictureFood;
-        this.sizeFood = sizeFood;
-        this.descriptionFood = descriptionFood;
-        this.priceFood = priceFood;
-        this.idCategory = idCategory;
-        this.idSupplier = idSupplier;
-        this.idVoucher = "";
     }
 
     public int getIdFood() {
@@ -114,5 +107,29 @@ public class FoodModels {
 
     public void setIdVoucher(String idVoucher) {
         this.idVoucher = idVoucher;
+    }
+
+    public int getNumberInCart() {
+        return numberInCart;
+    }
+
+    public void setNumberInCart(int numberInCart) {
+        this.numberInCart = numberInCart;
+    }
+
+    @Override
+    public String toString() {
+        return "FoodModels: " +
+                "idFood=" + idFood +
+                ", nameFood='" + nameFood + '\'' +
+                ", pictureFood=" + pictureFood +
+                ", sizeFood='" + sizeFood + '\'' +
+                ", numberInCart=" + numberInCart +
+                ", descriptionFood='" + descriptionFood + '\'' +
+                ", priceFood=" + priceFood +
+                ", idCategory=" + idCategory +
+                ", idSupplier='" + idSupplier + '\'' +
+                ", idVoucher='" + idVoucher + '\'' +
+                '}';
     }
 }

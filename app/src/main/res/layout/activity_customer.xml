@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgforegn"
     android:orientation="vertical"
-    tools:context=".activity.MainActivity">
+    tools:context=".activity.CustomerActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -150,12 +152,12 @@
                     android:elevation="3dp"
                     android:orientation="vertical">
 
-<!--                    <TextView-->
-<!--                        android:id="@+id/btninvite"-->
-<!--                        style="@style/ProfileMenuItem"-->
-<!--                        android:drawableStart="@drawable/baseline_people_24"-->
-<!--                        android:drawableEnd="@drawable/baseline_keyboard_arrow_right"-->
-<!--                        android:text="@string/invite" />-->
+                    <!--                    <TextView-->
+                    <!--                        android:id="@+id/btninvite"-->
+                    <!--                        style="@style/ProfileMenuItem"-->
+                    <!--                        android:drawableStart="@drawable/baseline_people_24"-->
+                    <!--                        android:drawableEnd="@drawable/baseline_keyboard_arrow_right"-->
+                    <!--                        android:text="@string/invite" />-->
 
                     <TextView
                         android:id="@+id/btnsupport"
@@ -202,4 +204,14 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/foregn"
+        app:itemTextColor="@color/color_navigation"
+        app:itemIconTint="@color/color_navigation"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/menu_navigation"/>
+</RelativeLayout>
