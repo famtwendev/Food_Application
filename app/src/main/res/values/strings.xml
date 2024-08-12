@@ -56,4 +56,14 @@
     <string name="textprocductname">Product Name</string>
     <string name="textaddtocart">Thêm giỏ hàng</string>
     <string name="infoproduct">Thông tin sản phẩm</string>
+    <string name="textgiohang">Giỏ hàng của tôi</string>
+    <string name="lbItemTotal">Sản phẩm</string>
+    <string name="lbdeliverService">Phí vận chuyển</string>
+    <string name="vat">VAT</string>
+    <string name="titleTotal">Tổng tiền</string>
+    <string name="textcheckout">Đặt hàng</string>
+    <string name="note1">Chưa có sản phẩm được thêm vào!</string>
+    <string name="note2">Giỏ hàng sẽ được cập nhật khi bạn thêm sản phẩm.</string>
+    <string name="vnd">đ</string>
+    <string name="deleteproduct">Xóa sản phẩm</string>
 </resources>

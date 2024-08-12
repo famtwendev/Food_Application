@@ -10,6 +10,8 @@ import com.example.food_application.databinding.ActivityDetailFoodBinding;
 import com.example.food_application.helper.ManagementCart;
 import com.example.models.FoodModels;
 
+import java.text.DecimalFormat;
+
 public class DetailFoodActivity extends AppCompatActivity {
 
 
@@ -24,7 +26,6 @@ public class DetailFoodActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-
         binding = ActivityDetailFoodBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         managementCart = new ManagementCart(this);
@@ -33,13 +34,14 @@ public class DetailFoodActivity extends AppCompatActivity {
     }
 
     private void getBundle() {
-        object = (FoodModels) getIntent().getSerializableExtra("object");
+        DecimalFormat decimalFormat = new DecimalFormat("#,###");
 
+        object = (FoodModels) getIntent().getSerializableExtra("object");
 
         binding.imvProduct.setImageResource(object.getPictureFood());
         binding.txtProductName.setText(object.getNameFood());
         binding.txtdescription.setText("Mô tả: "+object.getDescriptionFood());
-        binding.txtProductPrice.setText(String.valueOf(object.getPriceFood()));
+        binding.txtProductPrice.setText(decimalFormat.format(object.getPriceFood()));
         binding.txtAmmount.setText(String.valueOf(numberOrder));
 
         binding.btnAdd.setOnClickListener(new View.OnClickListener() {

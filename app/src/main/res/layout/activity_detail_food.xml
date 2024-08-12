@@ -20,8 +20,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/background_default"
+                android:layout_height="60dp"
+                android:background="@color/foregn"
                 android:elevation="3dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
@@ -129,11 +129,11 @@
     <TextView
         android:id="@+id/btnAddtocart"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_margin="16dp"
         android:background="@drawable/background_circle_primary"
         android:text="@string/textaddtocart"
-        android:elevation="3dp"
+        android:elevation="6dp"
         android:gravity="center"
         android:textColor="@color/white"
         android:textSize="23sp"

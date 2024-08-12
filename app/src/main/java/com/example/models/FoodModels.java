@@ -24,6 +24,7 @@ public class FoodModels implements Serializable {
 
     private String idVoucher;
 
+
     public FoodModels(int idFood, String nameFood, int pictureFood, String sizeFood, String descriptionFood, double priceFood, int idCategory, String idSupplier, String idVoucher, int numberInCart) {
         this.idFood = idFood;
         this.nameFood = nameFood;

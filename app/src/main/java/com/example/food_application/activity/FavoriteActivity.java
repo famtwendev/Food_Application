@@ -1,5 +1,6 @@
 package com.example.food_application.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -69,7 +70,7 @@ public class FavoriteActivity extends AppCompatActivity {
                 } else if (item.getItemId() == R.id.menu_favorite) {
                     return true;
                 } else if (item.getItemId() == R.id.menu_cart) {
-                    Intent intent = new Intent(FavoriteActivity.this, DetailFoodActivity.class);
+                    Intent intent = new Intent(FavoriteActivity.this, CartActivity.class);
                     startActivity(intent);
                     updateIcons(2);
                 } else if (item.getItemId() == R.id.menu_notify) {

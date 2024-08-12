@@ -13,12 +13,15 @@ public class VourcherModels {
 
     private Date soldout; // thời hạn hết
 
-    public VourcherModels(String idVoucher, String nameVourcher, double discount, double percent, Date soldout) {
+    private String vourchertype; // loại vourcher
+
+    public VourcherModels(String idVoucher, String nameVourcher, double discount, double percent, Date soldout, String vourchertype) {
         this.idVoucher = idVoucher;
         this.nameVourcher = nameVourcher;
         this.discount = discount;
         this.percent = percent;
         this.soldout = soldout;
+        this.vourchertype = vourchertype;
     }
 
     public String getIdVoucher() {
@@ -59,5 +62,13 @@ public class VourcherModels {
 
     public void setSoldout(Date soldout) {
         this.soldout = soldout;
+    }
+
+    public String getVourchertype() {
+        return vourchertype;
+    }
+
+    public void setVourchertype(String vourchertype) {
+        this.vourchertype = vourchertype;
     }
 }
