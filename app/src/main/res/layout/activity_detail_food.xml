@@ -89,10 +89,10 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/btnAdd"
+                    android:id="@+id/btnMinus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/baseline_add_circle_outline_24" />
+                    android:src="@drawable/baseline_remove_circle_outline_24"/>
 
                 <TextView
                     android:id="@+id/txtAmmount"
@@ -107,10 +107,10 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:id="@+id/btnMinus"
+                    android:id="@+id/btnAdd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/baseline_remove_circle_outline_24" />
+                    android:src="@drawable/baseline_add_circle_outline_24" />
 
             </LinearLayout>
 

@@ -120,7 +120,7 @@ public class FoodModels implements Serializable {
 
     @Override
     public String toString() {
-        return "FoodModels: " +
+        return "FoodModels{" +
                 "idFood=" + idFood +
                 ", nameFood='" + nameFood + '\'' +
                 ", pictureFood=" + pictureFood +

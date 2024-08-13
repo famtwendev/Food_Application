@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.example.food_application.interfaces.ChangeNumberItemListener;
+import com.example.food_application.interfaces.ClearAllItem;
 import com.example.models.FoodModels;
 
 import java.util.ArrayList;
@@ -73,9 +74,9 @@ public class ManagementCart {
         changeNumberItemListener.change();
     }
 
-    public void clearAllItems(ArrayList<FoodModels> foodModels, ChangeNumberItemListener changeNumberItemListener) {
-        foodModels.clear(); // Xóa tất cả các mục trong danh sách
-        tinyDB.putListObject("CartList", foodModels);
-        changeNumberItemListener.change(); // Cập nhật giao diện
+    public void clearAllItems(ArrayList<FoodModels> listFood, ClearAllItem clearallitem) {
+        listFood.clear();
+        tinyDB.putListObject("CartList", listFood);
+        clearallitem.clearAll();
     }
 }

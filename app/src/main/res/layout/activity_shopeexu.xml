@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgforegn"
+    android:orientation="vertical"
+    android:paddingBottom="5dp"
+    tools:context=".activity.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_default"
+        android:elevation="3dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <!-- Nút quay lại -->
+        <ImageView
+            android:id="@+id/btnbacklogin"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="16dp"
+            android:padding="8dp"
+            android:src="@drawable/baseline_arrow_back_24" />
+        <!-- Tieu De -->
+        <TextView
+            android:id="@+id/lbTieude"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/shopee_xu"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvTotalXu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tổng Xu hiện tại: 0"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_gravity="center"
+        android:padding="8dp"/>
+
+    <!-- CalendarView để người dùng chọn ngày -->
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:dateTextAppearance="?android:attr/textAppearanceMedium" />
+
+    <!-- TextView để hiển thị thông báo nhận xu -->
+    <TextView
+        android:id="@+id/tvXuNotification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:text="Hãy chọn một ngày để nhận Shopee Xu!"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+</LinearLayout>

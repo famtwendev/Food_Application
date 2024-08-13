@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.food_application.databinding.ViewholderCartBinding;
 import com.example.food_application.helper.ManagementCart;
 import com.example.food_application.interfaces.ChangeNumberItemListener;
+import com.example.food_application.interfaces.ClearAllItem;
 import com.example.models.FoodModels;
 
 import java.text.DecimalFormat;
@@ -23,6 +24,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
     private ArrayList<FoodModels> foodModels;
     private ManagementCart managementCart;
     private ChangeNumberItemListener changeNumberItemListener;
+    private ClearAllItem clearAllItem;
 
     public CartListAdapter(ArrayList<FoodModels> foodModels, Context context, ChangeNumberItemListener changeNumberItemListener) {
         this.foodModels = foodModels;
@@ -30,10 +32,11 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
         this.changeNumberItemListener = changeNumberItemListener;
     }
 
-    public ArrayList transferListFood() {
-        return foodModels;
+    public CartListAdapter(ArrayList<FoodModels> foodModels, Context context, ClearAllItem clearAllItem) {
+        this.foodModels = foodModels;
+        this.managementCart = new ManagementCart(context);
+        this.clearAllItem = clearAllItem;
     }
-
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 //        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_cart, parent, false);
@@ -97,6 +100,15 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
     }
 
 
+    public void clearYourCart() {
+        managementCart.clearAllItems(foodModels, new ClearAllItem() {
+            @Override
+            public void clearAll() {
+                foodModels.clear();
+                notifyDataSetChanged();
+            }
+        });
+    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         // Khai báo ViewBinding

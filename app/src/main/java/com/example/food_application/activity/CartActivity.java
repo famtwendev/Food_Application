@@ -2,6 +2,7 @@ package com.example.food_application.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -19,6 +20,7 @@ import com.example.food_application.adapter.CartListAdapter;
 import com.example.food_application.databinding.ActivityCartBinding;
 import com.example.food_application.helper.ManagementCart;
 import com.example.food_application.interfaces.ChangeNumberItemListener;
+import com.example.food_application.interfaces.ClearAllItem;
 import com.example.models.FoodModels;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -32,9 +34,10 @@ public class CartActivity extends AppCompatActivity {
     private CartListAdapter cartListAdapter;
 
     private RecyclerView.Adapter adapter;
+
     private ManagementCart managementCart;
 
-
+    private ClearAllItem clearAllItem;
     // Xử lý sự kiện nhấn nút "Xóa tất cả"
 
     private ArrayList<FoodModels> foodModels;
@@ -62,7 +65,7 @@ public class CartActivity extends AppCompatActivity {
     private void initList() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         binding.recyclerViewList.setLayoutManager(linearLayoutManager);
-        adapter = new CartListAdapter(managementCart.getListCart(),this, new ChangeNumberItemListener() {
+        adapter = new CartListAdapter(managementCart.getListCart(), this, new ChangeNumberItemListener(){
             @Override
             public void change() {
                 CaculatorCart();
@@ -72,20 +75,39 @@ public class CartActivity extends AppCompatActivity {
         binding.recyclerViewList.setAdapter(adapter);
 
 
-        if(managementCart.getListCart().isEmpty())
-        {
+        if (managementCart.getListCart().isEmpty()) {
             binding.emptyCart.setVisibility(View.VISIBLE);
             binding.btnDeleteAll.setVisibility(View.GONE);
             binding.hasDataCart.setVisibility(View.GONE);
             binding.hasDataCart2.setVisibility(View.GONE);
-        }else {
-            binding.btnDeleteAll.setText("Xóa tất cả ("+adapter.getItemCount()+")");
+        } else {
+//            foodModels = managementCart.getListCart();
+//            Log.e("data", foodModels.toString());
+            binding.btnDeleteAll.setText("Xóa tất cả (" + adapter.getItemCount() + ")");
             binding.emptyCart.setVisibility(View.GONE);
             binding.btnDeleteAll.setVisibility(View.VISIBLE);
             binding.hasDataCart.setVisibility(View.VISIBLE);
             binding.hasDataCart2.setVisibility(View.VISIBLE);
+            binding.btnDeleteAll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (adapter instanceof CartListAdapter) {
+                        cartListAdapter = (CartListAdapter) adapter;
+                        cartListAdapter.clearYourCart();
+                        binding.emptyCart.setVisibility(View.VISIBLE);
+                        binding.btnDeleteAll.setVisibility(View.GONE);
+                        binding.hasDataCart.setVisibility(View.GONE);
+                        binding.hasDataCart2.setVisibility(View.GONE);
+                        binding.getRoot().requestLayout();
+                    } else {
+                        Log.e("CartActivity", "Adapter is not an instance of CartListAdapter");
+                    }
+                }
+            });
         }
     }
+
+
 
     private void CaculatorCart() {
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
@@ -99,9 +121,9 @@ public class CartActivity extends AppCompatActivity {
         double total = Math.round((managementCart.getTotalPrice() + vat + delivery) * 100) / 100;
         double itemTotal = Math.round(managementCart.getTotalPrice() * 100) / 100;
 
-        binding.txtItemTotal.setText(decimalFormat.format(itemTotal)+ " đ");
-        binding.txtVAT.setText(decimalFormat.format(vat) +" đ");
-        binding.txtDeliveyService.setText(decimalFormat.format(delivery) +" đ");
+        binding.txtItemTotal.setText(decimalFormat.format(itemTotal) + " đ");
+        binding.txtVAT.setText(decimalFormat.format(vat) + " đ");
+        binding.txtDeliveyService.setText(decimalFormat.format(delivery) + " đ");
 
         binding.txtTotal.setText(decimalFormat.format(total) + " đ");
     }
