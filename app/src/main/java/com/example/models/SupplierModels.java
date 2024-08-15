@@ -7,7 +7,9 @@ public class SupplierModels {
 
     private String pictureSupplier;
 
-    private int ratingSupplier;
+    private double ratingSupplier;
+
+    private int ratingCount;
 
     private String addressSupplier;
 
@@ -55,8 +57,12 @@ public class SupplierModels {
         this.pictureSupplier = pictureSupplier;
     }
 
-    public int getRatingSupplier() {
+    public double getRatingSupplier() {
         return ratingSupplier;
+    }
+
+    public void setRatingSupplier(double ratingSupplier) {
+        this.ratingSupplier = ratingSupplier;
     }
 
     public void setRatingSupplier(int ratingSupplier) {
@@ -95,11 +101,20 @@ public class SupplierModels {
         this.timeSupplier = timeSupplier;
     }
 
-    public SupplierModels(String idSupplier, String nameSupplier, String pictureSupplier, int ratingSupplier, String addressSupplier, double distanceSupplier, int timeSupplier, int idCategory) {
+    public int getRatingCount() {
+        return ratingCount;
+    }
+
+    public void setRatingCount(int ratingCount) {
+        this.ratingCount = ratingCount;
+    }
+
+    public SupplierModels(String idSupplier, String nameSupplier, String pictureSupplier, double ratingSupplier, int ratingCount, String addressSupplier, double distanceSupplier, int timeSupplier, int idCategory) {
         this.idSupplier = idSupplier;
         this.nameSupplier = nameSupplier;
         this.pictureSupplier = pictureSupplier;
         this.ratingSupplier = ratingSupplier;
+        this.ratingCount = ratingCount;
         this.addressSupplier = addressSupplier;
         this.idCategory = idCategory;
         this.distanceSupplier = distanceSupplier;

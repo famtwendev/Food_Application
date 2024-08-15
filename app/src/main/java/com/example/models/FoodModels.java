@@ -22,11 +22,7 @@ public class FoodModels implements Serializable {
 
     private String idVoucher;
 
-    private int ratingValue;
-
-    private int ratingCount;
-
-    public FoodModels(int idFood, String nameFood, String pictureFood, String sizeFood, String descriptionFood, double priceFood, String idSupplier, String idVoucher, int ratingValue, int ratingCount) {
+    public FoodModels(int idFood, String nameFood, String pictureFood, String sizeFood, String descriptionFood, double priceFood, String idSupplier, String idVoucher) {
         this.idFood = idFood;
         this.nameFood = nameFood;
         this.pictureFood = pictureFood;
@@ -36,8 +32,6 @@ public class FoodModels implements Serializable {
         this.priceFood = priceFood;
         this.idSupplier = idSupplier;
         this.idVoucher = idVoucher;
-        this.ratingValue = ratingValue;
-        this.ratingCount = ratingCount;
     }
 
     public int getIdFood() {
@@ -110,21 +104,5 @@ public class FoodModels implements Serializable {
 
     public void setIdVoucher(String idVoucher) {
         this.idVoucher = idVoucher;
-    }
-
-    public int getRatingValue() {
-        return ratingValue;
-    }
-
-    public void setRatingValue(int ratingValue) {
-        this.ratingValue = ratingValue;
-    }
-
-    public int getRatingCount() {
-        return ratingCount;
-    }
-
-    public void setRatingCount(int ratingCount) {
-        this.ratingCount = ratingCount;
     }
 }

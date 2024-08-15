@@ -35,7 +35,7 @@ public class SupplierAdapter extends  RecyclerView.Adapter<SupplierAdapter.ViewH
     public void onBindViewHolder(@NonNull SupplierAdapter.ViewHolder holder, int position) {
         holder.txtNameSupplier.setText(supplierList.get(position).getNameSupplier());
 
-        holder.txtratingSupplier.setText(String.valueOf(supplierList.get(position).getRatingSupplier()));
+        holder.txtratingSupplier.setText(String.format("%.1f", supplierList.get(position).getRatingSupplier()));
 
         holder.txtdistanceSupplier.setText(String.format("%.1fkm",supplierList.get(position).getDistanceSupplier()));
 
@@ -45,6 +45,8 @@ public class SupplierAdapter extends  RecyclerView.Adapter<SupplierAdapter.ViewH
         int drawableResourceId = holder.itemView.getContext().getResources().getIdentifier(supplierList.get(position).getPictureSupplier(), "drawable", holder.itemView.getContext().getPackageName());
 
         holder.imvPhotoSupplier.setImageResource(drawableResourceId);
+
+
     }
 
     @Override
