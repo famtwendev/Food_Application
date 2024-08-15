@@ -38,7 +38,9 @@ public class DetailFoodActivity extends AppCompatActivity {
 
         object = (FoodModels) getIntent().getSerializableExtra("object");
 
-        binding.imvProduct.setImageResource(object.getPictureFood());
+        int drawableResourceId = binding.getRoot().getContext().getResources().getIdentifier(object.getPictureFood(), "drawable", binding.getRoot().getContext().getPackageName());
+
+        binding.imvProduct.setImageResource(drawableResourceId);
         binding.txtProductName.setText(object.getNameFood());
         binding.txtdescription.setText("Mô tả: "+object.getDescriptionFood());
         binding.txtProductPrice.setText(decimalFormat.format(object.getPriceFood()));

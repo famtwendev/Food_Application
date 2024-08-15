@@ -1,11 +1,13 @@
 
 package com.example.food_application.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -13,6 +15,9 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.food_application.R;
+import com.example.food_application.activity.HomeActivity;
+import com.example.food_application.activity.ShopFoodActivity;
+import com.example.food_application.helper.Utils;
 import com.example.models.CategoryModels;
 
 import java.util.ArrayList;
@@ -35,11 +40,27 @@ public class CategoryAdaptor extends RecyclerView.Adapter<CategoryAdaptor.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+
         holder.categoryName.setText(categoryDomains.get(position).getTitleCategory());
 
         holder.itemCategoryLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.background_cat));
 
-        holder.categoryPic.setImageResource(categoryDomains.get(position).getPicCategory());
+        int drawableResourceId = holder.itemView.getContext().getResources().getIdentifier(categoryDomains.get(position).getPicCategory(), "drawable", holder.itemView.getContext().getPackageName());
+
+
+        holder.categoryPic.setImageResource(drawableResourceId);
+
+        int thisposition = holder.getBindingAdapterPosition();
+
+        holder.itemCategoryLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), ShopFoodActivity.class);
+                intent.putExtra(Utils.CATEGORY, categoryDomains.get(thisposition).getIdCategory());
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

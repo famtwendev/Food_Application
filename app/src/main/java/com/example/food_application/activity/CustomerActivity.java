@@ -253,6 +253,7 @@ public class CustomerActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public void onResume() {
         Log.e("CustomerFragment", "onResume");
@@ -267,16 +268,20 @@ public class CustomerActivity extends AppCompatActivity {
             binding.btnLogout.setVisibility(View.VISIBLE);
             binding.txtusername.setVisibility(View.VISIBLE);
             binding.txtusername.setText(managementUser.getFullname());
-            binding.imvUser.setImageResource(managementUser.getPicture());
+
+            int drawableResourceId = binding.getRoot().getContext().getResources().getIdentifier(managementUser.getPicture(), "drawable", binding.getRoot().getContext().getPackageName());
+
+            binding.imvUser.setImageResource(drawableResourceId);
         } else {
             Log.e("CustomerFragment", "hasData : NULL");
         }
         binding.getRoot().requestLayout();
     }
 
-    private void addEventsForMenu(){
+    private void addEventsForMenu() {
         binding.bottomNavigation.setSelectedItemId(R.id.menu_customer);
-        updateIcons(4);
+        MenuItem customerItem = binding.bottomNavigation.getMenu().findItem(R.id.menu_customer);
+        customerItem.setIcon(R.drawable.ic_user_filled);
 
 
         binding.bottomNavigation.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
@@ -285,19 +290,15 @@ public class CustomerActivity extends AppCompatActivity {
                 if (item.getItemId() == R.id.menu_home) {
                     Intent intent = new Intent(CustomerActivity.this, HomeActivity.class);
                     startActivity(intent);
-                    updateIcons(0);
                 } else if (item.getItemId() == R.id.menu_favorite) {
                     Intent intent = new Intent(CustomerActivity.this, FavoriteActivity.class);
                     startActivity(intent);
-                    updateIcons(1);
                 } else if (item.getItemId() == R.id.menu_cart) {
                     Intent intent = new Intent(CustomerActivity.this, CartActivity.class);
                     startActivity(intent);
-                    updateIcons(2);
                 } else if (item.getItemId() == R.id.menu_notify) {
                     Intent intent = new Intent(CustomerActivity.this, NotificationActivity.class);
                     startActivity(intent);
-                    updateIcons(3);
                 } else if (item.getItemId() == R.id.menu_customer) {
                     return true;
                 } else {
@@ -306,19 +307,5 @@ public class CustomerActivity extends AppCompatActivity {
                 return true; // Return true if item was handled
             }
         });
-    }
-
-    private void updateIcons(int selectedPosition) {
-        MenuItem homeItem = binding.bottomNavigation.getMenu().findItem(R.id.menu_home);
-        MenuItem favoriteItem = binding.bottomNavigation.getMenu().findItem(R.id.menu_favorite);
-        MenuItem billItem = binding.bottomNavigation.getMenu().findItem(R.id.menu_cart);
-        MenuItem notifyItem = binding.bottomNavigation.getMenu().findItem(R.id.menu_notify);
-        MenuItem customerItem = binding.bottomNavigation.getMenu().findItem(R.id.menu_customer);
-
-        homeItem.setIcon(selectedPosition == 0 ? R.drawable.ic_house_filled : R.drawable.ic_house);
-        favoriteItem.setIcon(selectedPosition == 1 ? R.drawable.ic_heart_filled : R.drawable.ic_heart);
-        billItem.setIcon(selectedPosition == 2 ? R.drawable.ic_cart_filled : R.drawable.ic_cart);
-        notifyItem.setIcon(selectedPosition == 3 ? R.drawable.ic_notify_filled : R.drawable.ic_notify);
-        customerItem.setIcon(selectedPosition == 4 ? R.drawable.ic_user_filled : R.drawable.ic_user);
     }
 }

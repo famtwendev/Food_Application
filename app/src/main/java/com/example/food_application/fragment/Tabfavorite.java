@@ -37,10 +37,10 @@ public class Tabfavorite extends Fragment {
         binding.recSupplier.setLayoutManager(linearLayoutManager);
 
         ArrayList<SupplierModels> supplierList =  new ArrayList<>();;
-        supplierList.add(new SupplierModels("1", "Kichi-Kichi Buffet Lẩu Băng Chuyền", R.drawable.shop_kichikichi, 4, 1.2, 1));
-        supplierList.add(new SupplierModels("2", "Dooki LẨU HÀN QUỐC TOKBOKKI BUFFET DOKKI", R.drawable.shop_dokkie,5, 1.0, 1));
-        supplierList.add(new SupplierModels("3", "Hồng trà ngô gia", R.drawable.shop_hongtrangogia,4, 0.8, 1));
-        supplierList.add(new SupplierModels("4", "Lotteria", R.drawable.shop_lotteria,3,5.5, 10));
+        supplierList.add(new SupplierModels("1", "Kichi-Kichi Buffet Lẩu Băng Chuyền", "shop_kichikichi", 4, "Thủ đức", 1.2, 1, 1));
+        supplierList.add(new SupplierModels("2", "Dooki LẨU HÀN QUỐC TOKBOKKI BUFFET DOKKI", "shop_dokkie", 5, "Thủ đức", 1.0, 1, 2));
+        supplierList.add(new SupplierModels("3", "Hồng trà ngô gia", "shop_hongtrangogia", 4, "Thủ đức", 0.8, 1, 3));
+        supplierList.add(new SupplierModels("4", "Lotteria", "shop_lotteria", 3, "Thủ đức", 5.5, 10, 4));
 
         adapterRycycleview= new FavoriteFragmentAdapter(supplierList);
         binding.recSupplier.setAdapter(adapterRycycleview);

@@ -53,12 +53,19 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
         holder.binding.txtPriceItem.setText(decimalFormat.format(foodModels.get(position).getPriceFood()));
         holder.binding.txtTotal.setText(decimalFormat.format(Math.round((foodModels.get(position).getNumberInCart() * foodModels.get(position).getPriceFood()) * 100) / 100));
         holder.binding.txtNumberItem.setText(String.valueOf(foodModels.get(position).getNumberInCart()));
-        holder.binding.imvItem.setImageResource(foodModels.get(position).getPictureFood());
+
+        int drawableResourceId = holder.itemView.getContext().getResources().getIdentifier(foodModels.get(position).getPictureFood(), "drawable", holder.itemView.getContext().getPackageName());
+
+        holder.binding.imvItem.setImageResource(drawableResourceId);
+
+        int thisposition = holder.getBindingAdapterPosition();
+//        if (getposition == RecyclerView.NO_POSITION) { // Kiểm tra nếu vị trí là hợp lệ
+//        }
 
         holder.binding.btnPlusItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                managementCart.plusNumberFood(foodModels, position, new ChangeNumberItemListener() {
+                managementCart.plusNumberFood(foodModels, thisposition, new ChangeNumberItemListener() {
                     @Override
                     public void change() {
                         notifyDataSetChanged();
@@ -71,7 +78,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
         holder.binding.btnMinusItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                managementCart.minusNumbeFood(foodModels, position, new ChangeNumberItemListener() {
+                managementCart.minusNumbeFood(foodModels, thisposition, new ChangeNumberItemListener() {
                     @Override
                     public void change() {
                         notifyDataSetChanged();
@@ -84,7 +91,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
         holder.binding.btnDeleteItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                managementCart.removeItem(foodModels, position, new ChangeNumberItemListener() {
+                managementCart.removeItem(foodModels, thisposition, new ChangeNumberItemListener() {
                     @Override
                     public void change() {
                         notifyDataSetChanged();

@@ -31,7 +31,7 @@ public class ManagementUser {
     }
 
     public void saveUserInfo(String idCustomer, String password, String fullname, String username, String sex, Date birthday,
-                             String address, String numberPhone, String email, int picture, boolean isValue, int scoreRating, String randomKey) {
+                             String address, String numberPhone, String email, String picture, boolean isValue, int scoreRating, String randomKey) {
         editor.putString(KEY_ID_CUSTOMER, idCustomer);
         editor.putString(KEY_PASSWORD, password);
         editor.putString(KEY_FULLNAME, fullname);
@@ -41,7 +41,7 @@ public class ManagementUser {
         editor.putString(KEY_ADDRESS, address);
         editor.putString(KEY_NUMBER_PHONE, numberPhone);
         editor.putString(KEY_EMAIL, email);
-        editor.putInt(KEY_PICTURE, picture);
+        editor.putString(KEY_PICTURE, picture);
         editor.putBoolean(KEY_IS_VALUE, isValue);
         editor.putInt(KEY_SCORE_RATING, scoreRating);
         editor.putString(KEY_RANDOM_KEY, randomKey);
@@ -94,8 +94,8 @@ public class ManagementUser {
         return sharedPreferences.getString(KEY_EMAIL, "");
     }
 
-    public int getPicture() {
-        return sharedPreferences.getInt(KEY_PICTURE, -1);
+    public String getPicture() {
+        return sharedPreferences.getString(KEY_PICTURE, "");
     }
 
     public boolean isValue() {

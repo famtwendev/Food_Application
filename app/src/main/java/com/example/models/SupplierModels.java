@@ -5,21 +5,30 @@ public class SupplierModels {
 
     private String nameSupplier;
 
-    private int pictureSupplier;
+    private String pictureSupplier;
 
     private int ratingSupplier;
+
+    private String addressSupplier;
+
+    private int idCategory;
 
     private double distanceSupplier;
 
     private int timeSupplier;
 
-    public SupplierModels(String idSupplier, String nameSupplier, int pictureSupplier, int ratingSupplier, double distanceSupplier, int timeSupplier) {
-        this.idSupplier = idSupplier;
-        this.nameSupplier = nameSupplier;
-        this.pictureSupplier = pictureSupplier;
-        this.ratingSupplier = ratingSupplier;
-        this.distanceSupplier = distanceSupplier;
-        this.timeSupplier = timeSupplier;
+    @Override
+    public String toString() {
+        return "SupplierModels{" +
+                "idSupplier='" + idSupplier + '\'' +
+                ", nameSupplier='" + nameSupplier + '\'' +
+                ", pictureSupplier='" + pictureSupplier + '\'' +
+                ", ratingSupplier=" + ratingSupplier +
+                ", addressSupplier='" + addressSupplier + '\'' +
+                ", idCategory=" + idCategory +
+                ", distanceSupplier=" + distanceSupplier +
+                ", timeSupplier=" + timeSupplier +
+                '}';
     }
 
     public String getIdSupplier() {
@@ -38,11 +47,11 @@ public class SupplierModels {
         this.nameSupplier = nameSupplier;
     }
 
-    public int getPictureSupplier() {
+    public String getPictureSupplier() {
         return pictureSupplier;
     }
 
-    public void setPictureSupplier(int pictureSupplier) {
+    public void setPictureSupplier(String pictureSupplier) {
         this.pictureSupplier = pictureSupplier;
     }
 
@@ -52,6 +61,22 @@ public class SupplierModels {
 
     public void setRatingSupplier(int ratingSupplier) {
         this.ratingSupplier = ratingSupplier;
+    }
+
+    public String getAddressSupplier() {
+        return addressSupplier;
+    }
+
+    public void setAddressSupplier(String addressSupplier) {
+        this.addressSupplier = addressSupplier;
+    }
+
+    public int getIdCategory() {
+        return idCategory;
+    }
+
+    public void setIdCategory(int idCategory) {
+        this.idCategory = idCategory;
     }
 
     public double getDistanceSupplier() {
@@ -67,6 +92,17 @@ public class SupplierModels {
     }
 
     public void setTimeSupplier(int timeSupplier) {
+        this.timeSupplier = timeSupplier;
+    }
+
+    public SupplierModels(String idSupplier, String nameSupplier, String pictureSupplier, int ratingSupplier, String addressSupplier, double distanceSupplier, int timeSupplier, int idCategory) {
+        this.idSupplier = idSupplier;
+        this.nameSupplier = nameSupplier;
+        this.pictureSupplier = pictureSupplier;
+        this.ratingSupplier = ratingSupplier;
+        this.addressSupplier = addressSupplier;
+        this.idCategory = idCategory;
+        this.distanceSupplier = distanceSupplier;
         this.timeSupplier = timeSupplier;
     }
 }

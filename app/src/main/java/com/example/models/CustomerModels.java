@@ -21,7 +21,7 @@ public class CustomerModels {
 
     private String email;
 
-    private int picture;
+    private String picture;
 
     private boolean isValue;
 
@@ -29,7 +29,7 @@ public class CustomerModels {
 
     private String randomKey;
 
-    public CustomerModels(String idCustomer, String username, String password, String email,String numnerPhone, String fullname, String sex, Date birthday, String address,  int picture, boolean isValue, int scoreRating, String randomKey) {
+    public CustomerModels(String idCustomer, String username, String password, String email,String numnerPhone, String fullname, String sex, Date birthday, String address,  String picture, boolean isValue, int scoreRating, String randomKey) {
         this.idCustomer = idCustomer;
         this.password = password;
         this.fullname = fullname;
@@ -45,7 +45,7 @@ public class CustomerModels {
         this.randomKey = randomKey;
     }
 
-    public CustomerModels(String idCustomer, String fullname, String username, String sex, Date birthday, String address, String numnerPhone, String email, int picture, boolean isValue, int scoreRating, String randomKey) {
+    public CustomerModels(String idCustomer, String fullname, String username, String sex, Date birthday, String address, String numnerPhone, String email, String picture, boolean isValue, int scoreRating, String randomKey) {
         this.idCustomer = idCustomer;
         this.fullname = fullname;
         this.username = username;
@@ -133,11 +133,11 @@ public class CustomerModels {
         this.email = email;
     }
 
-    public int getPicture() {
+    public String getPicture() {
         return picture;
     }
 
-    public void setPicture(int picture) {
+    public void setPicture(String picture) {
         this.picture = picture;
     }
 

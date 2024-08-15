@@ -8,7 +8,7 @@ public class FoodModels implements Serializable {
 
     private String nameFood;
 
-    private int pictureFood;
+    private String pictureFood;
 
     private String sizeFood;
 
@@ -18,24 +18,26 @@ public class FoodModels implements Serializable {
 
     private double priceFood;
 
-    private int idCategory;   //Mã thể loại
-
     private String idSupplier; // Mã Nhà cung cấp
 
     private String idVoucher;
 
+    private int ratingValue;
 
-    public FoodModels(int idFood, String nameFood, int pictureFood, String sizeFood, String descriptionFood, double priceFood, int idCategory, String idSupplier, String idVoucher, int numberInCart) {
+    private int ratingCount;
+
+    public FoodModels(int idFood, String nameFood, String pictureFood, String sizeFood, String descriptionFood, double priceFood, String idSupplier, String idVoucher, int ratingValue, int ratingCount) {
         this.idFood = idFood;
         this.nameFood = nameFood;
         this.pictureFood = pictureFood;
         this.sizeFood = sizeFood;
-        this.numberInCart = numberInCart;
+        this.numberInCart = 0;
         this.descriptionFood = descriptionFood;
         this.priceFood = priceFood;
-        this.idCategory = idCategory;
         this.idSupplier = idSupplier;
         this.idVoucher = idVoucher;
+        this.ratingValue = ratingValue;
+        this.ratingCount = ratingCount;
     }
 
     public int getIdFood() {
@@ -54,11 +56,11 @@ public class FoodModels implements Serializable {
         this.nameFood = nameFood;
     }
 
-    public int getPictureFood() {
+    public String getPictureFood() {
         return pictureFood;
     }
 
-    public void setPictureFood(int pictureFood) {
+    public void setPictureFood(String pictureFood) {
         this.pictureFood = pictureFood;
     }
 
@@ -68,6 +70,14 @@ public class FoodModels implements Serializable {
 
     public void setSizeFood(String sizeFood) {
         this.sizeFood = sizeFood;
+    }
+
+    public int getNumberInCart() {
+        return numberInCart;
+    }
+
+    public void setNumberInCart(int numberInCart) {
+        this.numberInCart = numberInCart;
     }
 
     public String getDescriptionFood() {
@@ -86,14 +96,6 @@ public class FoodModels implements Serializable {
         this.priceFood = priceFood;
     }
 
-    public int getIdCategory() {
-        return idCategory;
-    }
-
-    public void setIdCategory(int idCategory) {
-        this.idCategory = idCategory;
-    }
-
     public String getIdSupplier() {
         return idSupplier;
     }
@@ -110,27 +112,19 @@ public class FoodModels implements Serializable {
         this.idVoucher = idVoucher;
     }
 
-    public int getNumberInCart() {
-        return numberInCart;
+    public int getRatingValue() {
+        return ratingValue;
     }
 
-    public void setNumberInCart(int numberInCart) {
-        this.numberInCart = numberInCart;
+    public void setRatingValue(int ratingValue) {
+        this.ratingValue = ratingValue;
     }
 
-    @Override
-    public String toString() {
-        return "FoodModels{" +
-                "idFood=" + idFood +
-                ", nameFood='" + nameFood + '\'' +
-                ", pictureFood=" + pictureFood +
-                ", sizeFood='" + sizeFood + '\'' +
-                ", numberInCart=" + numberInCart +
-                ", descriptionFood='" + descriptionFood + '\'' +
-                ", priceFood=" + priceFood +
-                ", idCategory=" + idCategory +
-                ", idSupplier='" + idSupplier + '\'' +
-                ", idVoucher='" + idVoucher + '\'' +
-                '}';
+    public int getRatingCount() {
+        return ratingCount;
+    }
+
+    public void setRatingCount(int ratingCount) {
+        this.ratingCount = ratingCount;
     }
 }

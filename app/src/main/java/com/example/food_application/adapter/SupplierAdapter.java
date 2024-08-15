@@ -42,7 +42,9 @@ public class SupplierAdapter extends  RecyclerView.Adapter<SupplierAdapter.ViewH
         holder.txttimeSupplier.setText(String.valueOf(supplierList.get(position).getTimeSupplier()+"phút"));
 //        holder.itemCategoryLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.cat_background));
 
-        holder.imvPhotoSupplier.setImageResource(supplierList.get(position).getPictureSupplier());
+        int drawableResourceId = holder.itemView.getContext().getResources().getIdentifier(supplierList.get(position).getPictureSupplier(), "drawable", holder.itemView.getContext().getPackageName());
+
+        holder.imvPhotoSupplier.setImageResource(drawableResourceId);
     }
 
     @Override

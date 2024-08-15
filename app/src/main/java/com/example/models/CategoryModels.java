@@ -3,9 +3,9 @@ package com.example.models;
 public class CategoryModels {
     private int idCategory;
     private String titleCategory;
-    private int picCategory;
+    private String picCategory;
 
-    public CategoryModels(int idCategory, String titleCategory, int picCategory) {
+    public CategoryModels(int idCategory, String titleCategory, String picCategory) {
         this.idCategory = idCategory;
         this.titleCategory = titleCategory;
         this.picCategory = picCategory;
@@ -27,11 +27,11 @@ public class CategoryModels {
         this.titleCategory = titleCategory;
     }
 
-    public int getPicCategory() {
+    public String getPicCategory() {
         return picCategory;
     }
 
-    public void setPicCategory(int picCategory) {
+    public void setPicCategory(String picCategory) {
         this.picCategory = picCategory;
     }
 }
