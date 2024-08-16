@@ -48,12 +48,11 @@ public class HomeActivity extends AppCompatActivity {
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
         addEventsForMenu();
 
         sliderbarData();
 
-        recyclerViewCatrgory();
+        recyclerViewCategory();
 
         addEvents();
     }
@@ -91,21 +90,10 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
-    private void recyclerViewCatrgory() {
+    private void recyclerViewCategory() {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false);
         binding.recCategories.setLayoutManager(gridLayoutManager);
-//        ArrayList<CategoryModels> category = new ArrayList<>();
-//        category.add(new CategoryModels(9, "Mã giảm giá", "cat_9"));
-//        category.add(new CategoryModels(10, "Miễn phí ship", "cat_10"));
-//        category.add(new CategoryModels(11, "Khung giờ Sale", "cat_11"));
-//        category.add(new CategoryModels(6, "Bún, Phở", "cat_6"));
-//        category.add(new CategoryModels(7, "Trà sữa", "cat_7"));
-//        category.add(new CategoryModels(8, "Cơm", "cat_8"));
-//        category.add(new CategoryModels(1, "Pizza", "cat_1"));
-//        category.add(new CategoryModels(2, "HamBurger", "cat_2"));
-//        category.add(new CategoryModels(3, "Bánh mì", "cat_3"));
-//        category.add(new CategoryModels(4, "Nước ngọt", "cat_4"));
-//        category.add(new CategoryModels(5, "Bánh ngọt", "cat_5"));
+
         ApiService apiService = ApiClient.getClient().create(ApiService.class);
         apiService.getAllCategories().enqueue(new Callback<ArrayList<CategoryModels>>() {
             @Override
