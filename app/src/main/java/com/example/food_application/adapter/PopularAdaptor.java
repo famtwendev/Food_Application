@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,7 +31,7 @@ public class PopularAdaptor extends RecyclerView.Adapter<PopularAdaptor.ViewHold
 
     @Override
     public PopularAdaptor.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_popular, parent, false);
+        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_food, parent, false);
         return new ViewHolder(inflate);
     }
 
@@ -56,8 +57,6 @@ public class PopularAdaptor extends RecyclerView.Adapter<PopularAdaptor.ViewHold
                 holder.itemView.getContext().startActivity(intent);
             }
         });
-
-
     }
 
     @Override
@@ -66,15 +65,15 @@ public class PopularAdaptor extends RecyclerView.Adapter<PopularAdaptor.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txtNameFood, txtPriceFood, addBtn;
-        ImageView imvPicFood;
-        ConstraintLayout itemProductLayout;
+        TextView txtNameFood, txtPriceFood;
+        ImageView imvPicFood, addBtn;
+        LinearLayout itemProductLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtNameFood = itemView.findViewById(R.id.txtNameFood);
             txtPriceFood = itemView.findViewById(R.id.txtPriceFood);
-            imvPicFood = itemView.findViewById(R.id.imvPicFood);
+            imvPicFood = itemView.findViewById(R.id.imvPhotoFood);
             itemProductLayout = itemView.findViewById(R.id.itemProductLayout);
             addBtn = itemView.findViewById(R.id.btnAdd);
         }

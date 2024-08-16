@@ -53,8 +53,6 @@ public class HomeActivity extends AppCompatActivity {
 
         recyclerViewCatrgory();
 
-        recyclerViewPopular();
-
         addEvents();
     }
 
@@ -90,26 +88,7 @@ public class HomeActivity extends AppCompatActivity {
         imageSlider.setImageList(slideModels, ScaleTypes.FIT);
     }
 
-    private void recyclerViewPopular() {
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        binding.recPopular.setLayoutManager(linearLayoutManager);
 
-        ArrayList<FoodModels> fooditem = new ArrayList<>();
-        fooditem.add(new FoodModels(1, "Bún Bò", "ic_bunbo", "L", "Buổi sáng no nê", 35000, "1", ""));
-        fooditem.add(new FoodModels(2, "Phở Bò", "ic_phobo", "L", "Buổi sáng no nê", 35000, "2", ""));
-        fooditem.add(new FoodModels(3, "Cơm tấm", "ic_comtam", "L", "Buổi trưa vui vẻ", 32000, "3", ""));
-        fooditem.add(new FoodModels(4, "Bánh canh", "ic_banhcanh", "L", "Buổi tối ấm cúng", 35000, "4", ""));
-        fooditem.add(new FoodModels(5, "Trà sữa", "ic_trasua", "L", "Tráng miệng", 25000, "5", ""));
-        fooditem.add(new FoodModels(6, "Pizza", "ic_pizza", "L", "Tráng miệng", 55000, "6", ""));
-        fooditem.add(new FoodModels(7, "Bún đậu", "ic_bundau", "L", "Buổi tối ấm cúng", 75000, "7", ""));
-        fooditem.add(new FoodModels(8, "Bánh ngọt", "ic_banhngot", "L", "Tráng miệng", 35000, "8", ""));
-        fooditem.add(new FoodModels(9, "Pepsi", "ic_pepsi", "L", "Giải khát", 10000, "9", ""));
-        fooditem.add(new FoodModels(10, "Bánh mì thịt", "ic_banhmi", "L", "Bữa sáng no nê", 25000, "1", ""));
-
-
-        adapterRycycleview = new PopularAdaptor(fooditem);
-        binding.recPopular.setAdapter(adapterRycycleview);
-    }
 
     private void recyclerViewCatrgory() {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false);

@@ -62,7 +62,6 @@ public class CategoryAdaptor extends RecyclerView.Adapter<CategoryAdaptor.ViewHo
 
                 CategoryModels categoryInfo = new CategoryModels(categoryDomains.get(position).getIdCategory(),categoryDomains.get(position).getTitleCategory(),categoryDomains.get(position).getPicCategory());
 
-//                intent.putExtra(Utils.CATEGORY, categoryDomains.get(thisposition).getIdCategory());
                 bundle.putSerializable(Utils.THISCATEGORY, categoryInfo);
 
                 intent.putExtra(Utils.CATEGORY, bundle);
