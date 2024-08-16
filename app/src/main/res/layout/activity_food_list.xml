@@ -23,7 +23,7 @@
                 android:id="@+id/bgsupplier"
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
-                android:background="@drawable/baner_04"
+                android:background="@drawable/ic_baner_04"
                 android:orientation="vertical">
 
                 <androidx.constraintlayout.widget.ConstraintLayout

@@ -129,7 +129,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
-                        android:src="@drawable/baner_02" />
+                        android:src="@drawable/ic_baner_02" />
 
                     <TableRow
                         android:layout_width="match_parent"
@@ -164,7 +164,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:src="@drawable/zalopay_service" />
+                                android:src="@drawable/ic_zalopay_service" />
                         </LinearLayout>
                     </TableRow>
 
@@ -184,7 +184,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:src="@drawable/tocotoco_promo" />
+                                android:src="@drawable/ic_tocotoco_promo" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -199,7 +199,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:src="@drawable/share_tea_promo" />
+                                android:src="@drawable/ic_share_tea_promo" />
                         </LinearLayout>
                     </TableRow>
 
@@ -219,7 +219,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:src="@drawable/comebuy_promo" />
+                                android:src="@drawable/ic_comebuy_promo" />
                         </LinearLayout>
 
                         <LinearLayout

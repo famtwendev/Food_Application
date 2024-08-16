@@ -13,7 +13,7 @@
         android:id="@+id/imvPhotoSupplier"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@drawable/shop_hadilao" />
+        android:src="@drawable/ic_shop_hadilao" />
 
     <LinearLayout
         android:layout_width="match_parent"

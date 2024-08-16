@@ -31,7 +31,7 @@ public class BillModels {
 
     private double feeDelivery;
 
-    private String maTrangThai;
+    private String MaTrangThai;
 
     private String note;
 

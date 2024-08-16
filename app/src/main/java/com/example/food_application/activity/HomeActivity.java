@@ -39,8 +39,6 @@ public class HomeActivity extends AppCompatActivity {
 
     private ManagementUser managementUser;
 
-    private ApiService apiService;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +48,6 @@ public class HomeActivity extends AppCompatActivity {
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        ApiService apiService = ApiClient.getClient().create(ApiService.class);
 
         addEventsForMenu();
 
@@ -109,7 +106,7 @@ public class HomeActivity extends AppCompatActivity {
 //        category.add(new CategoryModels(3, "Bánh mì", "cat_3"));
 //        category.add(new CategoryModels(4, "Nước ngọt", "cat_4"));
 //        category.add(new CategoryModels(5, "Bánh ngọt", "cat_5"));
-
+        ApiService apiService = ApiClient.getClient().create(ApiService.class);
         apiService.getAllCategories().enqueue(new Callback<ArrayList<CategoryModels>>() {
             @Override
             public void onResponse(Call<ArrayList<CategoryModels>> call, Response<ArrayList<CategoryModels>> response) {
@@ -122,7 +119,7 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ArrayList<CategoryModels>> call, Throwable t) {
-                Log.e("========= API Error =========", t.getMessage());
+                Log.e("API ERROR", t.getMessage());
             }
         });
     }
