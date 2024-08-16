@@ -11,7 +11,7 @@ public class VourcherModels {
 
     private double percent; // phần trăm
 
-    private Date soldout; // thời hạn hết
+    private Date timeSoldout; // thời hạn hết
 
     private String vourchertype; // loại vourcher
 
