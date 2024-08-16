@@ -45,7 +45,6 @@ public class PopularAdaptor extends RecyclerView.Adapter<PopularAdaptor.ViewHold
         holder.itemProductLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.background_cart));
 
         int drawableResourceId = holder.itemView.getContext().getResources().getIdentifier(foodlist.get(position).getPictureFood(), "drawable", holder.itemView.getContext().getPackageName());
-
         holder.imvPicFood.setImageResource(drawableResourceId);
 
         holder.addBtn.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +56,8 @@ public class PopularAdaptor extends RecyclerView.Adapter<PopularAdaptor.ViewHold
                 holder.itemView.getContext().startActivity(intent);
             }
         });
+
+
     }
 
     @Override

@@ -67,4 +67,7 @@
     <string name="vnd">đ</string>
     <string name="deleteproduct">Xóa sản phẩm</string>
     <string name="textCom">Cơm</string>
+    <string name="text100">(100+)</string>
+    <string name="textrating">4.7</string>
+    <string name="timer">20phút</string>
 </resources>

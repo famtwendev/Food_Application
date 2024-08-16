@@ -2,6 +2,7 @@
 package com.example.food_application.adapter;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,7 +58,14 @@ public class CategoryAdaptor extends RecyclerView.Adapter<CategoryAdaptor.ViewHo
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), ShopFoodActivity.class);
-                intent.putExtra(Utils.CATEGORY, categoryDomains.get(thisposition).getIdCategory());
+                Bundle bundle = new Bundle();
+
+                CategoryModels categoryInfo = new CategoryModels(categoryDomains.get(position).getIdCategory(),categoryDomains.get(position).getTitleCategory(),categoryDomains.get(position).getPicCategory());
+
+//                intent.putExtra(Utils.CATEGORY, categoryDomains.get(thisposition).getIdCategory());
+                bundle.putSerializable(Utils.THISCATEGORY, categoryInfo);
+
+                intent.putExtra(Utils.CATEGORY, bundle);
                 view.getContext().startActivity(intent);
             }
         });

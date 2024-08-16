@@ -1,6 +1,8 @@
 package com.example.models;
 
-public class SupplierModels {
+import java.io.Serializable;
+
+public class SupplierModels implements Serializable {
     private String idSupplier;
 
     private String nameSupplier;

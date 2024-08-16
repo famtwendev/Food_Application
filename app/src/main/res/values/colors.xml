@@ -18,5 +18,6 @@
     <color name="blue_500">#0071E9</color>
     <color name="blue_700">#03A9F4</color>
     <color name="black_200">#373b54</color>
+    <color name="black_blur">#66000000</color>
 
 </resources>

@@ -1,5 +1,7 @@
 package com.example.food_application.adapter;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,14 +10,20 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.food_application.R;
+import com.example.food_application.activity.FoodListActivity;
+import com.example.food_application.activity.ShopFoodActivity;
+import com.example.food_application.helper.Utils;
+import com.example.models.CategoryModels;
 import com.example.models.SupplierModels;
 
 import java.util.ArrayList;
 
 public class SupplierAdapter extends  RecyclerView.Adapter<SupplierAdapter.ViewHolder> {
+
 
 
     ArrayList<SupplierModels> supplierList;
@@ -40,13 +48,28 @@ public class SupplierAdapter extends  RecyclerView.Adapter<SupplierAdapter.ViewH
         holder.txtdistanceSupplier.setText(String.format("%.1fkm",supplierList.get(position).getDistanceSupplier()));
 
         holder.txttimeSupplier.setText(String.valueOf(supplierList.get(position).getTimeSupplier()+"phút"));
-//        holder.itemCategoryLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.cat_background));
+
+        holder.itemSupplierLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.background_cat));
 
         int drawableResourceId = holder.itemView.getContext().getResources().getIdentifier(supplierList.get(position).getPictureSupplier(), "drawable", holder.itemView.getContext().getPackageName());
-
         holder.imvPhotoSupplier.setImageResource(drawableResourceId);
 
+        int thisposition = holder.getBindingAdapterPosition();
 
+        holder.itemSupplierLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), FoodListActivity.class);
+                Bundle bundle = new Bundle();
+
+                SupplierModels supplierInfo = new SupplierModels(supplierList.get(position).getIdSupplier(), supplierList.get(position).getNameSupplier(), supplierList.get(position).getPictureSupplier(), supplierList.get(position).getRatingSupplier(), supplierList.get(position).getRatingCount(), supplierList.get(position).getAddressSupplier(), supplierList.get(position).getDistanceSupplier(), supplierList.get(position).getTimeSupplier(), supplierList.get(position).getIdCategory());
+
+                bundle.putSerializable(Utils.THISSUPPLIER, supplierInfo);
+
+                intent.putExtra(Utils.SUPPLIER, bundle);
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

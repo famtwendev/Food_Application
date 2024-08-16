@@ -1,6 +1,8 @@
 package com.example.models;
 
-public class CategoryModels {
+import java.io.Serializable;
+
+public class CategoryModels implements Serializable {
     private int idCategory;
     private String titleCategory;
     private String picCategory;
