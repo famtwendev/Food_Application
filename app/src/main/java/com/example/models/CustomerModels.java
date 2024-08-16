@@ -23,13 +23,13 @@ public class CustomerModels {
 
     private String picture;
 
-    private boolean isValue;
+    private int isValue;
 
     private int scoreRating;
 
     private String randomKey;
 
-    public CustomerModels(String idCustomer, String username, String password, String email,String numnerPhone, String fullname, String sex, Date birthday, String address,  String picture, boolean isValue, int scoreRating, String randomKey) {
+    public CustomerModels(String idCustomer, String password, String username, String sex, Date birthday, String fullname, String address, String numnerPhone, String email,  String picture, int isValue, int scoreRating, String randomKey) {
         this.idCustomer = idCustomer;
         this.password = password;
         this.fullname = fullname;
@@ -44,22 +44,6 @@ public class CustomerModels {
         this.scoreRating = scoreRating;
         this.randomKey = randomKey;
     }
-
-    public CustomerModels(String idCustomer, String fullname, String username, String sex, Date birthday, String address, String numnerPhone, String email, String picture, boolean isValue, int scoreRating, String randomKey) {
-        this.idCustomer = idCustomer;
-        this.fullname = fullname;
-        this.username = username;
-        this.sex = sex;
-        this.birthday = birthday;
-        this.address = address;
-        this.numnerPhone = numnerPhone;
-        this.email = email;
-        this.picture = picture;
-        this.isValue = isValue;
-        this.scoreRating = scoreRating;
-        this.randomKey = randomKey;
-    }
-
 
     public String getIdCustomer() {
         return idCustomer;
@@ -141,12 +125,12 @@ public class CustomerModels {
         this.picture = picture;
     }
 
-    public boolean isValue() {
+    public int getIsValue() {
         return isValue;
     }
 
-    public void setValue(boolean value) {
-        isValue = value;
+    public void setIsValue(int isValue) {
+        this.isValue = isValue;
     }
 
     public int getScoreRating() {

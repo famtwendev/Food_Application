@@ -10,11 +10,19 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.controller.CustomerController;
 import com.example.food_application.helper.ManagementUser;
 import com.example.food_application.R;
 import com.example.food_application.databinding.ActivityLoginBinding;
+import com.example.models.ApiClient;
+import com.example.models.ApiService;
+import com.example.models.CategoryModels;
 import com.example.models.CustomerModels;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -53,37 +61,58 @@ public class LoginActivity extends AppCompatActivity {
                 String username = binding.edtUsernameEmail.getText().toString().trim();
                 String password = binding.edtPassword.getText().toString().trim();
                 // Kiểm tra thông tin đăng nhập
-                CustomerModels account = CustomerController.authenticate(username, password);
+                ApiService apiService = ApiClient.getClient().create(ApiService.class);
+                apiService.getAllCustomer().enqueue(new Callback<ArrayList<CustomerModels>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<CustomerModels>> call, Response<ArrayList<CustomerModels>> response) {
+                        ArrayList<CustomerModels> customerModels = response.body();
+                        Log.e("Size Customer", String.valueOf(customerModels.size()));
+                        for (CustomerModels item : customerModels
+                        ) {
+                            if (item.getUsername().equals(username) && item.getPassword().equals(password) || item.getEmail().equals(username) && item.getPassword().equals(password)) {
+                                CustomerModels account = item;
+                                if (account != null) {
+                                    managementUser.saveUserInfo(
+                                            account.getIdCustomer(), // idCustomer
+                                            account.getPassword(), // password
+                                            account.getFullname(), // fullname
+                                            account.getUsername(), // username
+                                            account.getSex(), // sex
+                                            account.getBirthday(), // birthday
+                                            account.getAddress(), // address
+                                            account.getNumnerPhone(), // numberPhone
+                                            account.getEmail(), // email
+                                            account.getPicture(), // picture
+                                            account.getIsValue(), // isValue
+                                            account.getScoreRating(), // scoreRating
+                                            account.getRandomKey() // randomKey
+                                    );
+                                    managementUser.setHasData();
+                                    Log.e("LoginActivity", "Login Success");
+                                    finish();
+                                    Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Log.e("LoginActivity", "Login Fail");
+                                    // Đăng nhập thất bại, thông báo cho người dùng
+                                    Toast.makeText(LoginActivity.this, "Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.", Toast.LENGTH_SHORT).show();
+                                }
+                                break;
+                            }
+                        }
+                    }
 
-                if (account != null) {
-                    managementUser.saveUserInfo(
-                            account.getIdCustomer(), // idCustomer
-                            account.getPassword(), // password
-                            account.getFullname(), // fullname
-                            account.getUsername(), // username
-                            account.getSex(), // sex
-                            account.getBirthday(), // birthday
-                            account.getAddress(), // address
-                            account.getNumnerPhone(), // numberPhone
-                            account.getEmail(), // email
-                            account.getPicture(), // picture
-                            account.isValue(), // isValue
-                            account.getScoreRating(), // scoreRating
-                            account.getRandomKey() // randomKey
-                    );
-                    managementUser.setHasData();
-                    setResult(Activity.RESULT_OK); // Trả kết quả thành công
-                    Log.e("LoginActivity", "Login Success");
-                    finish();
+                    @Override
+                    public void onFailure(Call<ArrayList<CustomerModels>> call, Throwable t) {
+                        Log.e("API ERROR", t.getMessage());
+                    }
+                });
+            }
 
-                    Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                } else {
-                    Log.e("LoginActivity", "Login Fail");
-                    // Đăng nhập thất bại, thông báo cho người dùng
-                    Toast.makeText(LoginActivity.this, "Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.", Toast.LENGTH_SHORT).show();
-                }
+            private void saveInfoUser(CustomerModels item) {
+
             }
         });
+
 
         binding.icHiddenpass.setOnClickListener(new View.OnClickListener() {
             @Override

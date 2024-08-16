@@ -110,15 +110,6 @@ public class FoodListActivity extends AppCompatActivity {
                 Log.e("API ERROR", t.getMessage());
             }
         });
-//        ArrayList<FoodModels> temp = new ArrayList<>();
-//        for (FoodModels item : foodlist
-//        ) {
-//            if (item.getIdSupplier().equals(supplierInfo.getIdSupplier())) {
-//                temp.add(item);
-//            }
-//        }
-//        adapterRycycleview = new PopularAdaptor(temp);
-//        binding.recPopular.setAdapter(adapterRycycleview);
     }
 
     private void recyclerViewPopular() {

@@ -69,8 +69,6 @@ public class HomeActivity extends AppCompatActivity {
     private void loadData() {
         if (managementUser.gethasData()) {
             binding.txtmyAddress.setText(managementUser.getAddress());
-
-
         } else {
             binding.txtmyAddress.setText(R.string.my_address);
             Log.e("HomeFragment", "NULL");
