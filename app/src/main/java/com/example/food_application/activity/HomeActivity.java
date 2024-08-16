@@ -10,7 +10,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.denzcoskun.imageslider.ImageSlider;
@@ -18,19 +17,19 @@ import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.food_application.R;
 import com.example.food_application.adapter.CategoryAdaptor;
-import com.example.food_application.adapter.PopularAdaptor;
-import com.example.food_application.adapter.SupplierAdapter;
 import com.example.food_application.databinding.ActivityHomeBinding;
 import com.example.food_application.helper.ManagementUser;
 import com.example.models.ApiClient;
 import com.example.models.ApiService;
 import com.example.models.CategoryModels;
-import com.example.models.FoodModels;
-import com.example.models.SupplierModels;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -51,7 +50,7 @@ public class HomeActivity extends AppCompatActivity {
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setAPI();
+        ApiService apiService = ApiClient.getClient().create(ApiService.class);
 
         addEventsForMenu();
 
@@ -61,11 +60,6 @@ public class HomeActivity extends AppCompatActivity {
 
         addEvents();
     }
-
-    private void setAPI() {
-
-    }
-
 
     private void addEvents() {
         binding.txtmyAddress.setOnClickListener(new View.OnClickListener() {
@@ -103,24 +97,34 @@ public class HomeActivity extends AppCompatActivity {
     private void recyclerViewCatrgory() {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false);
         binding.recCategories.setLayoutManager(gridLayoutManager);
+//        ArrayList<CategoryModels> category = new ArrayList<>();
+//        category.add(new CategoryModels(9, "Mã giảm giá", "cat_9"));
+//        category.add(new CategoryModels(10, "Miễn phí ship", "cat_10"));
+//        category.add(new CategoryModels(11, "Khung giờ Sale", "cat_11"));
+//        category.add(new CategoryModels(6, "Bún, Phở", "cat_6"));
+//        category.add(new CategoryModels(7, "Trà sữa", "cat_7"));
+//        category.add(new CategoryModels(8, "Cơm", "cat_8"));
+//        category.add(new CategoryModels(1, "Pizza", "cat_1"));
+//        category.add(new CategoryModels(2, "HamBurger", "cat_2"));
+//        category.add(new CategoryModels(3, "Bánh mì", "cat_3"));
+//        category.add(new CategoryModels(4, "Nước ngọt", "cat_4"));
+//        category.add(new CategoryModels(5, "Bánh ngọt", "cat_5"));
 
-        ArrayList<CategoryModels> category = new ArrayList<>();
-        category.add(new CategoryModels(9, "Mã giảm giá", "cat_9"));
-        category.add(new CategoryModels(10, "Miễn phí ship", "cat_10"));
-        category.add(new CategoryModels(11, "Khung giờ Sale", "cat_11"));
-        category.add(new CategoryModels(6, "Bún, Phở", "cat_6"));
-        category.add(new CategoryModels(7, "Trà sữa", "cat_7"));
-        category.add(new CategoryModels(8, "Cơm", "cat_8"));
-        category.add(new CategoryModels(1, "Pizza", "cat_1"));
-        category.add(new CategoryModels(2, "HamBurger", "cat_2"));
-        category.add(new CategoryModels(3, "Bánh mì", "cat_3"));
-        category.add(new CategoryModels(4, "Nước ngọt", "cat_4"));
-        category.add(new CategoryModels(5, "Bánh ngọt", "cat_5"));
+        apiService.getAllCategories().enqueue(new Callback<ArrayList<CategoryModels>>() {
+            @Override
+            public void onResponse(Call<ArrayList<CategoryModels>> call, Response<ArrayList<CategoryModels>> response) {
+                if (response.isSuccessful() && response.body() != null && !response.body().isEmpty()) {
+                    ArrayList<CategoryModels> category = response.body();
+                    adapterRycycleview = new CategoryAdaptor(category);
+                    binding.recCategories.setAdapter(adapterRycycleview);
+                }
+            }
 
-        Log.e("data",category.toString());
-
-        adapterRycycleview = new CategoryAdaptor(category);
-        binding.recCategories.setAdapter(adapterRycycleview);
+            @Override
+            public void onFailure(Call<ArrayList<CategoryModels>> call, Throwable t) {
+                Log.e("========= API Error =========", t.getMessage());
+            }
+        });
     }
 
 
@@ -128,8 +132,6 @@ public class HomeActivity extends AppCompatActivity {
         binding.bottomNavigation.setSelectedItemId(R.id.menu_home);
         MenuItem homeItem = binding.bottomNavigation.getMenu().findItem(R.id.menu_home);
         homeItem.setIcon(R.drawable.ic_house_filled);
-
-
         binding.bottomNavigation.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

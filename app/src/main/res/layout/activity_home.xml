@@ -149,7 +149,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:src="@drawable/momo_service" />
+                                android:src="@drawable/ic_momo_service" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -234,7 +234,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:src="@drawable/chaosuon_promo" />
+                                android:src="@drawable/ic_chaosuon_promo" />
                         </LinearLayout>
                     </TableRow>
                 </LinearLayout>
