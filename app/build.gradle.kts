@@ -47,4 +47,9 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     implementation ("com.github.denzcoskun:ImageSlideshow:0.1.2")
     implementation ("com.google.code.gson:gson:2.11.0")
+
+
+    //Retro for making HTTP request
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 }
