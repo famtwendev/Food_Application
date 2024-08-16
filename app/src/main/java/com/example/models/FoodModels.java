@@ -12,8 +12,6 @@ public class FoodModels implements Serializable {
 
     private String sizeFood;
 
-    private int numberInCart;
-
     private String descriptionFood;
 
     private double priceFood;
@@ -21,6 +19,8 @@ public class FoodModels implements Serializable {
     private String idSupplier; // Mã Nhà cung cấp
 
     private String idVoucher;
+
+    private int numberInCart;
 
     public FoodModels(int idFood, String nameFood, String pictureFood, String sizeFood, String descriptionFood, double priceFood, String idSupplier, String idVoucher) {
         this.idFood = idFood;

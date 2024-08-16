@@ -22,6 +22,8 @@ import com.example.food_application.adapter.PopularAdaptor;
 import com.example.food_application.adapter.SupplierAdapter;
 import com.example.food_application.databinding.ActivityHomeBinding;
 import com.example.food_application.helper.ManagementUser;
+import com.example.models.ApiClient;
+import com.example.models.ApiService;
 import com.example.models.CategoryModels;
 import com.example.models.FoodModels;
 import com.example.models.SupplierModels;
@@ -38,14 +40,18 @@ public class HomeActivity extends AppCompatActivity {
 
     private ManagementUser managementUser;
 
+    private ApiService apiService;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.i("HomeActivity", "onCreate");
         managementUser = new ManagementUser(this);
-
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        setAPI();
 
         addEventsForMenu();
 
@@ -55,6 +61,11 @@ public class HomeActivity extends AppCompatActivity {
 
         addEvents();
     }
+
+    private void setAPI() {
+
+    }
+
 
     private void addEvents() {
         binding.txtmyAddress.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +100,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
-
     private void recyclerViewCatrgory() {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false);
         binding.recCategories.setLayoutManager(gridLayoutManager);
@@ -106,6 +116,8 @@ public class HomeActivity extends AppCompatActivity {
         category.add(new CategoryModels(3, "Bánh mì", "cat_3"));
         category.add(new CategoryModels(4, "Nước ngọt", "cat_4"));
         category.add(new CategoryModels(5, "Bánh ngọt", "cat_5"));
+
+        Log.e("data",category.toString());
 
         adapterRycycleview = new CategoryAdaptor(category);
         binding.recCategories.setAdapter(adapterRycycleview);

@@ -1,6 +1,6 @@
 package com.example.models;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -18,7 +18,7 @@ public interface ApiService {
 
     //Lấy tất cả các hóa đơn
     @GET("api/bills")
-    Call<List<BillModels>> getAllBills();
+    Call<ArrayList<BillModels>> getAllBills();
 
     // Lấy hóa đơn theo ID
     @GET("api/bills/{idBill}")
@@ -43,7 +43,7 @@ public interface ApiService {
 
     //Lấy tất cả các chi tiết hóa đơn
     @GET("/api/bill-details")
-    Call<List<BillDetailModels>> getAllBillDetails();
+    Call<ArrayList<BillDetailModels>> getAllBillDetails();
 
     // Lấy chi tiết hóa đơn theo ID
     @GET("api/bill-details/{idBillDetails}")
@@ -67,7 +67,7 @@ public interface ApiService {
 
     //Lấy tất cả các chi tiết hóa đơn
     @GET("/api/categories")
-    Call<List<CategoryModels>> getAllCategories();
+    Call<ArrayList<CategoryModels>> getAllCategories();
 
     // Lấy chi tiết hóa đơn theo ID
     @GET("api/categories/{idCategories}")
@@ -92,7 +92,7 @@ public interface ApiService {
 
     //Lấy tất cả khách hàng
     @GET("/api/customers")
-    Call<List<CustomerModels>> getAllCustomer();
+    Call<ArrayList<CustomerModels>> getAllCustomer();
 
     // Lấy khách hàng theo ID
     @GET("api/customers/{idCustomers}")
@@ -116,7 +116,7 @@ public interface ApiService {
 
     //Lấy tất cả thực phẩm
     @GET("/api/foods")
-    Call<List<FoodModels>> getAllFood();
+    Call<ArrayList<FoodModels>> getAllFood();
 
     // Lấy thực phẩm theo ID
     @GET("api/foods/{idFoods}")
@@ -140,7 +140,7 @@ public interface ApiService {
 
     //Lấy tất cả nhà cung cấp
     @GET("/api/suppliers")
-    Call<List<SupplierModels>> getAllSuppliers();
+    Call<ArrayList<SupplierModels>> getAllSuppliers();
 
     // Lấy nhà cung cấp theo ID
     @GET("api/suppliers/{idSuppliers}")
@@ -164,7 +164,7 @@ public interface ApiService {
 
     //Lấy tất cả nhà cung cấp
     @GET("/api/vouchers")
-    Call<List<VourcherModels>> getAllVouchers();
+    Call<ArrayList<VourcherModels>> getAllVouchers();
 
     // Lấy nhà cung cấp theo ID
     @GET("api/vouchers/{idVouchers}")

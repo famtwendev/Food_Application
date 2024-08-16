@@ -36,4 +36,13 @@ public class CategoryModels implements Serializable {
     public void setPicCategory(String picCategory) {
         this.picCategory = picCategory;
     }
+
+    @Override
+    public String toString() {
+        return "CategoryModels{" +
+                "idCategory=" + idCategory +
+                ", titleCategory='" + titleCategory + '\'' +
+                ", picCategory='" + picCategory + '\'' +
+                '}';
+    }
 }
