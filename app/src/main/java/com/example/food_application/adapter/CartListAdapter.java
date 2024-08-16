@@ -1,5 +1,6 @@
 package com.example.food_application.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -96,6 +97,10 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
                     public void change() {
                         notifyDataSetChanged();
                         changeNumberItemListener.change();
+                        if(foodModels.isEmpty())
+                        {
+                            ((Activity) view.getContext()).recreate();
+                        }
                     }
                 });
             }

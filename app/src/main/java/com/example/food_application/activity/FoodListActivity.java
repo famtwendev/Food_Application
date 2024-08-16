@@ -51,6 +51,13 @@ public class FoodListActivity extends AppCompatActivity {
                 finish();
             }
         });
+        binding.btnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FoodListActivity.this, CartActivity.class);
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     private void getData() {

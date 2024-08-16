@@ -40,13 +40,25 @@
                         app:drawableTint="@color/white" />
 
                     <TextView
+                        android:id="@+id/btnCart"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/background_blur_cat"
+                        app:drawableEndCompat="@drawable/baseline_shopping_cart_24"
+                        app:drawableTint="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btnSearch"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
                         android:id="@+id/btnSearch"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginEnd="10dp"
                         android:background="@drawable/background_blur_cat"
-                        android:drawableEnd="@drawable/baseline_search_24"
-                        android:drawableTint="@color/white"
+                        app:drawableEndCompat="@drawable/baseline_search_24"
+                        app:drawableTint="@color/white"
                         app:layout_constraintBottom_toBottomOf="@+id/btnMore"
                         app:layout_constraintEnd_toStartOf="@+id/btnMore"
                         app:layout_constraintTop_toTopOf="@+id/btnMore" />
@@ -56,9 +68,9 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:background="@drawable/background_blur_cat"
-                        android:drawableEnd="@drawable/baseline_more_horiz_24"
-                        android:drawableTint="@color/white"
                         android:src="@drawable/baseline_more_horiz_24"
+                        app:drawableEndCompat="@drawable/baseline_more_horiz_24"
+                        app:drawableTint="@color/white"
                         app:layout_constraintBottom_toBottomOf="@+id/btnBack"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/btnBack" />
@@ -80,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:drawablePadding="5dp"
-                    android:text="Hồng trà ngô gia"
+                    android:text="@string/textnaemfd"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:drawableStartCompat="@drawable/baseline_verified_user_24" />
