@@ -65,38 +65,40 @@ public class LoginActivity extends AppCompatActivity {
                 apiService.getAllCustomer().enqueue(new Callback<ArrayList<CustomerModels>>() {
                     @Override
                     public void onResponse(Call<ArrayList<CustomerModels>> call, Response<ArrayList<CustomerModels>> response) {
-                        ArrayList<CustomerModels> customerModels = response.body();
-                        Log.e("Size Customer", String.valueOf(customerModels.size()));
-                        for (CustomerModels item : customerModels
-                        ) {
-                            if (item.getUsername().equals(username) && item.getPassword().equals(password) || item.getEmail().equals(username) && item.getPassword().equals(password)) {
-                                CustomerModels account = item;
-                                if (account != null) {
-                                    managementUser.saveUserInfo(
-                                            account.getIdCustomer(), // idCustomer
-                                            account.getPassword(), // password
-                                            account.getFullname(), // fullname
-                                            account.getUsername(), // username
-                                            account.getSex(), // sex
-                                            account.getBirthday(), // birthday
-                                            account.getAddress(), // address
-                                            account.getNumnerPhone(), // numberPhone
-                                            account.getEmail(), // email
-                                            account.getPicture(), // picture
-                                            account.getIsValue(), // isValue
-                                            account.getScoreRating(), // scoreRating
-                                            account.getRandomKey() // randomKey
-                                    );
-                                    managementUser.setHasData();
-                                    Log.e("LoginActivity", "Login Success");
-                                    finish();
-                                    Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Log.e("LoginActivity", "Login Fail");
-                                    // Đăng nhập thất bại, thông báo cho người dùng
-                                    Toast.makeText(LoginActivity.this, "Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.", Toast.LENGTH_SHORT).show();
+                        if (response.isSuccessful() && response.body() != null && !response.body().isEmpty()) {
+                            ArrayList<CustomerModels> customerModels = response.body();
+                            for (CustomerModels item : customerModels
+                            ) {
+                                if (item.getUsername().equals(username) && item.getPassword().equals(password) || item.getEmail().equals(username) && item.getPassword().equals(password)) {
+                                    CustomerModels account = item;
+                                    Log.e("Size Customer", item.toString());
+
+                                    if (account != null) {
+                                        managementUser.saveUserInfo(
+                                                account.getIdCustomer(), // idCustomer
+                                                account.getPassword(), // password
+                                                account.getFullname(), // fullname
+                                                account.getUsername(), // username
+                                                account.getSex(), // sex
+                                                account.getBirthday(), // birthday
+                                                account.getAddress(), // address
+                                                account.getNumberPhone(), // numberPhone
+                                                account.getEmail(), // email
+                                                account.getPicture(), // picture
+                                                account.getIsValue(), // isValue
+                                                account.getScoreRating(), // scoreRating
+                                                account.getRandomKey() // randomKey
+                                        );
+                                        managementUser.setHasData();
+                                        finish();
+                                        Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Log.e("LoginActivity", "Login Fail");
+                                        // Đăng nhập thất bại, thông báo cho người dùng
+                                        Toast.makeText(LoginActivity.this, "Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.", Toast.LENGTH_SHORT).show();
+                                    }
+                                    break;
                                 }
-                                break;
                             }
                         }
                     }

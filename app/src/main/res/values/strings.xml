@@ -75,4 +75,14 @@
     <string name="_4_7">4.7</string>
     <string name="_0_6km">0.6km</string>
     <string name="texttime">20phút</string>
+    <string name="textdialogcheckout">Thông tin đơn hàng</string>
+    <string name="t_ng">Tổng</string>
+    <string name="texttomtatdh">Tóm tắt đơn hàng</string>
+    <string name="textpayment">Phương thức thanh toán</string>
+    <string name="textthanhtoankhinhanhhang">Thanh toán khi nhận hàng</string>
+    <string name="textthanhtoanmomo">Ví điện tử MoMo</string>
+    <string name="textzalopay">Zalopay</string>
+    <string name="thanh_to_n_th_nh_c_ng">Thanh toán thành công</string>
+    <string name="note111">Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi!</string>
+    <string name="note11111">Trở về trang chủ</string>
 </resources>

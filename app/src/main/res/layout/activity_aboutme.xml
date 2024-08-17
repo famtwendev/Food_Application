@@ -53,6 +53,7 @@
             android:id="@+id/tv_aboutme_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:text="Nội dung : "
             android:textSize="20sp"
             android:layout_marginTop="10dp"/>

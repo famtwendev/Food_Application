@@ -14,6 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:background="@drawable/background_cat">
 
         <ImageView
@@ -30,16 +31,20 @@
 
         <TextView
             android:id="@+id/nameItem"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="16dp"
+            android:maxLines="2"
+            android:ellipsize="end"
             android:text="title"
             android:textColor="@color/black_200"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imvItem"
-            app:layout_constraintTop_toTopOf="@+id/imvItem" />
+            app:layout_constraintTop_toTopOf="@+id/imvItem"
+            app:layout_constraintEnd_toStartOf="@+id/txtPriceItem"
+            app:layout_constraintHorizontal_bias="0.0"/>
 
         <ImageView
             android:id="@+id/btnMinusItem"
@@ -57,7 +62,7 @@
             android:layout_marginStart="8dp"
             android:text="1"
             android:textColor="@color/black_200"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/btnMinusItem"
             app:layout_constraintStart_toEndOf="@+id/btnMinusItem"
@@ -83,7 +88,6 @@
             android:textColor="@color/primary"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/nameItem"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/nameItem" />
 

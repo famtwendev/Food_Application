@@ -1,0 +1,341 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgforegn">
+
+    <!-- Thanh điều hướng trên cùng -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/navbarCart"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/foregn"
+        android:elevation="3dp">
+
+        <TextView
+            android:id="@+id/lbCheckout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textdialogcheckout"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:paddingEnd="16dp"
+            android:src="@drawable/baseline_arrow_back_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/lbCheckout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Nội dung chính của giao diện -->
+    <ScrollView
+        android:id="@+id/scrView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/compThanhtoan"
+        android:layout_below="@id/navbarCart">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Giỏ hàng trống -->
+            <LinearLayout
+                android:id="@+id/emptyCart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/foregn"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/txtNameCustomer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:text="Nguyễn Phạm Tuyên"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:drawableStartCompat="@drawable/baseline_location_pin_24"
+                        app:drawableTint="@color/black"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/btnEditInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_keyboard_arrow_right"
+                        app:layout_constraintBottom_toBottomOf="@+id/txtNameCustomer"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/txtNameCustomer" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/txtNumberPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="28dp"
+                    android:text="(+84) 787776737"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingStart="28dp"
+                    android:text="38 Đường Số 17, P. Linh Trung, Q. Thủ Đức, Tp.HCM"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Giỏ hàng có dữ liệu -->
+            <LinearLayout
+                android:id="@+id/hasDataCart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp" />
+            </LinearLayout>
+            <!-- Tóm tắt đơn hàng -->
+            <LinearLayout
+                android:id="@+id/tomtatdonhang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/foregn"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/texttomtatdh"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <!-- Item total và dịch vụ vận chuyển -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbItemTotal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/lbItemTotal"
+                        android:textColor="@color/black_200"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtItemTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 đ"
+                        android:textColor="@color/black_200"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Dịch vụ giao hàng -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbDelivery"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/lbdeliverService"
+                        android:textColor="@color/black_200"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtDeliveyService"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 đ"
+                        android:textColor="@color/black_200"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Thuế VAT -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbTax"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/vat"
+                        android:textColor="@color/black_200"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtVAT"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 đ"
+                        android:textColor="@color/black_200"
+                        android:textSize="14sp" />
+                </LinearLayout>
+                <!-- Tổng-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbTong"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/t_ng"
+                        android:textColor="@color/black_200"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtTong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 đ"
+                        android:textColor="@color/black_200"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+            <!-- Payment Method -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/foregn"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/textpayment"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/radioMomo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_momo"
+                        android:drawablePadding="20dp"
+                        android:paddingStart="15dp"
+                        android:text="@string/textthanhtoanmomo"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radioZaloPay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_zalopay"
+                        android:drawablePadding="20dp"
+                        android:paddingStart="15dp"
+                        android:text="@string/textzalopay"
+                        android:textSize="16sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioCOD"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_cod"
+                        android:text="@string/textthanhtoankhinhanhhang"
+                        android:textSize="16sp" />
+                </RadioGroup>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <!-- Nút thanh toán -->
+    <LinearLayout
+        android:id="@+id/compThanhtoan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/foregn"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <!-- Tổng cộng -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="20dp"
+
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lbTotal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/t_ng"
+                android:textColor="@color/black_200"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 đ"
+                android:textColor="@color/black_200"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btnThanhToan"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/primary"
+            android:gravity="center"
+            android:text="@string/textcheckout"
+            android:textColor="@color/foregn"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</RelativeLayout>

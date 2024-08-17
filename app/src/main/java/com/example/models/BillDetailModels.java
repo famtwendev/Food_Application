@@ -9,6 +9,12 @@ public class BillDetailModels {
 
     private int amount;
 
+    public BillDetailModels(String idBill, int idFood, int amount) {
+        this.idBill = idBill;
+        this.idFood = idFood;
+        this.amount = amount;
+    }
+
     public BillDetailModels(int idDetail, String idBill, int idFood, int amount) {
         this.idDetail = idDetail;
         this.idBill = idBill;

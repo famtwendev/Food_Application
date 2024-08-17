@@ -79,4 +79,9 @@ public class ManagementCart {
         tinyDB.putListObject("CartList", listFood);
         clearallitem.clearAll();
     }
+
+    public void finishManagement(){
+        ArrayList<FoodModels> listFood = null;
+        tinyDB.putListObject("CartList", listFood);
+    }
 }

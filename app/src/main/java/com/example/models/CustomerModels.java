@@ -17,7 +17,7 @@ public class CustomerModels {
 
     private String address;
 
-    private String numnerPhone;
+    private String numberPhone;
 
     private String email;
 
@@ -29,7 +29,7 @@ public class CustomerModels {
 
     private String randomKey;
 
-    public CustomerModels(String idCustomer, String password, String username, String sex, Date birthday, String fullname, String address, String numnerPhone, String email,  String picture, int isValue, int scoreRating, String randomKey) {
+    public CustomerModels(String idCustomer, String password, String username, String sex, Date birthday, String fullname, String address, String numberPhone, String email,  String picture, int isValue, int scoreRating, String randomKey) {
         this.idCustomer = idCustomer;
         this.password = password;
         this.fullname = fullname;
@@ -37,7 +37,7 @@ public class CustomerModels {
         this.sex = sex;
         this.birthday = birthday;
         this.address = address;
-        this.numnerPhone = numnerPhone;
+        this.numberPhone = numberPhone;
         this.email = email;
         this.picture = picture;
         this.isValue = isValue;
@@ -101,12 +101,12 @@ public class CustomerModels {
         this.address = address;
     }
 
-    public String getNumnerPhone() {
-        return numnerPhone;
+    public String getNumberPhone() {
+        return numberPhone;
     }
 
-    public void setNumnerPhone(String numnerPhone) {
-        this.numnerPhone = numnerPhone;
+    public void setNumberPhone(String numnerPhone) {
+        this.numberPhone = numnerPhone;
     }
 
     public String getEmail() {
@@ -147,5 +147,24 @@ public class CustomerModels {
 
     public void setRandomKey(String randomKey) {
         this.randomKey = randomKey;
+    }
+
+    @Override
+    public String toString() {
+        return "CustomerModels{" +
+                "idCustomer='" + idCustomer + '\'' +
+                ", password='" + password + '\'' +
+                ", fullname='" + fullname + '\'' +
+                ", username='" + username + '\'' +
+                ", sex='" + sex + '\'' +
+                ", birthday=" + birthday +
+                ", address='" + address + '\'' +
+                ", numnerPhone='" + numberPhone + '\'' +
+                ", email='" + email + '\'' +
+                ", picture='" + picture + '\'' +
+                ", isValue=" + isValue +
+                ", scoreRating=" + scoreRating +
+                ", randomKey='" + randomKey + '\'' +
+                '}';
     }
 }
