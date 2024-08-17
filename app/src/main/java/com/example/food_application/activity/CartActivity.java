@@ -119,6 +119,7 @@ public class CartActivity extends AppCompatActivity {
                     layoutBinding.txtTong.setText(binding.txtTotal.getText());
                     layoutBinding.txtTotal.setText(binding.txtTotal.getText());
 
+                    layoutBinding.radioCOD.setChecked(true);
 
                     layoutBinding.radioGroup.setOnClickListener(new View.OnClickListener() {
                         @Override
