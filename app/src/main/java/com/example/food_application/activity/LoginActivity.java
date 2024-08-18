@@ -1,6 +1,11 @@
 package com.example.food_application.activity;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -8,7 +13,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.food_application.helper.ManagementUser;
 import com.example.food_application.R;
@@ -65,14 +72,14 @@ public class LoginActivity extends AppCompatActivity {
                 apiService.getAllCustomer().enqueue(new Callback<ArrayList<CustomerModels>>() {
                     @Override
                     public void onResponse(Call<ArrayList<CustomerModels>> call, Response<ArrayList<CustomerModels>> response) {
+                        boolean hasAccount = false;
                         if (response.isSuccessful() && response.body() != null && !response.body().isEmpty()) {
                             ArrayList<CustomerModels> customerModels = response.body();
                             for (CustomerModels item : customerModels
                             ) {
                                 if (item.getUsername().equals(username) && item.getPassword().equals(password) || item.getEmail().equals(username) && item.getPassword().equals(password)) {
+                                    hasAccount = true;
                                     CustomerModels account = item;
-                                    Log.e("Size Customer", item.toString());
-
                                     if (account != null) {
                                         managementUser.saveUserInfo(
                                                 account.getIdCustomer(), // idCustomer
@@ -93,13 +100,40 @@ public class LoginActivity extends AppCompatActivity {
                                         finish();
                                         Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        Log.e("LoginActivity", "Login Fail");
+                                        Log.e("LoginActivity", "account null data");
                                         // Đăng nhập thất bại, thông báo cho người dùng
-                                        Toast.makeText(LoginActivity.this, "Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.", Toast.LENGTH_SHORT).show();
                                     }
                                     break;
                                 }
                             }
+                        }
+                        if(hasAccount == false){
+                            AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                            builder.setTitle("Sai tên người dùng hoặc mật khẩu!");
+
+                            Drawable icon = getResources().getDrawable(android.R.drawable.ic_dialog_alert);
+                            icon.setColorFilter(ContextCompat.getColor(LoginActivity.this, R.color.yellow), PorterDuff.Mode.SRC_IN);
+                            builder.setIcon(icon);
+                            builder.setMessage("Vui lòng đăng nhập lại?");
+
+                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
+                                }
+                            });
+
+                            builder.setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                    startActivity(intent);
+                                }
+                            });
+
+                            Dialog dialog = builder.create();
+                            dialog.setCanceledOnTouchOutside(false);
+                            dialog.show();
                         }
                     }
 

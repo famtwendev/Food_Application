@@ -1,5 +1,6 @@
 package com.example.food_application.helper;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Utils {
@@ -14,5 +15,16 @@ public class Utils {
         // Nếu bạn muốn in ra thời gian sau khi thêm phút
         Date newDate = new Date(newTimeMillis);
         return newDate;
+    }
+
+    public static String generateCustomerCode() {
+        // Lấy ngày tháng năm hiện tại
+        Date now = new Date();
+        // Định dạng ngày tháng năm theo định dạng "ddMMyyyy"
+        SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
+        String formattedDate = dateFormat.format(now);
+        // Tạo mã khách hàng với tiền tố "KH" + ngày tháng năm
+        String customerCode = "KH00" + formattedDate;
+        return customerCode;
     }
 }
