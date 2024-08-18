@@ -81,7 +81,7 @@ public class ManagementCart {
     }
 
     public void finishManagement(){
-        ArrayList<FoodModels> listFood = null;
+        ArrayList<FoodModels> listFood = new ArrayList<FoodModels>();
         tinyDB.putListObject("CartList", listFood);
     }
 }
