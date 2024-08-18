@@ -190,7 +190,7 @@ public class CartActivity extends AppCompatActivity {
                                                     @Override
                                                     public void onResponse(Call<BillDetailModels> call, Response<BillDetailModels> detailResponse) {
                                                         if (detailResponse.isSuccessful() && detailResponse.body() != null) {
-                                                            sizeCart+=1;
+                                                            sizeCart += 1;
                                                             if (sizeCart == managementCart.getListCart().size()) {
                                                                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(dialog.getContext());
                                                                 View bottomSheetView = LayoutInflater.from(getApplicationContext())
@@ -200,10 +200,9 @@ public class CartActivity extends AppCompatActivity {
                                                                 Button btnOk = bottomSheetView.findViewById(R.id.btn_ok);
                                                                 btnOk.setOnClickListener(v -> {
                                                                     // Đóng dialog khi nhấn OK
-                                                                    managementCart.finishManagement();
+                                                                    binding.btnDeleteAll.performClick();
                                                                     bottomSheetDialog.dismiss();
-                                                                    Intent intent = new Intent(dialog.getContext(), HomeActivity.class);
-                                                                    startActivity(intent);
+                                                                    dialog.dismiss();
                                                                 });
 
                                                                 // Thiết lập view cho BottomSheetDialog
@@ -211,11 +210,11 @@ public class CartActivity extends AppCompatActivity {
                                                                 bottomSheetDialog.setCanceledOnTouchOutside(false);
                                                                 bottomSheetDialog.show();
                                                             }
-                                                            managementCart.finishManagement();
                                                         } else {
                                                             Log.e("API ERROR", "Thêm chi tiết hóa đơn thất bại: " + detailResponse.message());
                                                         }
                                                     }
+
                                                     @Override
                                                     public void onFailure(Call<BillDetailModels> call, Throwable t) {
                                                         Log.e("API ERROR", "Lỗi khi gọi API thêm chi tiết hóa đơn: " + t.getMessage());
@@ -229,6 +228,7 @@ public class CartActivity extends AppCompatActivity {
                                         Log.e("API ERROR", "Create BillModels Failed: " + response.message());
                                     }
                                 }
+
                                 @Override
                                 public void onFailure(Call<BillModels> call, Throwable t) {
                                     Log.e("API ERROR", "Lỗi khi gọi API tạo hóa đơn: " + t.getMessage());
