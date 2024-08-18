@@ -173,7 +173,7 @@ public class CartActivity extends AppCompatActivity {
 
                             ApiService apiService = ApiClient.getClient().create(ApiService.class);
 
-                            BillModels newBill = new BillModels("KH01", managementUser.getIdCustomer(), Utils.addDate(0), Utils.addDate(15), Utils.addDate(30), managementUser.getFullname(), managementUser.getAddress(), managementUser.getEmail(), managementUser.getNumberPhone(), selectedPayment, managementCart.getTotalPrice(), managementCart.getTotalPrice(), "J&T Express", 30000, "1", "Ghi chú", "12345");
+                            BillModels newBill = new BillModels(managementUser.getIdCustomer(), managementUser.getIdCustomer(), Utils.addDate(0), Utils.addDate(15), Utils.addDate(30), managementUser.getFullname(), managementUser.getAddress(), managementUser.getEmail(), managementUser.getNumberPhone(), selectedPayment, managementCart.getTotalPrice(), managementCart.getTotalPrice(), "J&T Express", 30000, "1", "Ghi chú", "12345");
                             apiService.addBill(newBill).enqueue(new Callback<BillModels>() {
                                 @Override
                                 public void onResponse(Call<BillModels> call, Response<BillModels> response) {

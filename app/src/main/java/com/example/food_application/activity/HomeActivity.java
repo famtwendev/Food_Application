@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -61,7 +60,50 @@ public class HomeActivity extends AppCompatActivity {
         binding.txtmyAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(HomeActivity.this, "Thay đổi địa chỉ", Toast.LENGTH_SHORT).show();
+
+//                if (managementUser.gethasData()) {
+//                    Dialog dialog = null;
+//                    dialog = new Dialog(HomeActivity.this);
+//
+//                    ActivityAddressBinding addressBinding = ActivityAddressBinding.inflate(getLayoutInflater());
+//
+//                    // Gán root view của binding cho dialog
+//                    dialog.setContentView(addressBinding.getRoot());
+//
+//                    dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+//                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                    dialog.getWindow().setWindowAnimations(R.style.BottomSheetAnimation);
+//                    dialog.getWindow().getAttributes().windowAnimations = R.style.BottomSheetAnimation;
+//                    dialog.show();
+//
+//
+//                    addressBinding.edtOldAddress.setText(managementUser.getAddress());
+//
+//                    if(addressBinding.edtNewAdress.getText() == null || addressBinding.edtNewAdress.getText().equals("")){
+//                    }else
+//                    {
+//                        ApiService apiService = ApiClient.getClient().create(ApiService.class);
+//                        CustomerModels updateCustom = new CustomerModels(managementUser.getIdCustomer(), managementUser.getPassword(), managementUser.getUsername(), managementUser.getSex(), managementUser.getBirthday(), managementUser.getFullname(), addressBinding.edtNewAdress.getText(), managementUser.getNumberPhone(), managementUser.getEmail(),  managementUser.getPicture(), managementUser.isValue(), managementUser.getScoreRating(),  managementUser.getRandomKey());
+//                        apiService.updateCustomer(updateCustom).enqueue(new Callback<Void>() {
+//                            @Override
+//                            public void onResponse(Call<Void> call, Response<Void> response) {
+//
+//                            }
+//
+//                            @Override
+//                            public void onFailure(Call<Void> call, Throwable t) {
+//
+//                            }
+//                        });
+//                    }
+//
+//
+//                } else {
+//                    Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+//                    startActivity(intent);
+//                    dialog.dismiss();
+//                }
+
             }
         });
     }
