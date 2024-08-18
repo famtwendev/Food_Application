@@ -55,8 +55,11 @@ public class CartActivity extends AppCompatActivity {
     private ManagementCart managementCart;
 
     private ManagementUser managementUser;
-    // Xử lý sự kiện nhấn nút "Xóa tất cả"
 
+    private String selectedPayment = ""; // Check Method Payment
+
+    private boolean isSuccess = false;
+    private int sizeCart = 0; // Check size Cart add success ?
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +80,6 @@ public class CartActivity extends AppCompatActivity {
 
         addEvents();
     }
-    String selectedPayment="";
 
     private void addEvents() {
         binding.btnCheckout.setOnClickListener(new View.OnClickListener() {
@@ -127,7 +129,7 @@ public class CartActivity extends AppCompatActivity {
                             int checkedId = layoutBinding.radioGroup.getCheckedRadioButtonId();
                             if (checkedId > 0) {
                                 if (checkedId == R.id.radioMomo) {
-                                    selectedPayment= "Momo";
+                                    selectedPayment = "Momo";
                                 } else if (checkedId == R.id.radioZaloPay) {
                                     selectedPayment = "ZaloPay";
                                 } else if (checkedId == R.id.radioCOD) {
@@ -139,7 +141,6 @@ public class CartActivity extends AppCompatActivity {
                             Log.d("SelectedPayment", selectedPayment);
                         }
                     });
-
 
 
                     adapterCheckout = new CartListAdapter(managementCart.getListCart(), dialog.getContext(), new ChangeNumberItemListener() {
@@ -169,79 +170,76 @@ public class CartActivity extends AppCompatActivity {
                     layoutBinding.btnThanhToan.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Log.e("Checkout" , "Checout");
-
                             ApiService apiService = ApiClient.getClient().create(ApiService.class);
-
                             BillModels newBill = new BillModels(managementUser.getIdCustomer(), managementUser.getIdCustomer(), Utils.addDate(0), Utils.addDate(15), Utils.addDate(30), managementUser.getFullname(), managementUser.getAddress(), managementUser.getEmail(), managementUser.getNumberPhone(), selectedPayment, managementCart.getTotalPrice(), managementCart.getTotalPrice(), "J&T Express", 30000, "1", "Ghi chú", "12345");
                             apiService.addBill(newBill).enqueue(new Callback<BillModels>() {
                                 @Override
                                 public void onResponse(Call<BillModels> call, Response<BillModels> response) {
                                     if (response.isSuccessful() && response.body() != null) {
-                                        // Sau đó, tiếp tục thêm chi tiết hóa đơn
-                                        addBillDetails(dialog.getContext(),apiService, newBill.getIdBill());
+                                        isSuccess = true;
+                                        Log.e("API ERROR", "Create BillModels Success");
+                                        if (isSuccess) {
+                                            Log.e("mess", String.valueOf(isSuccess));
+                                            // Lấy danh sách sản phẩm trong giỏ hàng và thêm chi tiết hóa đơn
+                                            ArrayList<FoodModels> listFoodInCart = managementCart.getListCart();
+                                            ApiService apiServiced = ApiClient.getClient().create(ApiService.class);
+                                            for (FoodModels item : listFoodInCart) {
+                                                BillDetailModels detail = new BillDetailModels(newBill.getIdBill(), item.getIdFood(), item.getNumberInCart());
+                                                apiServiced.addDetails(detail).enqueue(new Callback<BillDetailModels>() {
+                                                    @Override
+                                                    public void onResponse(Call<BillDetailModels> call, Response<BillDetailModels> detailResponse) {
+                                                        if (detailResponse.isSuccessful() && detailResponse.body() != null) {
+                                                            sizeCart+=1;
+                                                            if (sizeCart == managementCart.getListCart().size()) {
+                                                                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(dialog.getContext());
+                                                                View bottomSheetView = LayoutInflater.from(getApplicationContext())
+                                                                        .inflate(R.layout.dialog_bottom_sheet, null);
+
+                                                                // Ánh xạ nút "OK" và xử lý sự kiện khi nhấn vào
+                                                                Button btnOk = bottomSheetView.findViewById(R.id.btn_ok);
+                                                                btnOk.setOnClickListener(v -> {
+                                                                    // Đóng dialog khi nhấn OK
+                                                                    managementCart.finishManagement();
+                                                                    bottomSheetDialog.dismiss();
+                                                                    Intent intent = new Intent(dialog.getContext(), HomeActivity.class);
+                                                                    startActivity(intent);
+                                                                });
+
+                                                                // Thiết lập view cho BottomSheetDialog
+                                                                bottomSheetDialog.setContentView(bottomSheetView);
+                                                                bottomSheetDialog.setCancelable(false);
+                                                                bottomSheetDialog.show();
+                                                            }
+                                                        } else {
+                                                            Log.e("API ERROR", "Thêm chi tiết hóa đơn thất bại: " + detailResponse.message());
+                                                        }
+                                                    }
+                                                    @Override
+                                                    public void onFailure(Call<BillDetailModels> call, Throwable t) {
+                                                        Log.e("API ERROR", "Lỗi khi gọi API thêm chi tiết hóa đơn: " + t.getMessage());
+                                                    }
+                                                });
+                                            }
+                                        } else {
+                                            Log.e("API ERROR", "idBill nhận được từ server là null");
+                                        }
+                                    } else {
+                                        Log.e("API ERROR", "Create BillModels Failed: " + response.message());
                                     }
                                 }
-
                                 @Override
                                 public void onFailure(Call<BillModels> call, Throwable t) {
-                                    Log.e("API ERROR", t.getMessage());
+                                    Log.e("API ERROR", "Lỗi khi gọi API tạo hóa đơn: " + t.getMessage());
                                 }
                             });
                         }
                     });
                 } else {
-//                    Toast.makeText(CartActivity.this, "Vui lòng đăng nhập", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(CartActivity.this, LoginActivity.class);
                     startActivity(intent);
                 }
             }
         });
-    }
-
-    private void addBillDetails(Context context, ApiService apiService, String idBill) {
-        ArrayList<FoodModels> listFoodInCart = managementCart.getListCart();
-        Log.e("datasize",String.valueOf(listFoodInCart.size()));
-
-        // Lấy danh sách sản phẩm trong giỏ hàng
-        for (FoodModels item : listFoodInCart) {
-            BillDetailModels detail = new BillDetailModels(idBill, item.getIdFood(), item.getNumberInCart());
-            // Gọi API để thêm chi tiết hóa đơn
-            apiService.addDetails(detail).enqueue(new Callback<BillDetailModels>() {
-                @Override
-                public void onResponse(Call<BillDetailModels> call, Response<BillDetailModels> response) {
-                    if (response.isSuccessful()) {
-                        // Xử lý thành công cho từng chi tiết hóa đơn (nếu cần)
-                        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
-                        View bottomSheetView = LayoutInflater.from(getApplicationContext())
-                                .inflate(R.layout.dialog_bottom_sheet, null);
-
-                        // Ánh xạ nút "OK" và xử lý sự kiện khi nhấn vào
-                        Button btnOk = bottomSheetView.findViewById(R.id.btn_ok);
-                        btnOk.setOnClickListener(v -> {
-                            // Đóng dialog khi nhấn OK
-                            managementCart.finishManagement();
-                            bottomSheetDialog.dismiss();
-                            Intent intent = new Intent(context, HomeActivity.class);
-                            startActivity(intent);
-                        });
-
-                        // Thiết lập view cho BottomSheetDialog
-                        bottomSheetDialog.setContentView(bottomSheetView);
-                        bottomSheetDialog.show();
-                    } else {
-                        // Xử lý lỗi nếu thêm chi tiết hóa đơn thất bại
-                        Log.e("API ERROR", "Thêm chi tiết hóa đơn thất bại: " + response.message());
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<BillDetailModels> call, Throwable t) {
-                    // Xử lý lỗi kết nối hoặc các lỗi khác
-                    Log.e("API ERROR", "Lỗi khi gọi API: " + t.getMessage());
-                }
-            });
-        }
     }
 
     private void initList() {
@@ -290,9 +288,7 @@ public class CartActivity extends AppCompatActivity {
     private void CaculatorCart() {
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
         double vat;
-
         double percentVat = 0.05;
-
         double delivery = 30000;
 
         vat = Math.round((managementCart.getTotalPrice() * percentVat) * 100) / 100;
@@ -337,5 +333,4 @@ public class CartActivity extends AppCompatActivity {
             }
         });
     }
-
 }
