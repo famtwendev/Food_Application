@@ -21,10 +21,9 @@ public class Utils {
         // Lấy ngày tháng năm hiện tại
         Date now = new Date();
         // Định dạng ngày tháng năm theo định dạng "ddMMyyyy"
-        SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyyyyHHmmss");
         String formattedDate = dateFormat.format(now);
         // Tạo mã khách hàng với tiền tố "KH" + ngày tháng năm
-        String customerCode = "KH00" + formattedDate;
-        return customerCode;
+        return formattedDate;
     }
 }
