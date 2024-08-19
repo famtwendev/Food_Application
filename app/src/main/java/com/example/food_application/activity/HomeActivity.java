@@ -60,8 +60,13 @@ public class HomeActivity extends AppCompatActivity {
         binding.txtmyAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
+                if(managementUser.gethasData()){
+                    Intent intent = new Intent(HomeActivity.this, InfoActivity.class);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }

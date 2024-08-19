@@ -87,4 +87,6 @@
     <string name="note11111">Trở về trang chủ</string>
     <string name="changeaddress">Thay đổi địa chỉ</string>
     <string name="infothongtin">Thông tin người dùng</string>
+    <string name="textinputnow">Nhập mật khẩu hiện tại</string>
+    <string name="textinputnew">Nhập mật khẩu mới</string>
 </resources>

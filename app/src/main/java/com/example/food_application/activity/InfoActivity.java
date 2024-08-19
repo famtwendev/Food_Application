@@ -49,20 +49,15 @@ public class InfoActivity extends AppCompatActivity {
         binding = ActivityInfoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        if (managementUser.gethasData()) {
-            binding.edtFullname.setText(managementUser.getFullname());
-            binding.edtAddress.setText(managementUser.getAddress());
-            binding.edtBirthday.setText(String.valueOf(managementUser.getBirthday()));
-            binding.edtMail.setText(String.valueOf(managementUser.getEmail()));
-            binding.edtPhone.setText(String.valueOf(managementUser.getNumberPhone()));
-            if (managementUser.getSex().equals("Nam")) {
-                binding.rdioNam.setChecked(true);
-            } else {
-                binding.rdioNu.setChecked(true);
+        getData();
+
+        binding.btnbacklogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
-            int drawableResourceId = binding.getRoot().getContext().getResources().getIdentifier(managementUser.getPicture(), "drawable", binding.getRoot().getContext().getPackageName());
-            binding.imvPhto.setImageResource(drawableResourceId);
-        }
+        });
+
         binding.btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,7 +106,7 @@ public class InfoActivity extends AppCompatActivity {
                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                InfoActivity.this.reoncreate();
+                                InfoActivity.this.onResume();
                             }
                         });
 
@@ -134,5 +129,28 @@ public class InfoActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    private void getData() {
+        if (managementUser.gethasData()) {
+            binding.edtFullname.setText(managementUser.getFullname());
+            binding.edtAddress.setText(managementUser.getAddress());
+            binding.edtBirthday.setText(String.valueOf(managementUser.getBirthday()));
+            binding.edtMail.setText(String.valueOf(managementUser.getEmail()));
+            binding.edtPhone.setText(String.valueOf(managementUser.getNumberPhone()));
+            if ("Nam".equals(managementUser.getSex())) {
+                binding.rdioNam.setChecked(true);
+            } else if("Nữ".equals(managementUser.getSex())) {
+                binding.rdioNu.setChecked(true);
+            }
+            int drawableResourceId = binding.getRoot().getContext().getResources().getIdentifier(managementUser.getPicture(), "drawable", binding.getRoot().getContext().getPackageName());
+            binding.imvPhto.setImageResource(drawableResourceId);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getData();
     }
 }

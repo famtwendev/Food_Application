@@ -1,11 +1,16 @@
 package com.example.food_application.activity;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -16,11 +21,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.food_application.R;
 import com.example.food_application.databinding.ActivityCustomerBinding;
+import com.example.food_application.databinding.CheckoutBottomSheetBinding;
+import com.example.food_application.databinding.DialogChangepasswordBinding;
 import com.example.food_application.helper.ManagementUser;
+import com.example.models.ApiClient;
+import com.example.models.ApiService;
+import com.example.models.CustomerModels;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.BufferedReader;
@@ -28,6 +40,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Calendar;
+import java.util.Date;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CustomerActivity extends AppCompatActivity {
 
@@ -39,6 +56,7 @@ public class CustomerActivity extends AppCompatActivity {
     private CalendarView calendarView;
     private TextView tvXuNotification;
     private boolean isXuReceived = false;
+    private boolean isHidden = true; // Dang an
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,11 +161,14 @@ public class CustomerActivity extends AppCompatActivity {
             }
         });
 
-        binding.btnmyaddress.setOnClickListener(new View.OnClickListener() {
+        binding.btnmyinfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (managementUser == null) {
                     binding.btnLogin.performClick();
+                } else {
+                    Intent intent = new Intent(CustomerActivity.this, InfoActivity.class);
+                    startActivity(intent);
                 }
             }
         });
@@ -165,6 +186,103 @@ public class CustomerActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (managementUser == null) {
                     binding.btnLogin.performClick();
+                } else {
+                    Dialog dialog = new Dialog(CustomerActivity.this);
+
+                    DialogChangepasswordBinding layoutBinding = DialogChangepasswordBinding.inflate(getLayoutInflater());
+                    dialog.setContentView(layoutBinding.getRoot());
+                    dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    dialog.getWindow().setWindowAnimations(R.style.BottomSheetAnimation);
+                    dialog.getWindow().getAttributes().windowAnimations = R.style.BottomSheetAnimation;
+
+                    layoutBinding.btnHiddenPass.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (isHidden) {
+                                layoutBinding.edtOldPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                                layoutBinding.edtNewPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                                layoutBinding.edtReNewPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                                layoutBinding.btnHiddenPass.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_eyes, 0, 0, 0);
+                                layoutBinding.btnHiddenPass.setText("Ẩn mật khẩu");
+                            } else {
+                                layoutBinding.edtOldPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                                layoutBinding.edtNewPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                                layoutBinding.edtReNewPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                                layoutBinding.btnHiddenPass.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_eyes_hidden, 0, 0, 0);
+                                layoutBinding.btnHiddenPass.setText("Hiện mật khẩu");
+                            }
+                            isHidden = !isHidden; // Cập nhật trạng thái sau mỗi lần nhấp
+                        }
+                    });
+                    layoutBinding.btnChangePass.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            String oldPass = layoutBinding.edtOldPass.getText().toString();
+                            String newPass = layoutBinding.edtNewPass.getText().toString();
+                            String reNewPass = layoutBinding.edtReNewPass.getText().toString();
+                            if (oldPass.isEmpty() || newPass.isEmpty() || reNewPass.isEmpty()) {
+                                layoutBinding.txtLoi.setVisibility(View.VISIBLE);
+                                layoutBinding.txtLoi.setText("Vui lòng nhập đầy đủ thông tin!");
+                            } else {
+                                if (!newPass.toString().equals(reNewPass.toString())) {
+                                    layoutBinding.txtLoi.setVisibility(View.VISIBLE);
+                                    layoutBinding.txtLoi.setText("Mật khẩu nhập lại không khớp!");
+                                }
+                                else if(newPass.toString().equals(oldPass.toString()))
+                                {
+                                    layoutBinding.txtLoi.setVisibility(View.VISIBLE);
+                                    layoutBinding.txtLoi.setText("Mật khẩu mới đã được sử dụng trước đây!");
+                                }
+                                else {
+                                    if (managementUser.getPassword().equals(oldPass)) {
+                                        CustomerModels updateCustom = new CustomerModels(managementUser.getIdCustomer(), newPass, managementUser.getUsername(), managementUser.getSex(), managementUser.getBirthday(), managementUser.getFullname(), managementUser.getAddress(), managementUser.getNumberPhone(), managementUser.getEmail(), managementUser.getPicture(), managementUser.isValue(), managementUser.getScoreRating(), managementUser.getRandomKey());
+                                        ApiService apiService = ApiClient.getClient().create(ApiService.class);
+                                        apiService.updateCustomer(managementUser.getIdCustomer(),updateCustom).enqueue(new Callback<Void>() {
+                                            @Override
+                                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                                AlertDialog.Builder builder = new AlertDialog.Builder(dialog.getContext());
+                                                builder.setTitle("Đổi mật khẩu thành công!");
+                                                Drawable icon = getResources().getDrawable(R.drawable.baseline_verified_user_24);
+                                                icon.setColorFilter(ContextCompat.getColor(dialog.getContext(), R.color.yellow), PorterDuff.Mode.SRC_IN);
+                                                builder.setIcon(icon);
+                                                builder.setMessage("Quay về trang chủ?");
+
+                                                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                                        dialogInterface.dismiss();
+                                                        dialog.dismiss();
+                                                    }
+                                                });
+                                                Dialog dialogg = builder.create();
+                                                dialogg.setCanceledOnTouchOutside(false);
+                                                dialogg.show();
+                                            }
+                                            @Override
+                                            public void onFailure(Call<Void> call, Throwable t) {
+                                                Log.e("API Error", t.getMessage());
+                                            }
+                                        });
+                                    } else {
+                                        layoutBinding.txtLoi.setVisibility(View.VISIBLE);
+                                        layoutBinding.txtLoi.setText("Nhập sai mật khẩu cũ !");
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+                    dialog.findViewById(R.id.btnbacklogin).
+
+                            setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    dialog.setCanceledOnTouchOutside(false);
+                    dialog.show();
                 }
             }
         });
@@ -183,7 +301,8 @@ public class CustomerActivity extends AppCompatActivity {
                 stringBuilder.append(line).append("\n");
             }
             policyContent = stringBuilder.toString();
-        } catch (IOException e) {
+        } catch (
+                IOException e) {
             throw new RuntimeException(e);
         }
 
@@ -245,7 +364,8 @@ public class CustomerActivity extends AppCompatActivity {
                 stringBuilder.append(line).append("\n");
             }
             aboutUsContent = stringBuilder.toString();
-        } catch (IOException e) {
+        } catch (
+                IOException e) {
             throw new RuntimeException(e);
         }
 

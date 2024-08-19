@@ -137,9 +137,9 @@
                         android:text="@string/payment" />
 
                     <TextView
-                        android:id="@+id/btnmyaddress"
+                        android:id="@+id/btnmyinfo"
                         style="@style/ProfileMenuItem"
-                        android:drawableStart="@drawable/baseline_location_pin_24"
+                        android:drawableStart="@drawable/baseline_people_24"
                         android:drawableEnd="@drawable/baseline_keyboard_arrow_right"
                         android:text="@string/myaddress" />
                 </LinearLayout>
@@ -151,13 +151,6 @@
                     android:background="@drawable/background_cat"
                     android:elevation="3dp"
                     android:orientation="vertical">
-
-                    <!--                    <TextView-->
-                    <!--                        android:id="@+id/btninvite"-->
-                    <!--                        style="@style/ProfileMenuItem"-->
-                    <!--                        android:drawableStart="@drawable/baseline_people_24"-->
-                    <!--                        android:drawableEnd="@drawable/baseline_keyboard_arrow_right"-->
-                    <!--                        android:text="@string/invite" />-->
 
                     <TextView
                         android:id="@+id/btnsupport"
