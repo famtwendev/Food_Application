@@ -96,7 +96,7 @@ public interface ApiService {
 
     // Lấy khách hàng theo ID
     @GET("api/customers/{idCustomers}")
-    Call<CustomerModels> getCustomer(@Path("idCustomers") int idCustomers);
+    Call<CustomerModels> getCustomer(@Path("idCustomers") String idCustomers);
 
     // Thêm khách hàng mới
     @POST("api/customers")
@@ -104,11 +104,11 @@ public interface ApiService {
 
     // Cập nhật khách hàng
     @PUT("api/customers/{idCustomers}")
-    Call<Void> updateCustomer(@Path("idCustomers") int idCustomers, @Body CustomerModels customerModels);
+    Call<Void> updateCustomer(@Path("idCustomers") String idCustomers, @Body CustomerModels customerModels);
 
     // Xóa khách hàng
     @DELETE("api/customers/{idCustomers}")
-    Call<Void> deleteCustomer(@Path("idCustomers") int idCustomers);
+    Call<Void> deleteCustomer(@Path("idCustomers") String idCustomers);
 
     //
     //FoodModels

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/bgforegn"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".activity.InfoActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/person_title"
+            android:text="@string/infothongtin"
             android:textColor="@color/primary"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -42,59 +45,108 @@
             android:src="@drawable/baseline_question_mark_24" />
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
-        android:text="Thông tin cơ bản về tôi"
-        android:textSize="25sp"
-        android:textStyle="bold" />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/imvPhto"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            tools:srcCompat="@drawable/ic_customer" />
 
         <EditText
             android:id="@+id/edt_fullname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:hint="Họ và tên"
             android:inputType="text"
-            android:textSize="28sp" />
+            android:textColorHint="@color/black"
+            android:textSize="22sp" />
 
         <EditText
             android:id="@+id/edt_birthday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ngày/tháng/năm sinh"
-            android:textSize="28sp" />
+            android:inputType="date"
+            android:textColorHint="@color/black"
+            android:textSize="22sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="Giới tính: "
+                android:textSize="22sp" />
+
+            <RadioGroup
+                android:id="@+id/rdioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rdioNam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="50dp"
+                    android:paddingStart="5dp"
+                    android:text="Nam"
+                    android:textSize="22sp" />
+
+                <RadioButton
+                    android:id="@+id/rdioNu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:paddingStart="15dp"
+                    android:text="Nữ"
+                    android:textSize="22sp" />
+            </RadioGroup>
+        </LinearLayout>
 
         <EditText
             android:id="@+id/edt_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Địa chỉ"
-            android:textSize="28sp" />
+            android:textColorHint="@color/black"
+            android:textSize="22sp" />
 
         <EditText
             android:id="@+id/edt_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Số điện thoại"
-            android:textSize="28sp" />
+            android:inputType="number"
+            android:textColorHint="@color/black"
+            android:textSize="22sp" />
 
         <EditText
             android:id="@+id/edt_mail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
-            android:textSize="28sp" />
+            android:inputType="textEmailAddress"
+            android:textColorHint="@color/black"
+            android:textSize="22sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="end"
             android:orientation="horizontal">
 
@@ -119,10 +171,7 @@
                 android:textSize="20sp" />
 
         </LinearLayout>
-
-
     </LinearLayout>
-
 
     <TextView
         android:id="@+id/tv_message"
