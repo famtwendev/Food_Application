@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@color/bgforegn"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/foregn"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_default"
+            android:elevation="3dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <ImageView
+                android:id="@+id/btnbacklogin"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="16dp"
+                android:padding="8dp"
+                android:src="@drawable/baseline_arrow_back_24" />
+
+            <TextView
+                android:id="@+id/lbTieude"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/textthanhvien"
+                android:textColor="@color/black"
+                android:textSize="22sp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imganhdaidien"
+            android:layout_gravity="center"
+            android:layout_width="190dp"
+            android:layout_height="190dp"
+            tools:srcCompat="@drawable/ic_user_filled" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp">
+
+            <Button
+                android:id="@+id/btnhuychonanh"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="Hủy"
+                android:padding="12dp"
+                android:textSize="22sp"
+                android:background="@color/primary"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btnchonanh"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Chọn Ảnh"
+                android:textSize="22sp"
+                android:padding="12dp"
+                android:background="@android:color/darker_gray"
+                android:textColor="@android:color/white"
+                android:layout_marginStart="16dp" />
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/edtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Họ tên (*)"
+            android:textSize="22sp"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+
+        <EditText
+            android:id="@+id/edtuserdangnhap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tên đăng nhập (*)"
+            android:textSize="22sp"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+
+        <EditText
+            android:id="@+id/edtmatkhau"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mật khẩu (*)"
+            android:inputType="textPassword"
+            android:textSize="22sp"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+
+        <EditText
+            android:id="@+id/edtxacnhanmatkhau"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Xác nhận mật khẩu (*)"
+            android:textSize="22sp"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="55dp"
+                android:layout_marginBottom="16dp"
+                android:padding="12dp"
+                android:text="@string/gi_i_t_nh"
+                android:textColor="@color/gray_300"
+                android:textSize="22sp" />
+
+            <RadioButton
+                android:id="@+id/rdnam"
+                android:layout_width="82dp"
+                android:layout_height="55dp"
+                android:layout_marginEnd="24dp"
+                android:text="Nam"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/rdnu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Nữ"
+                android:textSize="18sp" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/edtphone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Phone"
+            android:padding="10dp"
+            android:textSize="22sp" />
+
+        <EditText
+            android:id="@+id/edtmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Email"
+            android:padding="10dp"
+            android:textSize="22sp" />
+
+        <EditText
+            android:id="@+id/edtdiachi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Địa chỉ"
+            android:textSize="22sp"
+            android:padding="12dp"
+            android:layout_marginBottom="14dp" />
+
+        <CheckBox
+            android:id="@+id/cbchapnhan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tôi chấp nhận điều khoản"
+            android:textColor="@color/blue_500"
+            android:textSize="22sp"
+            android:layout_marginBottom="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnHuy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Hủy"
+                android:padding="12dp"
+                android:textSize="22sp"
+                android:background="@color/primary"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btnDangKi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Đăng ký"
+                android:textSize="22sp"
+                android:padding="12dp"
+                android:background="@android:color/darker_gray"
+                android:textColor="@android:color/white"
+                android:layout_marginStart="16dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

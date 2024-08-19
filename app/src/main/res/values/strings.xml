@@ -89,4 +89,7 @@
     <string name="infothongtin">Thông tin người dùng</string>
     <string name="textinputnow">Nhập mật khẩu hiện tại</string>
     <string name="textinputnew">Nhập mật khẩu mới</string>
+    <string name="textthanhvien">Đăng ký thành viên</string>
+    <string name="gi_i_t_nh">Giới tính</string>
+    <string name="registertextt">Đăng ký</string>
 </resources>

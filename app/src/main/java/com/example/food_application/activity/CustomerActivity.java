@@ -160,7 +160,6 @@ public class CustomerActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
-
         binding.btnmyinfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -180,7 +179,6 @@ public class CustomerActivity extends AppCompatActivity {
                 }
             }
         });
-
         binding.btnsetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -286,29 +284,28 @@ public class CustomerActivity extends AppCompatActivity {
                 }
             }
         });
-        String policyContent;
-        try {
-            //Them o day
-            AssetManager assetManager = getAssets();
-            InputStream inputStream = assetManager.open("policy.txt");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-            StringBuilder stringBuilder = new StringBuilder();
-            String line;
-            while (true) {
-
-                if (!((line = reader.readLine()) != null)) break;
-
-                stringBuilder.append(line).append("\n");
-            }
-            policyContent = stringBuilder.toString();
-        } catch (
-                IOException e) {
-            throw new RuntimeException(e);
-        }
-
         binding.btnpolicy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String policyContent;
+                try {
+                    //Them o day
+                    AssetManager assetManager = getAssets();
+                    InputStream inputStream = assetManager.open("policy.txt");
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+                    StringBuilder stringBuilder = new StringBuilder();
+                    String line;
+                    while (true) {
+
+                        if (!((line = reader.readLine()) != null)) break;
+
+                        stringBuilder.append(line).append("\n");
+                    }
+                    policyContent = stringBuilder.toString();
+                } catch (
+                        IOException e) {
+                    throw new RuntimeException(e);
+                }
                 Dialog dialog = new Dialog(CustomerActivity.this);
                 dialog.setContentView(R.layout.activity_policy);
                 dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -329,7 +326,6 @@ public class CustomerActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
-
         binding.btnsupport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -349,29 +345,29 @@ public class CustomerActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
-        String aboutUsContent;
-        try {
-            //Them o day
-            AssetManager assetManager = getAssets();
-            InputStream inputStream = assetManager.open("aboutUsContent.txt");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-            StringBuilder stringBuilder = new StringBuilder();
-            String line;
-            while (true) {
-
-                if (!((line = reader.readLine()) != null)) break;
-
-                stringBuilder.append(line).append("\n");
-            }
-            aboutUsContent = stringBuilder.toString();
-        } catch (
-                IOException e) {
-            throw new RuntimeException(e);
-        }
-
         binding.btnaboutme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String aboutUsContent;
+                try {
+                    //Them o day
+                    AssetManager assetManager = getAssets();
+                    InputStream inputStream = assetManager.open("aboutUsContent.txt");
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+                    StringBuilder stringBuilder = new StringBuilder();
+                    String line;
+                    while (true) {
+
+                        if (!((line = reader.readLine()) != null)) break;
+
+                        stringBuilder.append(line).append("\n");
+                    }
+                    aboutUsContent = stringBuilder.toString();
+                } catch (
+                        IOException e) {
+                    throw new RuntimeException(e);
+                }
+
                 Dialog dialog = new Dialog(CustomerActivity.this);
                 dialog.setContentView(R.layout.activity_aboutme);
                 dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -399,7 +395,6 @@ public class CustomerActivity extends AppCompatActivity {
         super.onResume();
         loadData();
     }
-
 
     private void loadData() {
         if (managementUser.gethasData()) {

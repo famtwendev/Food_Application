@@ -61,13 +61,13 @@ public class InfoActivity extends AppCompatActivity {
         binding.btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String fullname = TextUtils.isEmpty(binding.edtFullname.getText().toString()) ? managementUser.getFullname() : binding.edtFullname.getText().toString();
-                String address = TextUtils.isEmpty(binding.edtAddress.getText().toString()) ? managementUser.getAddress() : binding.edtAddress.getText().toString();
+                String fullname = binding.edtFullname.getText().toString().isEmpty() ? managementUser.getFullname() : binding.edtFullname.getText().toString();
+                String address = binding.edtAddress.getText().toString().isEmpty() ? managementUser.getAddress() : binding.edtAddress.getText().toString();
 
                 String dateString = binding.edtBirthday.getText().toString();
                 Date birthday;
 
-                if (TextUtils.isEmpty(dateString)) {
+                if (dateString.isEmpty()) {
                     // Nếu EditText rỗng, gán giá trị từ managementUser
                     birthday = managementUser.getBirthday();
                 } else {
@@ -82,8 +82,8 @@ public class InfoActivity extends AppCompatActivity {
                     }
                 }
 
-                String email = TextUtils.isEmpty(binding.edtMail.getText().toString()) ? String.valueOf(managementUser.getEmail()) : binding.edtMail.getText().toString();
-                String numberPhone = TextUtils.isEmpty(binding.edtPhone.getText().toString()) ? String.valueOf(managementUser.getNumberPhone()) : binding.edtPhone.getText().toString();
+                String email = binding.edtMail.getText().toString().isEmpty() ? String.valueOf(managementUser.getEmail()) : binding.edtMail.getText().toString();
+                String numberPhone = binding.edtPhone.getText().toString().isEmpty() ? String.valueOf(managementUser.getNumberPhone()) : binding.edtPhone.getText().toString();
                 String sex;
                 if (binding.rdioNam.isChecked()) {
                     sex = "Nam";
